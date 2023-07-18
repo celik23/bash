@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# oraichanin network
+# oraichanin network | config.toml | app.toml
 PORT="108"
 PEERS="$(curl -sS https://rpc.oraichain.hexnodes.co/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 SEEDS=""
@@ -19,3 +19,13 @@ s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${PORT}90\"%;
 s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${PORT}91\"%; 
 s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${PORT}45\"%; 
 s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${PORT}46\"%" $HOME/.oraid/config/app.toml
+
+#🏀 Find | Replace app.toml
+pruning="custom"
+pruning_keep_recent="100"
+pruning_keep_every="0"
+pruning_interval="19"
+sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.oraid/config/app.toml
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.oraid/config/app.toml
+sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.oraid/config/app.toml
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.oraid/config/app.toml
