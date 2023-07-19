@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # oraichanin network | config.toml | app.toml
-PORT="108"
+PORT="266"
 PEERS="$(curl -sS https://rpc.oraichain.hexnodes.co/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 SEEDS=""
 sed -i -e "s|^seeds *=.*|seeds = \"$SEEDS\"|" $HOME/.oraid/config/config.toml
