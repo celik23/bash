@@ -9,7 +9,7 @@ echo -e "\e[0m"
 
 # constant
 SOURCE=orai
-CHAIN=Oraichain
+CHAIN_ID=Oraichain
 FOLDER=.oraid
 VERSION=v0.41.3
 DENOM=orai
@@ -26,7 +26,7 @@ fi
 echo "Verify the information below before proceeding with the installation!"
 echo ""
 echo -e "MONIKER        : \e[1m\e[35m$MONIKER\e[0m"
-echo -e "CHAIN NAME     : \e[1m\e[35m$CHAIN\e[0m"
+echo -e "CHAIN NAME     : \e[1m\e[35m$CHAIN_ID\e[0m"
 echo -e "NODE VERSION   : \e[1m\e[35m$VERSION\e[0m"
 echo -e "NODE FOLDER    : \e[1m\e[35m$FOLDER\e[0m"
 echo -e "NODE DENOM     : \e[1m\e[35m$DENOM\e[0m"
@@ -40,7 +40,7 @@ if [[ $choice == [Yy]* ]]; then
     echo "export SOURCE=${SOURCE}" 
     echo "export WALLET=${MONIKER}" 
     echo "export DENOM=${DENOM}" 
-    echo "export CHAIN=${CHAIN}" 
+    echo "export CHAIN=${CHAIN_ID}" 
     echo "export FOLDER=${FOLDER}"
     echo "export VERSION=${VERSION}"
     echo "export REPO=${REPO}" 
@@ -72,9 +72,9 @@ exit 1
 
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
 docker exec -it orai_node /bin/bash
-oraid init $MONIKER --chain-id Oraichain
+oraid init $MONIKER --chain-id "$CHAIN_ID"
 #⛔ oraid keys add $MONIKER 2>&1 | tee account.txt && exit
-#		👆 OR 👇
+#       👆 OR 👇
 #👉 import exist wallet (recover wallet)
 oraid keys add $MONIKER --recover
 
@@ -95,7 +95,7 @@ docker-compose restart orai && docker-compose exec orai bash -c 'oraivisor start
 #🛑 /mnt/orai/.oraid/config/priv_validator_key.json
 #🛑 /mnt/orai/.oraid/config/node_key.json
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
-#		👆 OR 👇
+#       👆 OR 👇
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
 #🚀 Create validator transaction (inside of the container)
 #    make 2orai over naar de Vallet
