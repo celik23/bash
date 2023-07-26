@@ -59,12 +59,8 @@ wget -O docker-ubuntu.sh https://github.com/celik23/bash/raw/main/docker-ubuntu.
 #🏀 install recommended apps
 sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common lz4 jq
 
-#🏀 install oraichain
-curl -OL https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/docker-compose.yml && curl -OL https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/orai.env
-
-# Edit orai.env | docker-compose.yml
-cp $HOME/orai.env.bak $HOME/orai.env
-cp $HOME/docker-compose.yml.bak $HOME/docker-compose.yml
+#🏀 Edit orai.env | docker-compose.yml
+curl -OL https://raw.githubusercontent.com/celik23/bash/main/docker-compose.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/orai.env
 
 docker-compose pull && docker-compose up -d --force-recreate
 
