@@ -23,6 +23,10 @@ if [ ! $MONIKER ]; then
     export MONIKER='$MONIKER'
 fi
 
+default="Oraichain_12715288.tar.lz4"
+read -p "Enter new  snapshot name [$default]: " SNAPSHOTS
+SNAPSHOTS=${SNAPSHOTS:-$default}
+
 echo "Verify the information below before proceeding with the installation!"
 echo ""
 echo -e "MONIKER        : \e[1m\e[35m$MONIKER\e[0m"
@@ -66,7 +70,7 @@ docker-compose pull && docker-compose up -d --force-recreate
 
 # Download Chain Data
 mkdir $HOME/.oraid
-curl -L https://snapshots.nysa.network/Oraichain/Oraichain_12705071.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.oraid
+curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C $HOME/.oraid
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
 docker exec -it orai_node /bin/bash -c 'oraid init $MONIKER --chain-id "$CHAIN_ID"'
 #⛔ oraid keys add $MONIKER 2>&1 | tee account.txt && exit
