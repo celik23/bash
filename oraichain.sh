@@ -36,6 +36,7 @@ echo -e "NODE FOLDER    : \e[1m\e[35m$FOLDER\e[0m"
 echo -e "NODE DENOM     : \e[1m\e[35m$DENOM\e[0m"
 echo -e "SOURCE CODE    : \e[1m\e[35m$REPO\e[0m"
 echo -e "NODE PORT      : \e[1m\e[35m$PORT\e[0m"
+echo -e "SNAPSHOTS      : \e[1m\e[35m$SNAPSHOTS\e[0m"
 echo ""
 
 read -p "Is the above information correct? (y/n) " choice
