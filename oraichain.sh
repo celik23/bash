@@ -16,11 +16,11 @@ DENOM=orai
 REPO=https://github.com/oraichain/orai
 PORT=266
 
-
 # variable
 if [ ! $MONIKER ]; then
     read -p "root@linux:~# [ENTER YOUR MONIKER] : " MONIKER
-    echo 'export USER='$MONIKER >> $HOME/.bash_profile
+    echo 'export MONIKER='$MONIKER >> $HOME/.bash_profile
+    export MONIKER='$MONIKER'
 fi
 
 echo "Verify the information below before proceeding with the installation!"
