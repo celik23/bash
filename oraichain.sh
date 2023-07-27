@@ -67,16 +67,12 @@ docker-compose pull && docker-compose up -d --force-recreate
 # Download Chain Data
 mkdir $HOME/.oraid
 curl -L https://snapshots.nysa.network/Oraichain/Oraichain_12705071.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.oraid
-echo -e "🏀 Ga verder in docker container handmatige installeren.🏀"
-exit 1
-
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
-docker exec -it orai_node /bin/bash
-oraid init $MONIKER --chain-id "$CHAIN_ID"
+docker exec -it orai_node /bin/bash -c 'oraid init $MONIKER --chain-id "$CHAIN_ID"'
 #⛔ oraid keys add $MONIKER 2>&1 | tee account.txt && exit
 #       👆 OR 👇
 #👉 import exist wallet (recover wallet)
-oraid keys add $MONIKER --recover
+docker exec -it orai_node /bin/bash -c 'oraid keys add $MONIKER --recover'
 
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
 # Download genesis.json
@@ -86,8 +82,8 @@ wget -O $HOME/.oraid/config/genesis.json https://raw.githubusercontent.com/oraic
 wget -O $HOME/oraichain-network.sh https://github.com/celik23/bash/raw/main/oraichain-network.sh && chmod +x oraichain-network.sh && $HOME/oraichain-network.sh
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
 #🛑 screen -ls #list-session | screen -S <new-session-name> | screen -r <session-name> | screen -d -r 27863
-screen -S home
-docker-compose restart orai && docker-compose exec -d orai bash -c 'oraivisor start'
+# screen -S home
+# docker-compose restart orai && docker-compose exec -d orai bash -c 'oraivisor start'
 docker-compose restart orai && docker-compose exec orai bash -c 'oraivisor start --p2p.pex false --p2p.persistent_peers "e6fa2f222236a9ca5e10b238de87eb12497a649c@167.99.119.182:26656,911b290c59a4d3248534b53bdbc8dd4615bb5870@167.99.119.182:26656,35c1f999d67de56736b412a1325370a8e2fdb34a@5.189.169.99:26656,5ad3b29bf56b9ba95c67f282aa281b6f0903e921@64.225.53.108:26656"'
 #✋ 🍺🍺🍺 WAIT UNTIL YOUR NODE IS SYNCHRONIZED 🍺🍺🍺
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
@@ -99,6 +95,6 @@ docker-compose restart orai && docker-compose exec orai bash -c 'oraivisor start
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
 #🚀 Create validator transaction (inside of the container)
 #    make 2orai over naar de Vallet
-docker-compose exec orai bash
-wget -O /usr/bin/fn https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/fn.sh && chmod +x /usr/bin/fn && fn createValidator
+#⛔ docker-compose exec orai bash
+#⛔ wget -O /usr/bin/fn https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/fn.sh && chmod +x /usr/bin/fn && fn createValidator
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
