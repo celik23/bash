@@ -66,7 +66,7 @@ docker-compose pull && docker-compose up -d --force-recreate
 
 # Download Chain Data
 mkdir $HOME/.oraid
-curl -L https://snapshots.nysa.network/Oraichain/Oraichain_12669159.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.oraid
+curl -L https://snapshots.nysa.network/Oraichain/Oraichain_12705071.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.oraid
 echo -e "🏀 Ga verder in docker container handmatige installeren.🏀"
 exit 1
 
