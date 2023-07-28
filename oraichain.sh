@@ -17,11 +17,9 @@ REPO=https://github.com/oraichain/orai
 PORT=266
 
 # variable
-if [ ! $MONIKER ]; then
-    read -p "root@linux:~# [ENTER YOUR MONIKER] : " MONIKER
-    echo 'export MONIKER='$MONIKER >> $HOME/.bash_profile
-    export MONIKER='$MONIKER'
-fi
+default="MONIKER NAME"
+read -p "Please enter your [$default]: " MONIKER
+MONIKER=${MONIKER:-$default}
 
 default="Oraichain_12715288.tar.lz4"
 read -p "Enter new  snapshot name [$default]: " SNAPSHOTS
