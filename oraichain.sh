@@ -60,7 +60,7 @@ fi
 wget -O docker-ubuntu.sh https://github.com/celik23/bash/raw/main/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
 
 #🏀 install recommended apps
-sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common lz4 jq
+sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common lz4 jq -y
 
 #🏀 Edit orai.env | docker-compose.yml
 curl -OL https://raw.githubusercontent.com/celik23/bash/main/docker-compose.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/orai.env
