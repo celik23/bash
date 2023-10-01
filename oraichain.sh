@@ -3,10 +3,6 @@
 # // Copyright (C) 2023 
 #
 
-echo -e "\033[0;32m"
-echo -e "\t\t\t Automatic Installer for Oraichain | Chain ID : Oraichain ";
-echo -e "\e[0m"
-
 # constant
 SOURCE=orai
 CHAIN_ID=Oraichain
@@ -16,14 +12,16 @@ DENOM=orai
 REPO=https://github.com/oraichain/orai
 PORT=266
 
+echo -e "\033[0;32m \t\t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID \e[0m";
+
 # variable
 default="MONIKER NAME"
 read -p "Please enter your [$default]: " MONIKER
 MONIKER=${MONIKER:-$default}
 
 default="Oraichain_12715288.tar.lz4"
-echo -e "\e[1m\e[35mCheck voor new version:\e[0m https://snapshots.nysa.network/Oraichain/"
-read -p "Enter new  snapshot name [$default]: " SNAPSHOTS
+echo -e "\e[1m\e[35mCheck voor new snapshot version:\e[0m https://snapshots.nysa.network/Oraichain/"
+read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
 echo "Verify the information below before proceeding with the installation!"
@@ -40,7 +38,6 @@ echo ""
 
 read -p "Is the above information correct? (y/n) " choice
 if [[ $choice == [Yy]* ]]; then
-
     echo "export SOURCE=${SOURCE}" 
     echo "export WALLET=${MONIKER}" 
     echo "export DENOM=${DENOM}" 
@@ -50,21 +47,19 @@ if [[ $choice == [Yy]* ]]; then
     echo "export REPO=${REPO}" 
     echo "export PORT=${PORT}"
     source $HOME/.bash_profile
-
 else
     echo "Installation cancelled!"
     exit 1
 fi
 
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
-
 #🏀 install recommended apps
 sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common lz4 jq -y
 
 #🏀 install docker and docker-compose
 wget -O docker-ubuntu.sh https://github.com/celik23/bash/raw/main/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
 
-#🏀 Edit orai.env | docker-compose.yml
+#🏀 Edit orai.env & docker-compose.yml
 curl -OL https://raw.githubusercontent.com/celik23/bash/main/docker-compose.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/orai.env
 
 # find and replace
@@ -84,7 +79,7 @@ docker exec -it orai_node /bin/bash -c 'oraid init $MONIKER --chain-id "$CHAIN_I
 #       👆 OR 👇
 #👉 import exist wallet (recover wallet)
 docker exec -it orai_node /bin/bash -c 'oraid keys add $MONIKER --recover'
-
+# Enter keyring passphrase:
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
 # Download genesis.json
 wget -O $HOME/.oraid/config/genesis.json https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json
