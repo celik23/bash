@@ -22,6 +22,7 @@ read -p "Please enter your [$default]: " MONIKER
 MONIKER=${MONIKER:-$default}
 
 default="Oraichain_12715288.tar.lz4"
+echo -e "\e[1m\e[35mCheck voor new version:\e[0m https://snapshots.nysa.network/Oraichain/"
 read -p "Enter new  snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
