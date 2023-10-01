@@ -72,6 +72,7 @@ sed -i -e "s/^USER *=.*/USER=$MONIKER/" $HOME/orai.env
 sed -i -e "s/^MONIKER *=.*/MONIKER=$MONIKER/" $HOME/orai.env
 sed -i -e "s/0.41.3/$VERSION/" $HOME/docker-compose.yml
 
+# Build and enter the container
 docker-compose pull && docker-compose up -d --force-recreate
 
 # Download Chain Data
