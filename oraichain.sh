@@ -11,7 +11,7 @@ echo -e "\e[0m"
 SOURCE=orai
 CHAIN_ID=Oraichain
 FOLDER=.oraid
-VERSION=v0.41.3
+# VERSION=v0.41.4
 DENOM=orai
 REPO=https://github.com/oraichain/orai
 PORT=266
@@ -56,14 +56,20 @@ else
 fi
 
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
+
+#🏀 install recommended apps
+sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common lz4 jq -y
+
 #🏀 install docker and docker-compose
 wget -O docker-ubuntu.sh https://github.com/celik23/bash/raw/main/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
 
-#🏀 install recommended apps
-sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common lz4 jq -y
-
 #🏀 Edit orai.env | docker-compose.yml
 curl -OL https://raw.githubusercontent.com/celik23/bash/main/docker-compose.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/orai.env
+
+# find and replace
+sed -i -e "s/^USER *=.*/USER=$MONIKER/" $HOME/orai.env
+sed -i -e "s/^MONIKER *=.*/MONIKER=$MONIKER/" $HOME/orai.env
+sed -i -e "s/0.41.3/$VERSION/" $HOME/docker-compose.yml
 
 docker-compose pull && docker-compose up -d --force-recreate
 
