@@ -2,7 +2,7 @@
 
 ### install oraichain node
 ```
-wget -O $HOME/oraichain.sh https://github.com/celik23/bash/massa/raw/main/oraichain.sh && chmod +x $HOME/oraichain.sh && $HOME/oraichain.sh
+wget -O $HOME/massa.sh https://github.com/celik23/bash/massa/raw/main/massa.sh && chmod +x $HOME/massa.sh && $HOME/massa.sh
 ```
 
 ### install docker
