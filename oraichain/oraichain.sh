@@ -21,7 +21,7 @@ MONIKER=${MONIKER:-$default}
 
 default=${VERSION}
 read -p "Please enter docker pull version [$default]: " VERSION
-MONIKER=${VERSION:-$default}
+VERSION=${VERSION:-$default}
 
 default="Oraichain_13771328.tar.lz4"
 echo -e "\e[1m\e[35mCheck voor new snapshot version:\033[0;32m https://snapshots.nysa.network/Oraichain/\e[0m"
@@ -32,7 +32,7 @@ echo "Verify the information below before proceeding with the installation!"
 echo ""
 echo -e "MONIKER        : \e[1m\e[35m$MONIKER\e[0m"
 echo -e "CHAIN ID       : \e[1m\e[35m$CHAIN_ID\e[0m"
-echo -e "NODE VERSION   : \e[1m\e[35m$VERSION\e[0m"
+echo -e "PULL VERSION   : \e[1m\e[35m$VERSION\e[0m"
 echo -e "NODE FOLDER    : \e[1m\e[35m$FOLDER\e[0m"
 echo -e "NODE DENOM     : \e[1m\e[35m$DENOM\e[0m"
 echo -e "SOURCE CODE    : \e[1m\e[35m$REPO\e[0m"
