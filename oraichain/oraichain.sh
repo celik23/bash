@@ -20,7 +20,7 @@ read -p "Please enter your [$default]: " MONIKER
 MONIKER=${MONIKER:-$default}
 
 default="Oraichain_12715288.tar.lz4"
-echo -e "\e[1m\e[35mCheck voor new snapshot version:\e[0m https://snapshots.nysa.network/Oraichain/"
+echo -e "\e[1m\e[35mCheck voor new snapshot version:\033[0;32m https://snapshots.nysa.network/Oraichain/\e[0m"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
@@ -61,7 +61,6 @@ wget -O docker-ubuntu.sh https://raw.githubusercontent.com/celik23/bash/main/ora
 
 #🏀 Edit orai.env & docker-compose.yml
 curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-compose.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/orai.env
-
 
 # find and replace
 sed -i -e "s/^USER *=.*/USER=$MONIKER/" $HOME/orai.env
