@@ -12,10 +12,15 @@ https://t.me/massanetwork - Massa Official Telegram
 https://t.me/massa_turkey - Turkish Speaking Telegram 
 https://twitter.com/MassaTurkiye - Turkish Speaking Community Twitter
 comment
-#🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰
+#🔖 —————————————————————————————————————
 # Environment variables 🍒
-echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-echo 'export password=B!N453han@' >> ~/.bash_profile 
+if [[ -z "${PASSWORD}" ]]; then
+	echo -e "env: password is undefined!"
+	echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
+	echo 'export PASSWORD=B!N453han@' >> ~/.bash_profile 
+else
+	echo -e "env: is defined."
+fi
 source ~/.bash_profile 
 #🔖 —————————————————————————————————————
 #🏁 Install necessary dependencies/requirements
@@ -40,11 +45,11 @@ EOF
 sudo nano /root/massa/massa-node/config/config.toml
 
 <<comment
-		# Resotre node file(s) and # restart node
-		# wallet_generate_secret_key 	#not needed/only new wallet create#
-		wallet_add_secret_keys {Secret key}	#import (wallet) secret_keys
-		get_status
-		wallet_info
+	# Resotre node file(s) and # restart node
+	# wallet_generate_secret_key 	#not needed/only new wallet create#
+	wallet_add_secret_keys {Secret key}	#import (wallet) secret_keys
+	get_status
+	wallet_info
 comment
 🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰
 #👉  Ctrl + A C #new window || Ctrl + A P #Switch andere Node
