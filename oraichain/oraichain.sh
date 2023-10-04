@@ -57,10 +57,12 @@ fi
 sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common lz4 jq -y
 
 #🏀 install docker and docker-compose
-wget -O docker-ubuntu.sh https://github.com/celik23/bash/raw/main/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
+wget -O docker-ubuntu.sh https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
 
 #🏀 Edit orai.env & docker-compose.yml
-curl -OL https://raw.githubusercontent.com/celik23/bash/main/docker-compose.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/orai.env
+curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-compose.yml && curl -OL 
+https://raw.githubusercontent.com/celik23/bash/main/oraichain/orai.env
+
 
 # find and replace
 sed -i -e "s/^USER *=.*/USER=$MONIKER/" $HOME/orai.env
@@ -85,7 +87,7 @@ docker exec -it orai_node /bin/bash -c 'oraid keys add $MONIKER --recover'
 wget -O $HOME/.oraid/config/genesis.json https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json
 
 # Netwrok setup | Replace config.toml and app.toml
-wget -O $HOME/oraichain-network.sh https://github.com/celik23/bash/raw/main/oraichain-network.sh && chmod +x oraichain-network.sh && $HOME/oraichain-network.sh
+wget -O $HOME/oraichain-network.sh https://raw.githubusercontent.com/celik23/bash/main/oraichain/oraichain-network.sh && chmod +x oraichain-network.sh && $HOME/oraichain-network.sh
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
 #🛑 screen -ls <list-session> | screen -S <new-session-name> | screen -r <session-name> | screen -d -r 27863 <detaching>
 # screen -S home
