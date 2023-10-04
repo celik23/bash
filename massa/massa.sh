@@ -62,4 +62,4 @@ systemctl status massad
 systemctl stop massad
 
 systemctl restart massad && journalctl -u massad -f -o cat 
-journalctl --unit=massad.service -n 10 --no-pager
+# journalctl --unit=massad.service -n 10 --no-pager
