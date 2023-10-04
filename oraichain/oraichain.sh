@@ -7,7 +7,7 @@
 SOURCE=orai
 CHAIN_ID=Oraichain
 FOLDER=.oraid
-VERSION=v0.41.4
+VERSION=0.41.4
 DENOM=orai
 REPO=https://github.com/oraichain/orai
 PORT=266
@@ -19,7 +19,7 @@ default="MONIKER NAME"
 read -p "Please enter your [$default]: " MONIKER
 MONIKER=${MONIKER:-$default}
 
-default="Oraichain_12715288.tar.lz4"
+default="Oraichain_13771328.tar.lz4"
 echo -e "\e[1m\e[35mCheck voor new snapshot version:\033[0;32m https://snapshots.nysa.network/Oraichain/\e[0m"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
