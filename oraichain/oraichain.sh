@@ -60,7 +60,7 @@ sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-p
 wget -O docker-ubuntu.sh https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
 
 #🏀 Edit orai.env & docker-compose.yml
-curl -OL https://raw.githubusercontent.com/oraichain/orai/v0.41.3-statesync-script/docker-compose.prod.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/orai.env
+curl -OL https://raw.githubusercontent.com/oraichain/orai/master/orai/docker-compose.prod.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/orai.env
 
 # find and replace
 sed -i -e "s/^USER *=.*/USER=$MONIKER/" $HOME/orai.env
