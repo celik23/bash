@@ -19,6 +19,10 @@ default="MONIKER NAME"
 read -p "Please enter your [$default]: " MONIKER
 MONIKER=${MONIKER:-$default}
 
+default=${VERSION}
+read -p "Please enter docker pull version [$default]: " VERSION
+MONIKER=${VERSION:-$default}
+
 default="Oraichain_13771328.tar.lz4"
 echo -e "\e[1m\e[35mCheck voor new snapshot version:\033[0;32m https://snapshots.nysa.network/Oraichain/\e[0m"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
