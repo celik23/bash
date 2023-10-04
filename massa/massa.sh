@@ -8,7 +8,7 @@
 if [[ -z "${PASSWORD}" ]]; then
 	echo -e "env: password is undefined!"
 	echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-	echo 'export PASSWORD=B!N453han@' >> ~/.bash_profile 
+	echo 'export PASSWORD=p@ssw0rd' >> ~/.bash_profile 
 else
 	echo -e "env: is defined."
 fi
