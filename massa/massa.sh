@@ -8,7 +8,7 @@
 if [[ -z "${PASSWORD}" ]]; then
 	echo -e "env: password is undefined!"
 	echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-	echo 'export PASSWORD=p@ssw0rd' >> ~/.bash_profile 
+	echo 'export PASSWORD="p@ssw0rd"' >> ~/.bash_profile 
 else
 	echo -e "env: is defined."
 fi
@@ -16,12 +16,15 @@ source ~/.bash_profile
 #🔖 —————————————————————————————————————
 #🏁 Install necessary dependencies/requirements
 sudo apt update
-sudo apt install pkg-config curl git build-essential libssl-dev libclang-dev cmake screen cron nano
+sudo apt install git pkg-config curl build-essential libssl-dev libclang-dev cmake screen cron nano
 
 OS="linux.tar" # or "linux_arm64.tar"
 URL="https://api.github.com/repos/massalabs/massa/releases/latest"
+echo "url-1 $URL"
 URL=$(curl -s ${URL} | grep "browser_download_url" | cut -d '"' -f 4 | grep ${OS})
+echo "url-2 $URL"
 latest="$(basename -a ${URL})" && wget "${URL}" -O $HOME/${latest}
+echo "latest $latest"
 tar -xvf ${latest} -C $HOME/ && rm $HOME/${latest}
 chmod +x $HOME/massa/massa-node/massa-node $HOME/massa/massa-client/massa-client 
 echo -e -n "${msg}" >> "${latest}.txt" 
