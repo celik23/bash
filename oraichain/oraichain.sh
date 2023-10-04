@@ -60,8 +60,7 @@ sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-p
 wget -O docker-ubuntu.sh https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
 
 #🏀 Edit orai.env & docker-compose.yml
-curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-compose.yml && curl -OL 
-https://raw.githubusercontent.com/celik23/bash/main/oraichain/orai.env
+curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-compose.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/orai.env
 
 
 # find and replace
