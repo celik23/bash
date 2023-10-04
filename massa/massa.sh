@@ -3,15 +3,6 @@
 # // Copyright (C) 2023 
 #
 
-<<comment
-# Official accounts:
-https://docs.massa.net/docs/node/home
-https://twitter.com/massalabs - Massa Official Twitter
-https://twitter.com/Massadopted1 - Massadopted Official Twitter
-https://t.me/massanetwork - Massa Official Telegram
-https://t.me/massa_turkey - Turkish Speaking Telegram 
-https://twitter.com/MassaTurkiye - Turkish Speaking Community Twitter
-comment
 #🔖 —————————————————————————————————————
 # Environment variables 🍒
 if [[ -z "${PASSWORD}" ]]; then
@@ -44,20 +35,8 @@ max_ping = 10000
 EOF
 sudo nano /root/massa/massa-node/config/config.toml
 
-<<comment
-	# Resotre node file(s) and # restart node
-	# wallet_generate_secret_key 	#not needed/only new wallet create#
-	wallet_add_secret_keys {Secret key}	#import (wallet) secret_keys
-	get_status
-	wallet_info
-comment
-🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰
-#👉  Ctrl + A C #new window || Ctrl + A P #Switch andere Node
-#⛔ screen -S home 
-#⛔ cd ~/massa/massa-node/ && ./massa-node -p 'B!N453han@' | & tee logs.txt
-cd $HOME/massa/massa-client/ && ./massa-client -p "${password}"
-🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰
-👉 services
+#🔖 —————————————————————————————————————
+#👉 services
 sudo tee /etc/systemd/system/massad.service > /dev/null <<EOF
 [Unit]
 Description=Massa Daemon
