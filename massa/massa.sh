@@ -3,7 +3,7 @@
 # // Copyright (C) 2023 
 #
 
-#🔖 —————————————————————————————————————
+#🔖 -------------------------------------
 # Environment variables 🍒
 if [[ -z "${PASSWORD}" ]]; then
 	echo -e "-> env: password is undefined!"
@@ -13,7 +13,7 @@ else
 	echo -e "-> env: is defined."
 fi
 source ~/.bash_profile 
-#🔖 —————————————————————————————————————
+#🔖 -------------------------------------
 #🏁 Install necessary dependencies/requirements
 sudo apt update
 sudo apt install git pkg-config curl build-essential libssl-dev libclang-dev cmake screen cron nano
@@ -39,7 +39,7 @@ max_ping = 10000
 EOF
 sudo nano /root/massa/massa-node/config/config.toml
 
-#🔖 —————————————————————————————————————
+#🔖 -------------------------------------
 #👉 services
 sudo tee /etc/systemd/system/massad.service > /dev/null <<EOF
 [Unit]
