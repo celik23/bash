@@ -22,9 +22,9 @@ echo ""
 read -p "Is the above information correct? (y/n) " choice
 if [[ $choice == [Yy]* ]]; then
   echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-  echo "export MONIKER=${MONIKER}" >> ~/.bash_profile
-  echo "export WALLET=${MONIKER}" >> ~/.bash_profile
-  echo "export PASSWORD=${PASSWORD}" >> ~/.bash_profile
+  echo "export MONIKER='${MONIKER}'" >> ~/.bash_profile
+  echo "export WALLET='$MONIKER'" >> ~/.bash_profile
+  echo "export PASSWORD='$PASSWORD'" >> ~/.bash_profile
   echo 'export RUST_BACKTRACE=full' >> ~/.bash_profile
   echo 'export COLORBT_SHOW_HIDDEN=1' >> ~/.bash_profile
   echo 'export CHAIN_ID=public-testnet-14.5d79b6958580' >> ~/.bash_profile
@@ -99,5 +99,4 @@ cd $HOME && namada client utils join-network \
 
 echo "tik 'reboot' hit enter"
 
-journalctl -u namadad -f -o cat
-
+journalctl -u namadad -f -o cat 
