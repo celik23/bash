@@ -30,10 +30,11 @@ if [[ $choice == [Yy]* ]]; then
   echo 'export CHAIN_ID=public-testnet-14.5d79b6958580' >> ~/.bash_profile
   source $HOME/.bash_profile
 else
-    echo "Installation cancelled!"
-    exit 1
+    echo "Are you sure you want to cancel the installation?"
+    if [[ $choice == [Yy]* ]]; then
+      exit 1
+    fi
 fi
-
 
 # Install necessary dependencies / requirements
 sudo apt update -y
