@@ -32,6 +32,7 @@ if [[ $choice == [Yy]* ]]; then
 else
     read -p "Are you sure you want to cancel the installation? (y/n) " choice
     if [[ $choice == [Yy]* ]]; then
+      echo "Installation cancelled!"
       exit 1
     fi
 fi
