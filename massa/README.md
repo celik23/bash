@@ -1,4 +1,4 @@
-# bash
+# bash/massa
 
 ### install oraichain node
 ```
