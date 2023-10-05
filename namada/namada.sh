@@ -61,7 +61,7 @@ EOF
 
 sudo systemctl daemon-reload
 sudo systemctl enable namadad
-#🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
+
 mkdir -p $HOME/.local/share/namada/pre-genesis/"$ALIAS"
 #👉 !!! Recover wallte to the onder directory !!!
 cp $HOME/wallet-bck/*.toml $HOME/.local/share/namada/pre-genesis/"$ALIAS"/
