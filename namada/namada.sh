@@ -3,7 +3,7 @@
 # // Copyright (C) 2023 
 #
 
-#🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
+
 # environment variables
 echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
 echo 'export ALIAS="Red Apple"' >> ~/.bash_profile
@@ -13,18 +13,18 @@ echo 'export RUST_BACKTRACE=full' >> ~/.bash_profile
 echo 'export COLORBT_SHOW_HIDDEN=1' >> ~/.bash_profile
 echo 'export CHAIN_ID=public-testnet-14.5d79b6958580' >> ~/.bash_profile
 source ~/.bash_profile
-#🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
+
 # Install necessary dependencies / requirements
 sudo apt update -y
 sudo apt install curl jq screen expect -y
 
 wget "http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.19_amd64.deb"
 sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2.19_amd64.deb && rm -rf $HOME/libssl1.1_1.1.1f-1ubuntu2.19_amd64.deb
-#🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
+
 tag=0.37.2
 wget -O $HOME/cometbft.tar.gz "https://github.com/cometbft/cometbft/releases/download/v${tag}/cometbft_${tag}_linux_amd64.tar.gz"
 tar -xvf $HOME/cometbft.tar.gz --strip-components 0 -C /usr/local/bin/ && rm -rf $HOME/cometbft.tar.gz 
-#🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
+
 OS="Linux" # or "Darwin" for MacOS
 URL="https://api.github.com/repos/anoma/namada/releases/latest"
 URL=$(curl -s ${URL} | grep "browser_download_url" | cut -d '"' -f 4 | grep "$OS")
@@ -38,8 +38,8 @@ cometbft version
 # output:
 # Namada v0.23.0
 # 0.37.2
-#🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
-# Make service
+
+# Make namadad.service
 sudo tee /etc/systemd/system/namadad.service > /dev/null <<EOF
 [Unit]
 Description=namada
@@ -73,4 +73,4 @@ cd $HOME && namada client utils join-network \
   --chain-id "$CHAIN_ID" \
   --genesis-validator "$ALIAS"
 
-reboot
+echo "tik 'reboot' hit enter"
