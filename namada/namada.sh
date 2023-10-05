@@ -98,3 +98,6 @@ cd $HOME && namada client utils join-network \
   --genesis-validator "$MONIKER"
 
 echo "tik 'reboot' hit enter"
+
+journalctl -u namadad -f -o cat
+
