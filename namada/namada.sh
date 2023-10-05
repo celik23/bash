@@ -30,7 +30,7 @@ if [[ $choice == [Yy]* ]]; then
   echo 'export CHAIN_ID=public-testnet-14.5d79b6958580' >> ~/.bash_profile
   source $HOME/.bash_profile
 else
-    echo "Are you sure you want to cancel the installation?"
+    read -p "Are you sure you want to cancel the installation? (y/n) " choice
     if [[ $choice == [Yy]* ]]; then
       exit 1
     fi
