@@ -3,20 +3,6 @@
 # // Copyright (C) 2023 
 #
 
-# environment variables 🍒
-if [[ -z "${MONIKER}" ]]; then
-  echo -e "env: ${MONIKER} is undefined!"
-  echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-  echo 'export MONIKER="Red Apple"' >> ~/.bash_profile
-  echo 'export WALLET="Red Apple"' >> ~/.bash_profile
-  echo 'export RUST_BACKTRACE=full' >> ~/.bash_profile
-  echo 'export COLORBT_SHOW_HIDDEN=1' >> ~/.bash_profile
-  echo 'export CHAIN_ID=public-testnet-14.5d79b6958580' >> ~/.bash_profile
-else
-  echo -e "env: ${MONIKER} is defined."
-fi
-source ~/.bash_profile
-
 # Input
 default="Red Apple"
 read -p "Please enter your moniker name [$default]: " MONIKER
@@ -25,6 +11,29 @@ MONIKER=${MONIKER:-$default}
 default="P@ssw0rd"
 read -p "Please enter your password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
+
+echo "Verify the information below before proceeding with the installation!"
+echo ""
+echo -e "MONIKER        : \e[1m\e[35m$MONIKER\e[0m"
+echo -e "PASSWORD       : \e[1m\e[35m$PASSWORD\e[0m"
+echo ""
+
+# environment variables 🍒
+read -p "Is the above information correct? (y/n) " choice
+if [[ $choice == [Yy]* ]]; then
+  echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
+  echo "export MONIKER=${MONIKER}" >> ~/.bash_profile
+  echo "export WALLET=${MONIKER}" >> ~/.bash_profile
+  echo "export PASSWORD=${PASSWORD}" >> ~/.bash_profile
+  echo 'export RUST_BACKTRACE=full' >> ~/.bash_profile
+  echo 'export COLORBT_SHOW_HIDDEN=1' >> ~/.bash_profile
+  echo 'export CHAIN_ID=public-testnet-14.5d79b6958580' >> ~/.bash_profile
+  source $HOME/.bash_profile
+else
+    echo "Installation cancelled!"
+    exit 1
+fi
+
 
 # Install necessary dependencies / requirements
 sudo apt update -y
