@@ -4,14 +4,17 @@
 #
 
 # variable
-echo "import validator and wallet"
 default="Red Apple"
-read -p "Please enter your alias [$default]: " ALIAS
-ALIAS=${ALIAS:-$default}
+read -p "Please enter your moniker name [$default]: " MONIKER
+MONIKER=${MONIKER:-$default}
+
+default="P@ssw0rd"
+read -p "Please enter your password [$default]: " PASSWORD
+PASSWORD=${PASSWORD:-$default}
 
 # environment variables
 echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-echo 'export ALIAS="Red Apple"' >> ~/.bash_profile
+echo 'export MONIKER="Red Apple"' >> ~/.bash_profile
 echo 'export WALLET="Red Apple"' >> ~/.bash_profile
 echo 'export RUST_BACKTRACE=full' >> ~/.bash_profile
 echo 'export COLORBT_SHOW_HIDDEN=1' >> ~/.bash_profile
@@ -22,7 +25,6 @@ source ~/.bash_profile
 sudo apt update -y
 sudo apt install curl jq screen expect -y
 bash -c /root/scripts/generator_validator-wallet.sh
-
 
 wget "http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.19_amd64.deb"
 sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2.19_amd64.deb && rm -rf $HOME/libssl1.1_1.1.1f-1ubuntu2.19_amd64.deb
@@ -68,15 +70,15 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable namadad
 
-mkdir -p $HOME/.local/share/namada/pre-genesis/"$ALIAS"
+mkdir -p $HOME/.local/share/namada/pre-genesis/"$MONIKER"
 #👉 !!! Recover wallte to the onder directory !!!
-cp $HOME/wallet-bck/*.toml $HOME/.local/share/namada/pre-genesis/"$ALIAS"/
+cp $HOME/wallet-bck/*.toml $HOME/.local/share/namada/pre-genesis/"$MONIKER"/
 bash -c /root/scripts/rad-apple_validator.sh
-cat $HOME/.local/share/namada/pre-genesis/"$ALIAS"/validator.toml
+cat $HOME/.local/share/namada/pre-genesis/"$MONIKER"/validator.toml
 
 # ONLY for PRE genesis validator | IF YOU NOT A PRE GEN VALIDATOR SKIP THIS SECTION
 cd $HOME && namada client utils join-network \
   --chain-id "$CHAIN_ID" \
-  --genesis-validator "$ALIAS"
+  --genesis-validator "$MONIKER"
 
 echo "tik 'reboot' hit enter"
