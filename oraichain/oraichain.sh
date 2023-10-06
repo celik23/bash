@@ -41,7 +41,6 @@ if [[ $choice == [Yy]* ]]; then
     echo "export MONIKER=${MONIKER}" >> $HOME/.bash_profile
     echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
     echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
-    echo "export VERSION=${VERSION}" >> $HOME/.bash_profile
     source $HOME/.bash_profile
 else
     echo "Installation cancelled!"
