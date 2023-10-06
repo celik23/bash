@@ -16,9 +16,23 @@ default="host"
 read -p "Please enter your [$default]: " host
 host=${host:-$default}
 
-# environment variables
-echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-source ~/.bash_profile
+echo "Verify the information below before proceeding with the installation!"
+echo ""
+echo -e "safeAddress    : \e[1m\e[35m$safeAddress\e[0m"
+echo -e "moduleAddress  : \e[1m\e[35m$moduleAddress\e[0m"
+echo -e "host           : \e[1m\e[35m$host\e[0m"
+echo ""
+
+read -p "Is the above information correct? (y/n) " choice
+if [[ $choice == [Yy]* ]]; then
+    # environment variables
+    echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
+    source ~/.bash_profile
+else
+    echo "Installation cancelled!"
+    exit 1
+fi
+
 
 #🔖 -------------------------------------
 # Install docker
@@ -41,9 +55,9 @@ docker run --pull always --restart on-failure -m 8g \
   --apiHost "0.0.0.0" \
   --apiToken 'MyS3cur1tyT0ken' --healthCheck \
   --healthCheckHost "0.0.0.0" --announce \
-  --safeAddress 0xf76323E048E76a7e3ceBA471ceE7e4ea3E86b00f \
-  --moduleAddress 0x7B16696E07AC052af5E4E19CE01997B15bBbA751 \
-  --host 65.21.49.237:9091
+  --safeAddress ${safeAddress} \
+  --moduleAddress ${moduleAddress} \
+  --host ${host}
 
 #👉 Backup/Recover Identity-file
 # /root/.hoprd-db-monte-rosa/.hopr-id-monte-rosa
