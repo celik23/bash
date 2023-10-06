@@ -1,14 +1,12 @@
 #!/bin/bash
 #
-# // Copyright (C) 2023  
+# // Copyright (C) 2023 
 #
 
 # constant
-SOURCE=orai
 CHAIN_ID=Oraichain
 FOLDER=.oraid
 VERSION=0.41.4
-DENOM=orai
 REPO=https://github.com/oraichain/orai
 PORT=266
 
@@ -32,24 +30,18 @@ echo "Verify the information below before proceeding with the installation!"
 echo ""
 echo -e "MONIKER        : \e[1m\e[35m$MONIKER\e[0m"
 echo -e "CHAIN ID       : \e[1m\e[35m$CHAIN_ID\e[0m"
-echo -e "PULL VERSION   : \e[1m\e[35m$VERSION\e[0m"
+echo -e "NODE VERSION   : \e[1m\e[35m$VERSION\e[0m"
 echo -e "NODE FOLDER    : \e[1m\e[35m$FOLDER\e[0m"
-echo -e "NODE DENOM     : \e[1m\e[35m$DENOM\e[0m"
-echo -e "SOURCE CODE    : \e[1m\e[35m$REPO\e[0m"
-echo -e "NODE PORT      : \e[1m\e[35m$PORT\e[0m"
 echo -e "SNAPSHOTS      : \e[1m\e[35m$SNAPSHOTS\e[0m"
 echo ""
 
 read -p "Is the above information correct? (y/n) " choice
 if [[ $choice == [Yy]* ]]; then
-    echo "export SOURCE=${SOURCE}" 
-    echo "export WALLET=${MONIKER}" 
-    echo "export DENOM=${DENOM}" 
-    echo "export CHAIN_ID=${CHAIN_ID}" 
-    echo "export FOLDER=${FOLDER}"
-    echo "export VERSION=${VERSION}"
-    echo "export REPO=${REPO}" 
-    echo "export PORT=${PORT}"
+    echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
+    echo "export MONIKER=${MONIKER}" >> $HOME/.bash_profile
+    echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
+    echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
+    echo "export VERSION=${VERSION}" >> $HOME/.bash_profile
     source $HOME/.bash_profile
 else
     echo "Installation cancelled!"
