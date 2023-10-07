@@ -4,6 +4,7 @@
 #
 
 # variable
+# input
 default="safeAddress"
 read -p "Please enter your [$default]: " safeAddress
 safeAddress=${safeAddress:-$default}
@@ -53,7 +54,8 @@ docker run --pull always --restart on-failure -m 8g \
   --healthCheckHost "0.0.0.0" --announce \
   --safeAddress ${safeAddress} \
   --moduleAddress ${moduleAddress} \
-  --host ${host}
+  --host ${host}:9091
+
 
 #👉 Backup/Recover Identity-file
 # /root/.hoprd-db-monte-rosa/.hopr-id-monte-rosa
