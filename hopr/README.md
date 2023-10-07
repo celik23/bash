@@ -8,6 +8,9 @@ wget -O $HOME/hopr.sh https://raw.githubusercontent.com/celik23/bash/main/hopr/h
 
 ### RUN HOPRd (-m 4g)
 ```
+# Prune unused Docker objects
+docker system prune --all --force
+
 docker run --pull always --restart on-failure -m 8g \
     --platform linux/x86_64 --log-driver json-file --log-opt max-size=100M --log-opt max-file=5 \
     -ti -v $HOME/.hoprd-db-dufour:/app/hoprd-db \
