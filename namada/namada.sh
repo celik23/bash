@@ -5,8 +5,8 @@
 
 # Input
 default="Red Apple"
-read -p "Please enter your moniker name [$default]: " MONIKER
-MONIKER=${MONIKER:-$default}
+read -p "Please enter your moniker name [$default]: " ALIAS
+ALIAS=${ALIAS:-$default}
 
 default="P@ssw0rd"
 read -p "Please enter your password [$default]: " PASSWORD
@@ -14,7 +14,7 @@ PASSWORD=${PASSWORD:-$default}
 
 echo "Verify the information below before proceeding with the installation!"
 echo ""
-echo -e "MONIKER        : \e[1m\e[35m$MONIKER\e[0m"
+echo -e "ALIAS        : \e[1m\e[35m$ALIAS\e[0m"
 echo -e "PASSWORD       : \e[1m\e[35m$PASSWORD\e[0m"
 echo ""
 
@@ -22,8 +22,7 @@ echo ""
 read -p "Is the above information correct? (y/n) " choice
 if [[ $choice == [Yy]* ]]; then
   echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-  echo "export MONIKER='$MONIKER'" >> ~/.bash_profile
-  echo "export WALLET='$MONIKER'" >> ~/.bash_profile
+  echo "export ALIAS='$ALIAS'" >> ~/.bash_profile
   echo "export PASSWORD='$PASSWORD'" >> ~/.bash_profile
   echo 'export RUST_BACKTRACE=full' >> ~/.bash_profile
   echo 'export COLORBT_SHOW_HIDDEN=1' >> ~/.bash_profile
@@ -86,16 +85,16 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable namadad
 
-mkdir -p $HOME/.local/share/namada/pre-genesis/"$MONIKER"
+mkdir -p $HOME/.local/share/namada/pre-genesis/"$ALIAS"
 #👉 !!! Recover wallte to the onder directory !!!
-cp $HOME/wallet-bck/*.toml $HOME/.local/share/namada/pre-genesis/"$MONIKER"/
+cp $HOME/wallet-bck/*.toml $HOME/.local/share/namada/pre-genesis/"$ALIAS"/
 bash -c /root/scripts/rad-apple_validator.sh
-cat $HOME/.local/share/namada/pre-genesis/"$MONIKER"/validator.toml
+cat $HOME/.local/share/namada/pre-genesis/"$ALIAS"/validator.toml
 
 # ONLY for PRE genesis validator | IF YOU NOT A PRE GEN VALIDATOR SKIP THIS SECTION
 cd $HOME && namada client utils join-network \
   --chain-id "$CHAIN_ID" \
-  --genesis-validator "$MONIKER"
+  --genesis-validator "$ALIAS"
 
 echo "tik 'reboot' hit enter"
 
