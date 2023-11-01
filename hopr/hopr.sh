@@ -13,20 +13,20 @@ default="moduleAddress"
 read -p "Please enter your [$default]: " moduleAddress
 moduleAddress=${moduleAddress:-$default}
 
-default="host-ipaddress"
-read -p "Please enter your [$default]: " host
-host=${host:-$default}
-
 default="YOUR_SECURITY_TOKEN"
 read -p "Please enter your [$default]: " apiToken
 apiToken=${apiToken:-$default}
+
+default="host-ipaddress"
+read -p "Please enter your [$default]: " host
+host=${host:-$default}
 
 echo "Verify the information below before proceeding with the installation!"
 echo ""
 echo -e "safeAddress    : \e[1m\e[35m$safeAddress\e[0m"
 echo -e "moduleAddress  : \e[1m\e[35m$moduleAddress\e[0m"
-echo -e "host           : \e[1m\e[35m$host\e[0m"
 echo -e "apiToken       : \e[1m\e[35m$apiToken\e[0m"
+echo -e "host           : \e[1m\e[35m$host\e[0m"
 echo ""
 
 read -p "Is the above information correct? (y/N) " choice
@@ -65,6 +65,4 @@ docker run --pull always --restart on-failure -m 8g \
     --moduleAddress ${moduleAddress} \
     --host ${host}:9091
 
-
 # end
-# docker system prune --all --force
