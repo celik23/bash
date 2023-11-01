@@ -17,7 +17,7 @@ default="host-ipaddress"
 read -p "Please enter your [$default]: " host
 host=${host:-$default}
 
-apiToken='YOUR_SECURITY_TOKEN'
+default="YOUR_SECURITY_TOKEN"
 read -p "Please enter your [$default]: " apiToken
 apiToken=${apiToken:-$default}
 
