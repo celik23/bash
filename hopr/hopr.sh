@@ -21,12 +21,11 @@ default=${host}
 read -p "Please enter your public-ipaddress [$default]: " host
 host=${host:-$default}
 
-echo "Verify the information below before proceeding with the installation!"
-echo ""
-echo -e "safeAddress    : \e[1m\e[35m$safeAddress\e[0m"
-echo -e "moduleAddress  : \e[1m\e[35m$moduleAddress\e[0m"
-echo -e "apiToken       : \e[1m\e[35m$apiToken\e[0m"
-echo -e "host           : \e[1m\e[35m$host\e[0m"
+echo -e "\nVerify the information below before proceeding with the installation!"
+echo -e "Safe Address    : \e[1m\e[35m$safeAddress\e[0m"
+echo -e "Module Address  : \e[1m\e[35m$moduleAddress\e[0m"
+echo -e "Api Token       : \e[1m\e[35m$apiToken\e[0m"
+echo -e "Public IPAddress: \e[1m\e[35m$host\e[0m"
 echo ""
 
 read -p "Is the above information correct? (y/N) " choice
