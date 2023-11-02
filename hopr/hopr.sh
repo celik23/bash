@@ -11,7 +11,7 @@ NC="\e[0m"
 
 # input
 default=${safeAddress}
-read -p "Please enter your safeAddress [$default]: " safeAddress
+read -p "Please enter your safeAddress [${GREEN}$default${NC}]: " safeAddress
 safeAddress=${safeAddress:-$default}
 
 default=${moduleAddress}
