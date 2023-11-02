@@ -5,20 +5,20 @@
 
 # variable
 # input
-default="safeAddress"
-read -p "Please enter your [$default]: " safeAddress
+default=${safeAddress}
+read -p "Please enter your safeAddress [$default]: " safeAddress
 safeAddress=${safeAddress:-$default}
 
-default="moduleAddress"
-read -p "Please enter your [$default]: " moduleAddress
+default=${moduleAddress}
+read -p "Please enter your moduleAddress [$default]: " moduleAddress
 moduleAddress=${moduleAddress:-$default}
 
-default="YOUR_SECURITY_TOKEN"
-read -p "Please enter your [$default]: " apiToken
+default=${apiToken}
+read -p "Please enter your YOUR_SECURITY_TOKEN [$default]: " apiToken
 apiToken=${apiToken:-$default}
 
-default="host-ipaddress"
-read -p "Please enter your [$default]: " host
+default=${host}
+read -p "Please enter your public-ipaddress [$default]: " host
 host=${host:-$default}
 
 echo "Verify the information below before proceeding with the installation!"
