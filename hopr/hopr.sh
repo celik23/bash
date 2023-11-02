@@ -3,7 +3,12 @@
 # // Copyright (C) 2023 
 #
 
+# constant
+GREEN="\e[1m\e[35m"
+NC="\e[0m"
+
 # variable
+
 # input
 default=${safeAddress}
 read -p "Please enter your safeAddress [$default]: " safeAddress
@@ -22,10 +27,10 @@ read -p "Please enter your public-ipaddress [$default]: " host
 host=${host:-$default}
 
 echo -e "\nVerify the information below before proceeding with the installation!"
-echo -e "Safe Address    : \e[1m\e[35m$safeAddress\e[0m"
-echo -e "Module Address  : \e[1m\e[35m$moduleAddress\e[0m"
-echo -e "Api Token       : \e[1m\e[35m$apiToken\e[0m"
-echo -e "Public IPAddress: \e[1m\e[35m$host\e[0m"
+echo -e "Safe Address    : ${GREEN}$safeAddress${NC}"
+echo -e "Module Address  : ${GREEN}$moduleAddress${NC}"
+echo -e "Api Token       : ${GREEN}$apiToken${NC}"
+echo -e "Public IPAddress: ${GREEN}$host${NC}"
 echo ""
 
 read -p "Is the above information correct? (y/N) " choice
