@@ -51,8 +51,8 @@ fi
 # Install docker
 wget -O docker-ubuntu.sh https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
 
-# INSTALL AND RUN HOPRd (-m 4g)
-docker run --pull always --restart on-failure -m 8g \
+# INSTALL AND RUN HOPRd (-m 8g)
+docker run --pull always --restart on-failure -m 4g \
     --platform linux/x86_64 --log-driver json-file --log-opt max-size=100M --log-opt max-file=5 \
     -ti -v $HOME/.hoprd-db-dufour:/app/hoprd-db \
     -p 9091:9091/tcp -p 9091:9091/udp -p 8080:8080 -p 3001:3001 \
