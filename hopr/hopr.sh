@@ -30,8 +30,7 @@ echo -e "\nVerify the information below before proceeding with the installation!
 echo -e "Safe Address    : ${GREEN}$safeAddress${NC}"
 echo -e "Module Address  : ${GREEN}$moduleAddress${NC}"
 echo -e "Api Token       : ${GREEN}$apiToken${NC}"
-echo -e "Public IPAddress: ${GREEN}$host${NC}"
-echo ""
+echo -e "Public IPAddress: ${GREEN}$host${NC}\n"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
