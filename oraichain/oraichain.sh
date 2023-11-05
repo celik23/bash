@@ -25,7 +25,7 @@ read -p "Please enter docker pull version [$default]: " VERSION
 VERSION=${VERSION:-$default}
 
 default="Oraichain_13771328.tar.lz4"
-echo -e "${GREEN}Check voor new snapshot version:${PINK} https://snapshots.nysa.network/Oraichain/${NC}"
+echo -e "${GREEN}Check voor new snapshot version:${PINK} https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
@@ -67,7 +67,7 @@ sed -i -e "s/0.41.3/$VERSION/" $HOME/docker-compose.yml
 docker-compose pull && docker-compose up -d --force-recreate
 
 # Download Chain Data
-mkdir $HOME/.oraid
+mkdir -p $HOME/.oraid/config
 curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C $HOME/.oraid
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
 docker exec -it orai_node /bin/bash -c 'oraid init $MONIKER --chain-id "$CHAIN_ID"'
