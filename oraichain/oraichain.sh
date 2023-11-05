@@ -6,15 +6,17 @@
 # constant
 CHAIN_ID=Oraichain
 FOLDER=.oraid
-VERSION=0.41.4
 REPO=https://github.com/oraichain/orai
 PORT=266
 
-echo -e "\033[0;32m \t\t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID \e[0m";
+GREEN="\e[1m\e[35m"
+NC="\e[0m"
 
-# variable
-default="MONIKER NAME"
-read -p "Please enter your [$default]: " MONIKER
+echo -e "\033[0;32m \t\t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID ${NC}";
+
+# variable / input
+default=$MONIKER
+read -p "Please enter your MONIKER NAME [$default]: " MONIKER
 MONIKER=${MONIKER:-$default}
 
 default=${VERSION}
@@ -22,22 +24,20 @@ read -p "Please enter docker pull version [$default]: " VERSION
 VERSION=${VERSION:-$default}
 
 default="Oraichain_13771328.tar.lz4"
-echo -e "\e[1m\e[35mCheck voor new snapshot version:\033[0;32m https://snapshots.nysa.network/Oraichain/\e[0m"
+echo -e "${GREEN}Check voor new snapshot version:\033[0;32m https://snapshots.nysa.network/Oraichain/${NC}"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
-echo "Verify the information below before proceeding with the installation!"
-echo ""
-echo -e "MONIKER        : \e[1m\e[35m$MONIKER\e[0m"
-echo -e "CHAIN ID       : \e[1m\e[35m$CHAIN_ID\e[0m"
-echo -e "NODE VERSION   : \e[1m\e[35m$VERSION\e[0m"
-echo -e "NODE FOLDER    : \e[1m\e[35m$FOLDER\e[0m"
-echo -e "SNAPSHOTS      : \e[1m\e[35m$SNAPSHOTS\e[0m"
-echo ""
+echo "Verify the information below before proceeding with the installation!\n"
+echo -e "MONIKER        : ${GREEN}$MONIKER${NC}"
+echo -e "CHAIN ID       : ${GREEN}$CHAIN_ID${NC}"
+echo -e "NODE VERSION   : ${GREEN}$VERSION${NC}"
+echo -e "NODE FOLDER    : ${GREEN}$FOLDER${NC}"
+echo -e "SNAPSHOTS      : ${GREEN}$SNAPSHOTS${NC}\n"
 
 read -p "Is the above information correct? (y/n) " choice
 if [[ $choice == [Yy]* ]]; then
-    echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
+    echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[${NC}\] "' >> ~/.bash_profile
     echo "export MONIKER=${MONIKER}" >> $HOME/.bash_profile
     echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
     echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
