@@ -9,10 +9,11 @@ FOLDER=.oraid
 REPO=https://github.com/oraichain/orai
 PORT=266
 
-GREEN="\e[1m\e[35m"
+GREEN="\033[0;32m"
+PINK="\e[1m\e[35m"
 NC="\e[0m"
 
-echo -e "\033[0;32m \t\t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID ${NC}";
+echo -e "${PINK} \t\t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID ${NC}";
 
 # variable / input
 default=$MONIKER
@@ -24,7 +25,7 @@ read -p "Please enter docker pull version [$default]: " VERSION
 VERSION=${VERSION:-$default}
 
 default="Oraichain_13771328.tar.lz4"
-echo -e "${GREEN}Check voor new snapshot version:\033[0;32m https://snapshots.nysa.network/Oraichain/${NC}"
+echo -e "${GREEN}Check voor new snapshot version:${PINK} https://snapshots.nysa.network/Oraichain/${NC}"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
