@@ -35,7 +35,7 @@ echo -e "CHAIN ID       : ${GREEN}$CHAIN_ID${NC}"
 echo -e "NODE VERSION   : ${GREEN}$VERSION${NC}"
 echo -e "NODE FOLDER    : ${GREEN}$FOLDER${NC}"
 echo -e "SNAPSHOTS      : ${GREEN}$SNAPSHOTS${NC}"
-echo ""
+echo "${NC}"
 
 read -p "Is the above information correct? (y/n) " choice
 if [[ $choice == [Yy]* ]]; then
