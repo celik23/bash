@@ -52,14 +52,6 @@ URL=$(curl -s ${URL} | grep "browser_download_url" | cut -d '"' -f 4 | grep "$OS
 latest="$(basename -a $URL)" && wget "$URL" -O $HOME/${latest}
 tar -xvf $HOME/${latest} --strip-components 1 -C $HOME/.cargo/bin/ && rm -rf $HOME/${latest}
 
-# check version
-namada --version
-cometbft version
-
-# output:
-# Namada v0.23.0
-# 0.37.2
-
 # Make namadad.service
 sudo tee /etc/systemd/system/namadad.service > /dev/null <<EOF
 [Unit]
@@ -68,9 +60,10 @@ After=network-online.target
 [Service]
 User=$USER
 WorkingDirectory=$HOME/.local/share/namada
-Environment=TM_LOG_LEVEL=p2p:none,pex:error
+Environment=NAMADA_LOG=info
+Environment=CMT_LOG_LEVEL=p2p:none,pex:error
 Environment=NAMADA_CMT_STDOUT=true
-ExecStart=/usr/local/bin/namada node ledger run 
+ExecStart=$HOME/.cargo/bin/namada node ledger run
 StandardOutput=syslog
 StandardError=syslog
 Restart=always
@@ -83,17 +76,10 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable namadad
 
-mkdir -p $HOME/.local/share/namada/pre-genesis/"$ALIAS"
-#👉 !!! Recover wallte to the onder directory !!!
-cp $HOME/wallet-bck/*.toml $HOME/.local/share/namada/pre-genesis/"$ALIAS"/
-bash -c /root/scripts/rad-apple_validator.sh
-cat $HOME/.local/share/namada/pre-genesis/"$ALIAS"/validator.toml
-
 # ONLY for PRE genesis validator | IF YOU NOT A PRE GEN VALIDATOR SKIP THIS SECTION
 cd $HOME && namada client utils join-network \
   --chain-id "$CHAIN_ID" \
   --genesis-validator "$ALIAS"
 
 echo "tik 'reboot' hit enter"
-
 journalctl -u namadad -f -o cat 
