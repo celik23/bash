@@ -3,13 +3,10 @@
 # // Copyright (C) 2023 
 #
 
-# constant
-GREEN="\e[1m\e[35m"
-NC="\e[0m"
+# Define screen colors:
+RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; NC='\e[0m';
 
-# variable
-
-# input
+# variable | input
 default=${safeAddress}
 read -p "Please enter your safeAddress [$default]: " safeAddress
 safeAddress=${safeAddress:-$default}
@@ -68,4 +65,4 @@ docker run --pull always --restart on-failure -m 4g \
     --moduleAddress ${moduleAddress} \
     --host ${host}:9091
 
-# end
+#
