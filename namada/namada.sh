@@ -3,6 +3,9 @@
 # // Copyright (C) 2023 
 #
 
+# Define screen colors:
+RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\e[35m'; NC='\e[0m';
+
 # Input
 default=${ALIAS}
 read -p "Please enter your moniker name [$default]: " ALIAS
@@ -13,8 +16,8 @@ read -p "Please enter your password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
 
 echo "Verify the information below before proceeding with the installation!\n"
-echo -e "ALIAS    : \e[1m\e[35m$ALIAS\e[0m"
-echo -e "PASSWORD : \e[1m\e[35m$PASSWORD\e[0m"
+echo -e "ALIAS    : ${PINK}$ALIAS${NC}"
+echo -e "PASSWORD : ${PINK}$PASSWORD${NC}"
 echo ""
 
 # environment variables 🍒
@@ -23,8 +26,6 @@ if [[ $choice == [Yy]* ]]; then
   echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
   echo "export ALIAS='$ALIAS'" >> ~/.bash_profile
   echo "export PASSWORD='$PASSWORD'" >> ~/.bash_profile
-  echo 'export RUST_BACKTRACE=full' >> ~/.bash_profile
-  echo 'export COLORBT_SHOW_HIDDEN=1' >> ~/.bash_profile
   echo 'export CHAIN_ID=public-testnet-14.5d79b6958580' >> ~/.bash_profile
   source $HOME/.bash_profile
 else
