@@ -46,6 +46,16 @@ tar -xvf $HOME/cometbft.tar.gz --strip-components 0 -C /usr/local/bin/ && rm -rf
 # namada source
 mkdir -p $HOME/.cargo/bin/
 
+# affix colons on either side of $PATH to simplify matching
+case ":${PATH}:" in
+    *:"$HOME/.cargo/bin":*)
+        ;;
+    *)
+        # Prepending path in case a system-installed rustc needs to be overridden
+        export PATH="$HOME/.cargo/bin:$PATH"
+        ;;
+esac
+
 OS="Linux" # or "Darwin" for MacOS
 URL="https://api.github.com/repos/anoma/namada/releases/latest"
 URL=$(curl -s ${URL} | grep "browser_download_url" | cut -d '"' -f 4 | grep "$OS")
