@@ -4,7 +4,7 @@
 #
 
 # Define screen colors:
-RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\e[35m'; NC='\e[0m';
+RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; MAGENTA='\e[1m\e[35m'; NC='\e[0m';
 
 # Input
 default=${ALIAS}
@@ -16,8 +16,8 @@ read -p "Please enter your password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
 
 echo "Verify the information below before proceeding with the installation!\n"
-echo -e "ALIAS    : ${PINK}$ALIAS${NC}"
-echo -e "PASSWORD : ${PINK}$PASSWORD${NC}"
+echo -e "ALIAS    : ${MAGENTA}$ALIAS${NC}"
+echo -e "PASSWORD : ${MAGENTA}$PASSWORD${NC}"
 echo ""
 
 # environment variables 🍒
