@@ -9,11 +9,10 @@ FOLDER=.oraid
 REPO=https://github.com/oraichain/orai
 PORT=266
 
-GREEN="\033[0;32m"
-PINK="\e[1m\e[35m"
-NC="\e[0m"
+# Define screen colors:
+RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\e[35m'; NC='\e[0m';
 
-echo -e "${PINK} \t\t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID ${NC}";
+echo -e "${CYAN} \t\t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID ${NC}";
 
 # variable / input
 default=$MONIKER
@@ -25,7 +24,7 @@ read -p "Please enter docker pull version [$default]: " VERSION
 VERSION=${VERSION:-$default}
 
 default="Oraichain_13771328.tar.lz4"
-echo -e "${GREEN}Check voor new snapshot version:${PINK} https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
+echo -e "${GREEN}Check voor new snapshot version:${CYAN} https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
@@ -40,7 +39,6 @@ echo "${NC}"
 read -p "Is the above information correct? (y/n) " choice
 if [[ $choice == [Yy]* ]]; then
     echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-
     echo "export MONIKER=${MONIKER}" >> $HOME/.bash_profile
     echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
     echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
