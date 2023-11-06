@@ -1,12 +1,8 @@
 # bash/namada
 
-### restore validator
+### restore validator and wallet
 ```
 $HOME/.local/share/namada/pre-genesis/"$ALIAS"/validator.toml
-```
-
-### restore wallet
-```
 $HOME/.local/share/namada/pre-genesis/"$ALIAS"/wallet.toml
 ```
 
