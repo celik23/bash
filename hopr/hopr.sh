@@ -4,7 +4,7 @@
 #
 
 # Define screen colors:
-RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; NC='\e[0m';
+RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; MAGENTA='\e[1m\e[35m'; NC='\e[0m';
 
 # variable | input
 default=${safeAddress}
@@ -45,8 +45,8 @@ fi
 
 
 #🔖 -------------------------------------
-# Install docker
-wget -O docker-ubuntu.sh https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
+# Install docker and docker-compose 
+wget -O docker-ubuntu.sh https://raw.githubusercontent.com/celik23/bash/main/docker/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
 
 # INSTALL AND RUN HOPRd (-m 8g)
 docker run --pull always --restart on-failure -m 4g \
