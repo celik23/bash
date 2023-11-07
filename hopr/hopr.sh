@@ -53,7 +53,7 @@ docker run --pull always --restart on-failure -m 4g \
     --platform linux/x86_64 --log-driver json-file --log-opt max-size=100M --log-opt max-file=5 \
     -ti -v $HOME/.hoprd-db-dufour:/app/hoprd-db \
     -p 9091:9091/tcp -p 9091:9091/udp -p 8080:8080 -p 3001:3001 \
-    -e DEBUG="hopr*" europe-west3-docker.pkg.dev/hoprassociation/docker-images/hoprd:latest \
+    -e DEBUG="hopr*" europe-west3-docker.pkg.dev/hoprassociation/docker-images/hoprd:providence \
     --network dufour --init --api \
     --identity /app/hoprd-db/.hopr-id-dufour \
     --data /app/hoprd-db \
