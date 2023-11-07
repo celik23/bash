@@ -38,7 +38,6 @@ echo "${NC}"
 
 read -p "Is the above information correct? (y/n) " choice
 if [[ $choice == [Yy]* ]]; then
-    echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
     echo "export MONIKER=${MONIKER}" >> $HOME/.bash_profile
     echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
     echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
