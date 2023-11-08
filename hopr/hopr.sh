@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 # // Copyright (C) 2023 
-#
 
 # Define screen colors:
 RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; MAGENTA='\e[1m\e[35m'; NC='\e[0m';
@@ -31,12 +30,12 @@ echo -e "Public IPAddress: ${GREEN}$host${NC}\n"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
-	# environment variables
-	echo "export apiToken=${apiToken}" >> ~/.bash_profile
-	echo "export host=${host}" >> ~/.bash_profile
- 	echo "export safeAddress=${safeAddress}" >> ~/.bash_profile
-	echo "export moduleAddress=${moduleAddress}" >> ~/.bash_profile
-	source ~/.bash_profile
+    # environment variables
+    echo "export apiToken=${apiToken}" >> ~/.bash_profile
+    echo "export host=${host}" >> ~/.bash_profile
+    echo "export safeAddress=${safeAddress}" >> ~/.bash_profile
+    echo "export moduleAddress=${moduleAddress}" >> ~/.bash_profile
+    source ~/.bash_profile
 else
     echo "Installation cancelled!"
     exit 1
@@ -44,9 +43,6 @@ fi
 
 
 #🔖 -------------------------------------
-# Install docker and docker-compose 
-wget -O docker-ubuntu.sh https://raw.githubusercontent.com/celik23/bash/main/docker/docker-ubuntu.sh && chmod +x docker-ubuntu.sh && ./docker-ubuntu.sh
-
 # INSTALL AND RUN HOPRd (-m 8g)
 docker run --pull always --restart on-failure -m 4g \
     --platform linux/x86_64 --log-driver json-file --log-opt max-size=100M --log-opt max-file=5 \
@@ -63,5 +59,4 @@ docker run --pull always --restart on-failure -m 4g \
     --safeAddress ${safeAddress} \
     --moduleAddress ${moduleAddress} \
     --host ${host}:9091
-
 #
