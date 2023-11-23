@@ -65,7 +65,6 @@ docker-compose pull && docker-compose up -d --force-recreate
 mkdir -p $HOME/.oraid/config
 curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C $HOME/.oraid
 #🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
-rm $HOME/.oraid/config/genesis.json
 docker exec -it orai_node /bin/bash -c 'oraid init $MONIKER --chain-id "$CHAIN_ID"'
 #⛔ oraid keys add $MONIKER 2>&1 | tee account.txt && exit
 #       👆 OR 👇
