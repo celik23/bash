@@ -12,7 +12,8 @@ read -p "Please enter your massa-client password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
 
 echo -e "\nVerify the information below before proceeding with the installation!"
-echo -e "Password    : ${GREEN}$PASSWORD${NC}"
+echo -e "prompt		: ${GREEN}${PS1}${NC}"
+echo -e "Password	: ${GREEN}$PASSWORD${NC}"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
@@ -21,7 +22,7 @@ if [[ $choice == [Yy]* ]]; then
 	echo "export PASSWORD='${PASSWORD}'" >> ~/.bash_profile 
     source ~/.bash_profile
 else
-    echo "Installation cancelled!"
+    echo "${RED}Installation cancelled!${NC}"
     exit 1
 fi
 
