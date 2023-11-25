@@ -3,16 +3,25 @@
 # // Copyright (C) 2023 
 #
 
-#🔖 -------------------------------------
-# Environment variables 🍒
-if [[ -z "${PASSWORD}" ]]; then
-	echo -e "env: password is undefined!"
-	echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-	echo 'export PASSWORD="p@ssw0rd"' >> ~/.bash_profile 
+# variable | input
+default=${PASSWORD}
+read -p "Please enter your massa-client password [$default]: " PASSWORD
+PASSWORD=${PASSWORD:-$default}
+
+echo -e "\nVerify the information below before proceeding with the installation!"
+echo -e "Password    : ${GREEN}$PASSWORD${NC}"
+
+read -p "Is the above information correct? (y/N) " choice
+if [[ $choice == [Yy]* ]]; then
+    # environment variables
+	echo "export PS1='\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] '" >> ~/.bash_profile
+	echo "export PASSWORD='${PASSWORD}'" >> ~/.bash_profile 
+    source ~/.bash_profile
 else
-	echo -e "env: is defined."
+    echo "Installation cancelled!"
+    exit 1
 fi
-source ~/.bash_profile 
+
 #🔖 -------------------------------------
 #🏁 Install necessary dependencies/requirements
 sudo apt update
