@@ -69,8 +69,8 @@ EOF
 systemctl daemon-reload 
 systemctl enable massad 
 
-systemctl start massad 
-systemctl status massad
+# systemctl start massad 
+# systemctl status massad
 # systemctl stop massad
 
 # systemctl restart massad && journalctl -u massad -f -o cat 
