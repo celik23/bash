@@ -12,7 +12,6 @@ read -p "Please enter your massa-client password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
 
 echo -e "\nVerify the information below before proceeding with the installation!"
-echo -e "prompt		: ${GREEN}${PS1}${NC}"
 echo -e "Password	: ${GREEN}$PASSWORD${NC}"
 
 read -p "Is the above information correct? (y/N) " choice
