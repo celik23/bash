@@ -3,6 +3,9 @@
 # // Copyright (C) 2023 
 #
 
+# Define screen colors:
+RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; MAGENTA='\e[1m\e[35m'; NC='\e[0m';
+
 # variable | input
 default=${PASSWORD}
 read -p "Please enter your massa-client password [$default]: " PASSWORD
