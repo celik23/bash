@@ -21,7 +21,7 @@ if [[ $choice == [Yy]* ]]; then
 	echo "export PASSWORD='${PASSWORD}'" >> ~/.bash_profile 
     source ~/.bash_profile
 else
-    echo "${RED}Installation cancelled!${NC}"
+    echo -e "${RED}Installation cancelled!${NC}"
     exit 1
 fi
 
