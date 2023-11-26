@@ -58,7 +58,7 @@ After=network-online.target
 Environment="RUST_BACKTRACE=full"
 WorkingDirectory=$HOME/massa/massa-node
 User=$USER
-ExecStart=$HOME/massa/massa-node/massa-node -p "${password}"
+ExecStart=$HOME/massa/massa-node/massa-node -p "${PASSWORD}"
 Restart=always
 RestartSec=3
 
