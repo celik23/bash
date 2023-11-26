@@ -36,7 +36,7 @@ URL=$(curl -s ${URL} | grep "browser_download_url" | cut -d '"' -f 4 | grep ${OS
 latest="$(basename -a ${URL})" && wget "${URL}" -O $HOME/${latest}
 tar -xvf ${latest} -C $HOME/ && rm $HOME/${latest}
 chmod +x $HOME/massa/massa-node/massa-node $HOME/massa/massa-client/massa-client 
-echo -e -n "${msg}" >> "${latest}.txt" 
+echo "${msg}" >> "${latest}.txt" 
 
 sudo tee /root/massa/massa-node/config/config.toml > /dev/null <<EOF
 [network]
