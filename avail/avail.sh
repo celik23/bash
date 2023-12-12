@@ -1,8 +1,9 @@
 #!/bin/bash
 
-echo -e "\n${YL}           A V A I L  B I N A R Y  I N S T A L L   F O R   U B U N T U   2 3 . 0 4${NC}"
 YL="\e[1;33m"
 NC="\e[0m"
+
+echo -e "\n${YL}           A V A I L  B I N A R Y  I N S T A L L   F O R   U B U N T U   2 3 . 0 4${NC}"
 # variable / input
 TAG=2304
 
