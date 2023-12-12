@@ -18,8 +18,8 @@ if [[ $choice == [Yy]* ]]; then
 	echo export 'ALIAS=$ALIAS' >> ~/.bash_profile
 	source ~/.bash_profile
 else
-    echo "Installation cancelled!"
-    exit 1
+	echo "Installation cancelled!"
+	exit 1
 fi
 
 #🔖 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,8 +34,8 @@ sudo apt install git curl screen
 wget https://github.com/availproject/avail/releases/download/v1.8.0.4/x86_64-ubuntu-2304-data-avail.tar.gz
 tar xvzf x86_64-ubuntu-2304-data-avail.tar.gz && rm ./x86_64-ubuntu-2304-data-avail.tar.gz
 
-# run avail off start frome services
-/root/data-avail -d ./output --chain goldberg --validator --name "$ALIAS"
+# run avail or start from services
+# /root/data-avail -d ./output --chain goldberg --validator --name "$ALIAS"
 
 # Make service
 sudo tee /etc/systemd/system/availd.service > /dev/null <<EOF
