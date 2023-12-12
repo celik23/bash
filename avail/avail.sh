@@ -5,7 +5,7 @@ echo -e "\e[0m"
 sleep 2;
 
 # variable / input
-if [ -z $ALIAS ] 
+if [ -z $ALIAS ]; then
 	ALIAS="ALIAS"
 fi
 default=${ALIAS}
