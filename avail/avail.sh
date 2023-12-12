@@ -31,7 +31,7 @@ lsb_release -a
 sudo apt update -y
 
 # Install necessary dependencies / requirements
-sudo apt install git curl screen
+sudo apt install git curl screen -y
 
 # Download and extract binary
 wget https://github.com/availproject/avail/releases/download/v1.8.0.4/x86_64-ubuntu-2304-data-avail.tar.gz
