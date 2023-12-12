@@ -1,20 +1,22 @@
 #!/bin/bash
 
-echo -e "\e[1;33m           A V A I L  B I N A R Y  I N S T A L L   F O R   U B U N T U   2 3 . 0 4"
+echo -e "\n\e[1;33m           A V A I L  B I N A R Y  I N S T A L L   F O R   U B U N T U   2 3 . 0 4"
 echo -e "\e[0m"
-sleep 2;
 
 # variable / input
-if [ -z $ALIAS ]; then
-	ALIAS="ALIAS"
-fi
+TAG=2304
+
+default=${TAG}
+read -p "Please enter VERSION [$default]: " TAG
+TAG=${TAG:-$default}
+
 default=${ALIAS}
 read -p "Please enter your ALIAS-NAME [$default]: " ALIAS
 ALIAS=${ALIAS:-$default}
-export ALIAS=${ALIAS}
 
 echo -e "Verify the information below before proceeding with the installation!\n"
-echo -e "ALIAS        : ${GREEN}$ALIAS${NC}"
+echo -e "ALIAS        : $ALIAS"
+echo -e "ALIAS        : $TAG"
 echo -e "\n"
 
 read -p "Is the above information correct? (y/N) " choice
@@ -37,8 +39,8 @@ sudo apt update -y
 sudo apt install git curl screen -y
 
 # Download and extract binary
-wget https://github.com/availproject/avail/releases/download/v1.8.0.4/x86_64-ubuntu-2304-data-avail.tar.gz
-tar xvzf x86_64-ubuntu-2304-data-avail.tar.gz && rm ./x86_64-ubuntu-2304-data-avail.tar.gz
+wget https://github.com/availproject/avail/releases/download/v1.8.0.4/x86_64-ubuntu-${TAG}-data-avail.tar.gz
+tar xvzf x86_64-ubuntu-2304-data-avail.tar.gz && rm ./x86_64-ubuntu-${TAG}-data-avail.tar.gz
 
 # run avail or start from services
 # /root/data-avail -d ./output --chain goldberg --validator --name "$ALIAS"
