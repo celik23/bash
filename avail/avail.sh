@@ -5,7 +5,9 @@ echo -e "\e[0m"
 sleep 2;
 
 # variable / input
-ALIAS="ALIAS"
+if [ -z $ALIAS ] 
+	ALIAS="ALIAS"
+fi
 default=${ALIAS}
 read -p "Please enter your ALIAS-NAME [$default]: " ALIAS
 ALIAS=${ALIAS:-$default}
