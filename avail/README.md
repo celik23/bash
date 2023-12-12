@@ -9,6 +9,6 @@
 ## Update 12/13/2023
 Run full node v1.8.4 with one command
 ```bash
-bash (wget -qO- https://raw.githubusercontent.com/celik23/bash/main/hopr/hopr.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/celik23/bash/main/avail/avail.sh)
 
 ```
