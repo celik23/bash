@@ -3,7 +3,7 @@
 echo -e "\e[1;33m           A V A I L  B I N A R Y  I N S T A L L   F O R   U B U N T U   2 3 . 0 4"
 echo -e "\e[0m"
 # variable / input
-ALIAS=""
+ALIAS="ALIAS"
 default=${ALIAS}
 read -p "Please enter your ALIAS-NAME [$default]: " ALIAS
 ALIAS=${ALIAS:-$default}
