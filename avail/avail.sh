@@ -73,6 +73,6 @@ systemctl start availd
 #You can check that it''s working with:
 systemctl status availd
 
-echo -e "For break 'journalctl' ctrl + c"
+echo -e "\n\e[1;33m For break 'journalctl' Ctrl + C\n\e[0m"
 journalctl -f -u availd
 
