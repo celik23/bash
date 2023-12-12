@@ -16,7 +16,7 @@ ALIAS=${ALIAS:-$default}
 
 echo -e "Verify the information below before proceeding with the installation!\n"
 echo -e "ALIAS        : $ALIAS"
-echo -e "ALIAS        : $TAG"
+echo -e "VERSION      : $TAG"
 echo -e "\n"
 
 read -p "Is the above information correct? (y/N) " choice
