@@ -7,10 +7,6 @@ default=${ALIAS}
 read -p "Please enter your ALIAS NAME [$default]: " ALIAS
 ALIAS=${ALIAS:-$default}
 
-# default=${VERSION}
-# read -p "Please enter docker pull version [$default]: " VERSION
-# VERSION=${VERSION:-$default}
-
 echo "Verify the information below before proceeding with the installation!\n"
 echo -e "ALIAS        : ${GREEN}$ALIAS${NC}"
 echo -e "\n"
