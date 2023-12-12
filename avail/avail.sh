@@ -11,6 +11,7 @@ fi
 default=${ALIAS}
 read -p "Please enter your ALIAS-NAME [$default]: " ALIAS
 ALIAS=${ALIAS:-$default}
+export ALIAS=${ALIAS}
 
 echo -e "Verify the information below before proceeding with the installation!\n"
 echo -e "ALIAS        : ${GREEN}$ALIAS${NC}"
