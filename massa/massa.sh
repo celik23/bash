@@ -28,8 +28,10 @@ fi
 #🔖 -------------------------------------
 #🏁 Install necessary dependencies/requirements
 sudo apt update
-sudo apt install git pkg-config curl build-essential libssl-dev libclang-dev cmake screen cron nano
+sudo apt install -y curl
+# sudo apt install git pkg-config curl build-essential libssl-dev libclang-dev cmake screen cron nano
 
+systemctl stop massad.service
 OS="linux.tar" # or "linux_arm64.tar"
 URL="https://api.github.com/repos/massalabs/massa/releases/latest"
 URL=$(curl -s ${URL} | grep "browser_download_url" | cut -d '"' -f 4 | grep ${OS})
@@ -40,13 +42,13 @@ echo "${msg}" >> "${latest}.txt"
 
 sudo tee /root/massa/massa-node/config/config.toml > /dev/null <<EOF
 [network]
-routable_ip ="$(curl ifconfig.co)"
+# routable_ip ="$(curl -4 ifconfig.co)"
+# routable_ip ="$(curl -6 ifconfig.co)"
 
 [bootstrap]
 max_ping = 10000
 EOF
 sudo nano /root/massa/massa-node/config/config.toml
-
 #🔖 -------------------------------------
 #👉 services
 sudo tee /etc/systemd/system/massad.service > /dev/null <<EOF
@@ -68,10 +70,5 @@ EOF
 
 systemctl daemon-reload 
 systemctl enable massad 
+systemctl restart massad && journalctl -u massad -f -o cat 
 
-# systemctl start massad 
-# systemctl status massad
-# systemctl stop massad
-
-# systemctl restart massad && journalctl -u massad -f -o cat 
-# journalctl --unit=massad.service -n 10 --no-pager
