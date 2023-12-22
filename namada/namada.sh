@@ -54,7 +54,7 @@ OS="Linux" # or "Darwin" for MacOS
 URL="https://api.github.com/repos/anoma/namada/releases/latest"
 URL=$(curl -s ${URL} | grep "browser_download_url" | cut -d '"' -f 4 | grep "$OS")
 latest="$(basename -a $URL)" && wget "$URL" -O $HOME/${latest}
-tar -xvf $HOME/${latest} --strip-components 1 -C $HOME/.cargo/bin/ && rm -rf $HOME/${latest}
+tar -xvf $HOME/${latest} --strip-components 1 -C /usr/local/bin && rm -rf $HOME/${latest}
 
 # Make service
 tee /etc/systemd/system/namadad.service > /dev/null <<EOF
