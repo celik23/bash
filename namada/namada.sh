@@ -78,7 +78,6 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 
-
 sudo systemctl daemon-reload
 sudo systemctl enable namadad
 sleep 2.5
@@ -87,6 +86,6 @@ sleep 2.5
 namadac utils join-network --chain-id $CHAIN_ID
 sleep 2.5
 
-sudo systemctl enable namadad
+sudo systemctl start namadad
 
-journalctl -u namadad -f -o cat 
+sudo journalctl -u namadad -f -o cat 
