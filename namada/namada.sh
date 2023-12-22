@@ -15,7 +15,12 @@ default=${PASSWORD}
 read -p "Please enter your password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
 
+default=${CHAIN_ID}
+read -p "Please enter CHAIN ID  [$default]: " CHAIN_ID
+CHAIN_ID=${CHAIN_ID:-$default}
+
 echo "Verify the information below before proceeding with the installation!\n"
+echo -e "CHAIN_ID        : ${GREEN}$CHAIN_ID${NC}"
 echo -e "VALIDATOR_ALIAS : ${GREEN}$VALIDATOR_ALIAS${NC}"
 echo -e "PASSWORD        : ${GREEN}$PASSWORD${NC}"
 echo -e "${MAGENTA}Recover validator & wallte files!${NC}"
@@ -26,7 +31,7 @@ if [[ $choice == [Yy]* ]]; then
   echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
   echo "export VALIDATOR_ALIAS='$VALIDATOR_ALIAS'" >> ~/.bash_profile
   echo "export PASSWORD='$PASSWORD'" >> ~/.bash_profile
-  echo 'export CHAIN_ID=public-testnet-14.5d79b6958580' >> ~/.bash_profile
+  echo "export CHAIN_ID=$CHAIN_ID" >> ~/.bash_profile
   source $HOME/.bash_profile
 else
     read -p "Are you sure you want to cancel the installation? (y/N) " choice
