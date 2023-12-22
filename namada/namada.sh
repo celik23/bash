@@ -21,7 +21,7 @@ echo -e "PASSWORD        : ${MAGENTA}$PASSWORD${NC}"
 echo -e "${MAGENTA}Recover validator & wallte files!${NC}"
 
 # environment variables 🍒
-read -p "Is the above information correct? (y/n) " choice
+read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
   echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
   echo "export VALIDATOR_ALIAS='$VALIDATOR_ALIAS'" >> ~/.bash_profile
@@ -29,7 +29,7 @@ if [[ $choice == [Yy]* ]]; then
   echo 'export CHAIN_ID=public-testnet-14.5d79b6958580' >> ~/.bash_profile
   source $HOME/.bash_profile
 else
-    read -p "Are you sure you want to cancel the installation? (y/n) " choice
+    read -p "Are you sure you want to cancel the installation? (y/N) " choice
     if [[ $choice == [Yy]* ]]; then
       echo "Installation cancelled!"
       exit 1
