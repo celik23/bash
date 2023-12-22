@@ -4,7 +4,7 @@
 #
 
 # Define screen colors:
-RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; MAGENTA='\e[1m\e[35m'; NC='\e[0m';
+RED='\e[0;31m'; CYAN='\e[1;36m'; MAGENTA='\e[0;32m'; BLUE='\e[1;34m'; GREEN='\e[1m\e[35m'; NC='\e[0m';
 
 # Input
 default=${VALIDATOR_ALIAS}
