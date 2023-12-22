@@ -78,14 +78,13 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 
-sudo systemctl daemon-reload
-sudo systemctl enable namadad
-sleep 2.5
-
 # Only for PRE-GENESIS validator || if you not a pre gen validator skip this section
 namadac utils join-network --chain-id $CHAIN_ID
 sleep 2.5
 
-sudo systemctl start namadad
+sudo systemctl daemon-reload
+sudo systemctl enable namadad
+sleep 2.5
 
+sudo systemctl start namadad
 sudo journalctl -u namadad -f -o cat 
