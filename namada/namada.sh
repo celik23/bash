@@ -4,7 +4,7 @@
 #
 
 # Define screen colors:
-RED='\e[0;31m'; CYAN='\e[1;36m'; MAGENTA='\e[0;32m'; BLUE='\e[1;34m'; GREEN='\e[1m\e[35m'; NC='\e[0m';
+RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; MAGENTA='\e[1m\e[35m'; NC='\e[0m';
 
 # Input
 default=${VALIDATOR_ALIAS}
@@ -16,8 +16,8 @@ read -p "Please enter your password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
 
 echo "Verify the information below before proceeding with the installation!\n"
-echo -e "VALIDATOR_ALIAS : ${MAGENTA}$VALIDATOR_ALIAS${NC}"
-echo -e "PASSWORD        : ${MAGENTA}$PASSWORD${NC}"
+echo -e "VALIDATOR_ALIAS : ${GREEN}$VALIDATOR_ALIAS${NC}"
+echo -e "PASSWORD        : ${GREEN}$PASSWORD${NC}"
 echo -e "${MAGENTA}Recover validator & wallte files!${NC}"
 
 # environment variables 🍒
