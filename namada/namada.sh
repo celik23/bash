@@ -7,24 +7,24 @@
 RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; MAGENTA='\e[1m\e[35m'; NC='\e[0m';
 
 # Input
-default=${ALIAS}
-read -p "Please enter your moniker name [$default]: " ALIAS
-ALIAS=${ALIAS:-$default}
+default=${VALIDATOR_ALIAS}
+read -p "Please enter your moniker name [$default]: " VALIDATOR_ALIAS
+VALIDATOR_ALIAS=${VALIDATOR_ALIAS:-$default}
 
 default=${PASSWORD}
 read -p "Please enter your password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
 
 echo "Verify the information below before proceeding with the installation!\n"
-echo -e "ALIAS    : ${MAGENTA}$ALIAS${NC}"
-echo -e "PASSWORD : ${MAGENTA}$PASSWORD${NC}"
-echo ""
+echo -e "VALIDATOR_ALIAS : ${MAGENTA}$VALIDATOR_ALIAS${NC}"
+echo -e "PASSWORD        : ${MAGENTA}$PASSWORD${NC}"
+echo -e "${MAGENTA}Recover validator & wallte files!${NC}"
 
 # environment variables 🍒
 read -p "Is the above information correct? (y/n) " choice
 if [[ $choice == [Yy]* ]]; then
   echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-  echo "export ALIAS='$ALIAS'" >> ~/.bash_profile
+  echo "export VALIDATOR_ALIAS='$VALIDATOR_ALIAS'" >> ~/.bash_profile
   echo "export PASSWORD='$PASSWORD'" >> ~/.bash_profile
   echo 'export CHAIN_ID=public-testnet-14.5d79b6958580' >> ~/.bash_profile
   source $HOME/.bash_profile
@@ -87,10 +87,9 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable namadad
 
-# ONLY for PRE genesis validator | IF YOU NOT A PRE GEN VALIDATOR SKIP THIS SECTION
-cd $HOME && namada client utils join-network \
-  --chain-id "$CHAIN_ID" \
-  --genesis-validator "$ALIAS"
+# Only for PRE-GENESIS validator || if you not a pre gen validator skip this section
+namadac utils join-network --chain-id $CHAIN_ID
 
-echo "tik 'reboot' hit enter"
+sudo systemctl enable namadad
+
 journalctl -u namadad -f -o cat 
