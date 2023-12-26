@@ -75,8 +75,41 @@ docker exec -it orai_node /bin/bash -c 'oraid keys add $MONIKER --recover'
 # Download genesis.json
 wget -O $HOME/.oraid/config/genesis.json https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json
 
+
 # Netwrok setup | Replace config.toml and app.toml
-wget -O $HOME/oraichain-network.sh https://raw.githubusercontent.com/celik23/bash/main/oraichain/oraichain-network.sh && chmod +x oraichain-network.sh && $HOME/oraichain-network.sh
+# Set peers and
+PORT="266"
+PEERS=""
+#PEERS="$(curl -sS https://rpc.oraichain.hexnodes.co/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+SEEDS=""
+
+#🏀 Find/Replace | config.toml 
+sed -i -e "s|^seeds *=.*|seeds = \"$SEEDS\"|" $HOME/.oraid/config/config.toml
+sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $HOME/.oraid/config/config.toml
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}58\"%; 
+s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${PORT}57\"%; 
+s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}60\"%; 
+s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}56\"%; 
+s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}60\"%" $HOME/.oraid/config/config.toml
+
+#🏀 Find/Replace | app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.001orai\"/" $HOME/.oraid/config/app.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}17\"%; 
+s%^address = \":8080\"%address = \":${PORT}80\"%; 
+s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${PORT}90\"%;
+s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${PORT}91\"%; 
+s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${PORT}45\"%; 
+s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${PORT}46\"%" $HOME/.oraid/config/app.toml
+
+# Set Config Pruning
+pruning="custom"
+pruning_keep_recent="100"
+pruning_keep_every="0"
+pruning_interval="19"
+sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.oraid/config/app.toml
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.oraid/config/app.toml
+sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.oraid/config/app.toml
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.oraid/config/app.toml
 
 # docker-compose restart orai && docker-compose exec -d orai bash -c 'oraivisor start'
 docker-compose restart orai && docker-compose exec orai bash -c 'oraivisor start --p2p.pex false --p2p.persistent_peers "e6fa2f222236a9ca5e10b238de87eb12497a649c@167.99.119.182:26656,911b290c59a4d3248534b53bdbc8dd4615bb5870@167.99.119.182:26656,35c1f999d67de56736b412a1325370a8e2fdb34a@5.189.169.99:26656,5ad3b29bf56b9ba95c67f282aa281b6f0903e921@64.225.53.108:26656"'
