@@ -27,7 +27,7 @@ echo -e "${GREEN}Check voor new snapshot version:${CYAN} https://snapshots.nysa.
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
-echo "Verify the information below before proceeding with the installation!\n"
+echo "\nVerify the information below before proceeding with the installation!\n"
 echo -e "MONIKER        : ${GREEN}$MONIKER${NC}"
 echo -e "CHAIN ID       : ${GREEN}$CHAIN_ID${NC}"
 echo -e "NODE VERSION   : ${GREEN}$VERSION${NC}"
