@@ -11,7 +11,7 @@ PORT=266
 # Define screen colors:
 RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\e[35m'; NC='\e[0m';
 
-echo -e "${CYAN} \t\t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID ${NC}";
+echo -e "${CYAN} \t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID ${NC}";
 
 # variable / input
 default=$MONIKER
@@ -23,7 +23,7 @@ read -p "Please enter docker pull version [$default]: " VERSION
 VERSION=${VERSION:-$default}
 
 default="Oraichain_13771328.tar.lz4"
-echo -e "${GREEN}Check voor new snapshot version:${CYAN} https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
+echo -e "${CYAN}Check voor new snapshot version: https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
