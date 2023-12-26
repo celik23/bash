@@ -47,7 +47,7 @@ fi
 
 #🏀 install recommended apps
 sudo apt update -y
-sudo apt install -y git ufw curl lz4 jq
+sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common lz4 jq -y
 
 #🏀 Edit orai.env & docker-compose.yml
 curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-compose.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/orai.env
