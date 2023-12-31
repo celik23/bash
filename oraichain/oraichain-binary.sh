@@ -1,23 +1,8 @@
-# https://github.com/konsortech/Node/blob/9995bff7ff771b8ea9d19066eb0cc083db7a5d62/Mainnet/Orai/readme.md?plain=1#L47
-
-#🔖 〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️〰️
-# environment variables
-echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-echo 'export VERSION=0.41.5' >> ~/.bash_profile
-echo 'export MONIKER=Andromeda' >> ~/.bash_profile
-echo "export WALLET=wallet" >> ~/.bash_profile
-echo 'export CHAIN_ID=Oraichain' >> ~/.bash_profile
-source ~/.bash_profile
-
 #!/bin/bash
 #
 # // Copyright (C) 2023 
 #
 # constant
-CHAIN_ID=Oraichain
-FOLDER=.oraid
-REPO=https://github.com/oraichain/orai
-PORT=266
 
 # define screen colors:
 RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\e[35m'; NC='\e[0m';
@@ -80,14 +65,12 @@ if ! [ -x "$(command -v go)" ]; then
   source ~/.bash_profile
 fi
 
-
 # Download and build binaries
 cd $HOME && rm -rf orai
 git clone https://github.com/oraichain/orai.git && cd orai
 git checkout ${VERSION}
 cd ./orai
 make install
-
 
 # Config app
 oraid init $MONIKER --chain-id $CHAIN_ID --home "$HOME/.oraid"
