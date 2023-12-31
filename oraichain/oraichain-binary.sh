@@ -66,18 +66,17 @@ if ! [ -x "$(command -v go)" ]; then
 fi
 
 # Download and build binaries
-cd $HOME && rm -rf orai
+cd ~/ && rm -rf orai
 git clone https://github.com/oraichain/orai.git && cd orai
 git checkout ${VERSION}
-cd ./orai
-make install
+cd ./orai && make install
 
 # Config app
 oraid init $MONIKER --chain-id $CHAIN_ID --home "$HOME/.oraid"
 oraid keys add $MONIKER --recover
 
 # Download configuration
-cd $HOME
+cd ~/
 curl -Ls https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json > $HOME/.oraid/config/addrbook.json
 curl -Ls https://snapshots.nysa.network/Oraichain/addrbook.json > $HOME/.oraid/config/addrbook.json
 
@@ -101,6 +100,12 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 # Set minimum gas price
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025orai\"|" $HOME/.oraid/config/app.toml
 
+# fix memory leak issue add this to the bottom of app.toml">> $HOME/.oraid/config/app.toml
+echo "[wasm]" >> $HOME/.oraid/config/app.toml
+echo "query_gas_limit = 300000" >> $HOME/.oraid/config/app.toml
+echo "memory_cache_size = 400" >> $HOME/.oraid/config/app.toml
+
+
 # Create service
 sudo tee /etc/systemd/system/oraid.service > /dev/null <<EOF
 [Unit]
@@ -120,8 +125,7 @@ WantedBy=multi-user.target
 EOF
 
 # Download snapshot
-mkdir -p $HOME/.oraid/config
-curl -L https://snapshots.nysa.network/Oraichain/Oraichain_15076936.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.oraid
+curl -L https://snapshots.nysa.network/Oraichain/${SNAPSHOTS} | tar -Ilz4 -xf - -C ~/.oraid
 
 # Register and start service
 sudo systemctl daemon-reload
