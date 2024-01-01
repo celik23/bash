@@ -10,9 +10,9 @@ RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\
 echo -e "${CYAN} \t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID ${NC}";
 
 # variable / input
-default=$MONIKER
-read -p "Please enter your MONIKER NAME [$default]: " MONIKER
-MONIKER=${MONIKER:-$default}
+default=$NODENAME
+read -p "Please enter your NODENAME [$default]: " NODENAME 
+NODENAME =${NODENAME:-$default}
 
 default=${VERSION}
 read -p "Please enter docker pull version [$default]: " VERSION
@@ -24,7 +24,7 @@ read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
 echo "\nVerify the information below before proceeding with the installation!\n"
-echo -e "MONIKER        : ${GREEN}$MONIKER${NC}"
+echo -e "NODENAME       : ${GREEN}$NODENAME${NC}"
 echo -e "CHAIN ID       : ${GREEN}$CHAIN_ID${NC}"
 echo -e "NODE VERSION   : ${GREEN}$VERSION${NC}"
 echo -e "NODE FOLDER    : ${GREEN}$FOLDER${NC}"
@@ -32,7 +32,7 @@ echo -e "SNAPSHOTS      : ${GREEN}$SNAPSHOTS${NC}\n"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
-    echo "export MONIKER=${MONIKER}" >> $HOME/.bash_profile
+    echo "export NODENAME=${NODENAME}" >> $HOME/.bash_profile
     echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
     echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
     source $HOME/.bash_profile
@@ -72,8 +72,8 @@ git checkout ${VERSION}
 cd ./orai && make install
 
 # Config app
-oraid init $MONIKER --chain-id $CHAIN_ID --home "$HOME/.oraid"
-# oraid keys add $MONIKER --recover
+oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/.oraid"
+# oraid keys add $NODENAME --recover
 
 # Download configuration
 cd ~/
@@ -131,4 +131,3 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable oraid
 sudo systemctl restart oraid && sudo journalctl -u oraid -f -o cat
-
