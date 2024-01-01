@@ -67,20 +67,15 @@ curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C
 rm $HOME/.oraid/config/genesis.json
 
 # Config app
-docker exec -it orai_node /bin/bash -c 'oraid init $NODENAME --chain-id "$CHAIN_ID"'
+docker exec -it orai_node /bin/bash -c "oraid init $NODENAME --chain-id "${CHAIN_ID}""
 
 #⛔ oraid keys add $NODENAME 2>&1 | tee account.txt && exit
 #       👆 OR 👇
 #👉 import exist wallet (recover wallet)
 # ???docker exec -it orai_node /bin/bash -c 'oraid keys add $NODENAME --recover'
-# Enter keyring passphrase:
 
 # Download genesis.json
 wget -O $HOME/.oraid/config/genesis.json https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json
-
-# Download configuration
-curl -Ls https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json > $HOME/.oraid/config/addrbook.json
-curl -Ls https://snapshots.nysa.network/Oraichain/addrbook.json > $HOME/.oraid/config/addrbook.json
 
 
 # Set seeds and peers
