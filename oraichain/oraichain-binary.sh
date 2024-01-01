@@ -45,7 +45,7 @@ fi
 
 # Install dependencies
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install curl build-essential git wget jq make gcc tmux net-tools ccze make lz4 ufw -y
+sudo apt install build-essential make gcc net-tools curl git wget jq tmux ccze make lz4 ufw -y
 
 # firewall setup
 # sudo ufw allow 443/udp
