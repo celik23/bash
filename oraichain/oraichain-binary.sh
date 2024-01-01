@@ -13,7 +13,7 @@ CHAIN_ID=Oraichain
 # define screen colors:
 RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\e[35m'; NC='\e[0m';
 
-echo -e "${CYAN}Automatic Installer for Oraichain!${NC}";
+echo -e "${CYAN}\nAutomatic Installer for Oraichain!${NC}";
 
 # variable / input
 default=$NODENAME
