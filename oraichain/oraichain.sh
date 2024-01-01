@@ -14,9 +14,9 @@ RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\
 echo -e "${CYAN} \t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID ${NC}";
 
 # variable / input
-default=$MONIKER
-read -p "Please enter your MONIKER NAME [$default]: " MONIKER
-MONIKER=${MONIKER:-$default}
+default=$NODENAME
+read -p "Please enter your NODENAME [$default]: " NODENAME
+NODENAME=${NODENAME:-$default}
 
 default=${VERSION}
 read -p "Please enter docker pull version [$default]: " VERSION
@@ -28,7 +28,7 @@ read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
 echo "\nVerify the information below before proceeding with the installation!\n"
-echo -e "MONIKER        : ${GREEN}$MONIKER${NC}"
+echo -e "NODENAME       : ${GREEN}$NODENAME${NC}"
 echo -e "CHAIN ID       : ${GREEN}$CHAIN_ID${NC}"
 echo -e "NODE VERSION   : ${GREEN}$VERSION${NC}"
 echo -e "NODE FOLDER    : ${GREEN}$FOLDER${NC}"
@@ -36,7 +36,7 @@ echo -e "SNAPSHOTS      : ${GREEN}$SNAPSHOTS${NC}\n"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
-    echo "export MONIKER=${MONIKER}" >> $HOME/.bash_profile
+    echo "export NODENAME=${NODENAME}" >> $HOME/.bash_profile
     echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
     echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
     source $HOME/.bash_profile
@@ -53,8 +53,8 @@ sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-p
 curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-compose.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/orai.env
 
 # find and replace
-sed -i -e "s/^USER *=.*/USER=$MONIKER/" $HOME/orai.env
-sed -i -e "s/^MONIKER *=.*/MONIKER=$MONIKER/" $HOME/orai.env
+sed -i -e "s/^USER *=.*/USER=$NODENAME/" $HOME/orai.env
+sed -i -e "s/^MONIKER *=.*/MONIKER=$NODENAME/" $HOME/orai.env
 sed -i -e "s/0.41.3/$VERSION/" $HOME/docker-compose.yml
 
 # Build and enter the container
@@ -65,11 +65,11 @@ mkdir -p $HOME/.oraid/config
 curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C $HOME/.oraid
 
 rm $HOME/.oraid/config/genesis.json
-docker exec -it orai_node /bin/bash -c 'oraid init $MONIKER --chain-id "$CHAIN_ID"'
-#⛔ oraid keys add $MONIKER 2>&1 | tee account.txt && exit
+docker exec -it orai_node /bin/bash -c 'oraid init $NODENAME --chain-id "$CHAIN_ID"'
+#⛔ oraid keys add $NODENAME 2>&1 | tee account.txt && exit
 #       👆 OR 👇
 #👉 import exist wallet (recover wallet)
-docker exec -it orai_node /bin/bash -c 'oraid keys add $MONIKER --recover'
+docker exec -it orai_node /bin/bash -c 'oraid keys add $NODENAME --recover'
 # Enter keyring passphrase:
 
 # Download genesis.json
@@ -113,6 +113,10 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.oraid/config/app.toml
 
 
+echo "# fix memory leak issue add this to the bottom of app.toml">> $HOME/.oraid/config/app.toml
+echo "[wasm]" >> $HOME/.oraid/config/app.toml
+echo "query_gas_limit = 300000" >> $HOME/.oraid/config/app.toml
+echo "memory_cache_size = 400" >> $HOME/.oraid/config/app.toml
 
 # docker-compose restart orai && docker-compose exec -d orai bash -c 'oraivisor start'
 docker-compose restart orai && docker-compose exec orai bash -c 'oraivisor start --p2p.pex false --p2p.persistent_peers "e6fa2f222236a9ca5e10b238de87eb12497a649c@167.99.119.182:26656,911b290c59a4d3248534b53bdbc8dd4615bb5870@167.99.119.182:26656,35c1f999d67de56736b412a1325370a8e2fdb34a@5.189.169.99:26656,5ad3b29bf56b9ba95c67f282aa281b6f0903e921@64.225.53.108:26656"'
