@@ -70,14 +70,14 @@ fi
 cd ~/ && rm -rf orai
 git clone https://github.com/oraichain/orai.git && cd orai
 git checkout ${VERSION}
-cd ./orai && make install
+cd ~/./orai && make install
+cd ~/
 
 # Config app
 oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/.oraid"
 # oraid keys add $NODENAME --recover
 
 # Download configuration
-cd ~/
 curl -Ls https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json > $HOME/.oraid/config/addrbook.json
 curl -Ls https://snapshots.nysa.network/Oraichain/addrbook.json > $HOME/.oraid/config/addrbook.json
 
