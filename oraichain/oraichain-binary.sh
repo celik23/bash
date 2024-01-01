@@ -1,14 +1,13 @@
 #!/bin/bash
 #
 # // Copyright (C) 2023 
-#
+# // Build the binary from source
 # constant
 FOLDER=".oraid"
 CHAIN_ID=Oraichain
 # VERSION=0.41.5
 # NODENAME=nodename
 # WALLET=wallet
-
 
 # define screen colors:
 RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\e[35m'; NC='\e[0m';
@@ -24,7 +23,7 @@ default=${VERSION}
 read -p "Please enter docker pull VERSION=[$default]: " VERSION
 VERSION=${VERSION:-$default}
 
-default="Oraichain_13771328.tar.lz4"
+default="Oraichain_15106803.tar.lz4"
 echo -e "Check voor new snapshot version: ${GREEN}https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
@@ -134,7 +133,7 @@ WantedBy=multi-user.target
 EOF
 
 # Download snapshot
-curl -L https://snapshots.nysa.network/Oraichain/${SNAPSHOTS} | tar -Ilz4 -xf - -C ~/.oraid
+# curl -L https://snapshots.nysa.network/Oraichain/${SNAPSHOTS} | tar -Ilz4 -xf - -C ~/.oraid
 
 # Register and start service
 sudo systemctl daemon-reload
