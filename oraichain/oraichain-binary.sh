@@ -13,7 +13,7 @@ echo -e "${CYAN} \t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID $
 # variable / input
 default=$NODENAME
 read -p "Please enter your NODENAME [$default]: " NODENAME 
-NODENAME =${NODENAME:-$default}
+NODENAME=${NODENAME:-$default}
 
 default=${VERSION}
 read -p "Please enter docker pull version [$default]: " VERSION
