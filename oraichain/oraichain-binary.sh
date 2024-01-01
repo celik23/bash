@@ -33,7 +33,7 @@ echo -e "${CYAN}\nVerify the information below before proceeding with the instal
 echo -e "NODENAME       : ${GREEN}$NODENAME${NC}"
 echo -e "CHAIN ID       : ${GREEN}$CHAIN_ID${NC}"
 echo -e "NODE VERSION   : ${GREEN}$VERSION${NC}"
-echo -e "NODE FOLDER    : ${GREEN}$FOLDER${NC}"
+echo -e "NODE FOLDER    : ${GREEN}~/$FOLDER${NC}"
 echo -e "SNAPSHOTS      : ${GREEN}$SNAPSHOTS${NC}\n"
 
 read -p "Is the above information correct? (y/N) " choice
@@ -61,20 +61,22 @@ sudo apt install build-essential make gcc net-tools curl git wget jq tmux ccze m
 
 # Install go
 if ! [ -x "$(command -v go)" ]; then
-  ver="1.19.4"
-  cd $HOME
-  wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
-  sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-  rm "go$ver.linux-amd64.tar.gz"
-  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
-  source $HOME/.bash_profile
+    ver="1.19.4"
+    cd $HOME
+    sudo rm -rf /usr/local/go
+    wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+    sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+    rm "go$ver.linux-amd64.tar.gz"
+    echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
+    source $HOME/.bash_profile
 fi
 
 # Download and build binaries
 cd ~/ && rm -rf orai
 git clone https://github.com/oraichain/orai.git && cd ~/orai
+# checkout the latest tag
 git checkout "v${VERSION}"
+# in orai dir
 cd ~/orai/orai
 make install
 cd ~/
