@@ -4,6 +4,10 @@
 #
 # constant
 FOLDER=".oraid"
+CHAIN_ID=Oraichain
+# VERSION=v0.41.5
+# NODENAME=nodename
+
 
 # define screen colors:
 RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\e[35m'; NC='\e[0m';
@@ -74,7 +78,7 @@ cd ~/./orai && make install
 cd ~/
 
 # Config app
-oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/.oraid"
+oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/$FOLDER"
 # oraid keys add $NODENAME --recover
 
 # Download configuration
