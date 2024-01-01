@@ -13,15 +13,15 @@ CHAIN_ID=Oraichain
 # define screen colors:
 RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\e[35m'; NC='\e[0m';
 
-echo -e "${CYAN} \t\t Automatic Installer for Oraichain | Chain ID : $CHAIN_ID ${NC}";
+echo -e "${CYAN}Automatic Installer for Oraichain!${NC}";
 
 # variable / input
 default=$NODENAME
-read -p "Please enter your NODENAME [$default]: " NODENAME 
+read -p "Please enter your NODENAME=[$default]: " NODENAME 
 NODENAME=${NODENAME:-$default}
 
 default=${VERSION}
-read -p "Please enter docker pull version [$default]: " VERSION
+read -p "Please enter docker pull VERSION=[$default]: " VERSION
 VERSION=${VERSION:-$default}
 
 default="Oraichain_13771328.tar.lz4"
