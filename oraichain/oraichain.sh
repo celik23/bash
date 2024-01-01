@@ -62,8 +62,11 @@ sed -i -e "s/0.41.4/$VERSION/" $HOME/docker-compose.yml
 # Build and enter the container
 docker-compose pull && docker-compose up -d --force-recreate
 
-# Download Chain Data
-mkdir -p $HOME/.oraid/config
+# Config app
+oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/$FOLDER"
+# oraid keys add $WALLET --recover
+
+# Download shapshot
 curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C $HOME/.oraid
 
 rm $HOME/.oraid/config/genesis.json
@@ -77,10 +80,6 @@ docker exec -it orai_node /bin/bash -c 'oraid init $NODENAME --chain-id "$CHAIN_
 # Download genesis.json
 wget -O $HOME/.oraid/config/genesis.json https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json
 
-
-# Config app
-oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/$FOLDER"
-# oraid keys add $WALLET --recover
 
 # Download configuration
 curl -Ls https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json > $HOME/.oraid/config/addrbook.json
