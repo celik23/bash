@@ -26,7 +26,7 @@ echo -e "Check voor new snapshot version: ${GREEN}https://snapshots.nysa.network
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
-echo -e "\nVerify the information below before proceeding with the installation!\n"
+echo -e "\nVerify the information below before proceeding with the installation:\n"
 echo -e "NODENAME       : ${GREEN}$NODENAME${NC}"
 echo -e "CHAIN ID       : ${GREEN}$CHAIN_ID${NC}"
 echo -e "NODE VERSION   : ${GREEN}$VERSION${NC}"
@@ -67,7 +67,6 @@ curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C
 
 #⛔ oraid keys add $NODENAME 2>&1 | tee account.txt && exit
 #       👆 OR 👇
-#👉 import exist wallet (recover wallet)
 #⛔ docker exec -it orai_node /bin/bash -c 'oraid keys add $NODENAME --recover'
 
 # Download genesis.json
