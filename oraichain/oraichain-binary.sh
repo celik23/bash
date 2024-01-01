@@ -25,7 +25,7 @@ read -p "Please enter docker pull VERSION=[$default]: " VERSION
 VERSION=${VERSION:-$default}
 
 default="Oraichain_13771328.tar.lz4"
-echo -e "${GREEN}Check voor new snapshot version: https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
+echo -e "Check voor new snapshot version: ${GREEN}https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
@@ -109,7 +109,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 # Set minimum gas price
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025orai\"|" $HOME/.oraid/config/app.toml
 
-# fix memory leak issue add this to the bottom of app.toml">> $HOME/.oraid/config/app.toml
+echo "# fix memory leak issue add this to the bottom of app.toml">> $HOME/.oraid/config/app.toml
 echo "[wasm]" >> $HOME/.oraid/config/app.toml
 echo "query_gas_limit = 300000" >> $HOME/.oraid/config/app.toml
 echo "memory_cache_size = 400" >> $HOME/.oraid/config/app.toml
