@@ -59,13 +59,15 @@ sed -i -e "s/0.41.4/$VERSION/" $HOME/docker-compose.yml
 # Build and enter the container
 docker-compose pull && docker-compose up -d --force-recreate
 
-# Config app
-rm $HOME/.oraid/config/genesis.json
-docker exec -it orai_node /bin/bash -c 'oraid init $NODENAME --chain-id "$CHAIN_ID"'
-
 # Download Chain Data
 mkdir -p $HOME/.oraid/config
 curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C $HOME/.oraid
+
+# remove 
+rm $HOME/.oraid/config/genesis.json
+
+# Config app
+docker exec -it orai_node /bin/bash -c 'oraid init $NODENAME --chain-id "$CHAIN_ID"'
 
 #⛔ oraid keys add $NODENAME 2>&1 | tee account.txt && exit
 #       👆 OR 👇
@@ -76,10 +78,10 @@ curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C
 # Download genesis.json
 wget -O $HOME/.oraid/config/genesis.json https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json
 
-
 # Download configuration
 curl -Ls https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json > $HOME/.oraid/config/addrbook.json
 curl -Ls https://snapshots.nysa.network/Oraichain/addrbook.json > $HOME/.oraid/config/addrbook.json
+
 
 # Set seeds and peers
 sed -E -i 's/seeds = \".*\"/seeds = \"4d0f2d042405abbcac5193206642e1456fe89963@3.134.19.98:26656,24631e98a167492fd4c92c582cee5fd6fcd8ad59@162.55.253.58:26656,bf083c57ed53a53ccd31dc160d69063c73b340e9@3.17.175.62:26656,35c1f999d67de56736b412a1325370a8e2fdb34a@5.189.169.99:26656,5ad3b29bf56b9ba95c67f282aa281b6f0903e921@64.225.53.108:26656,d091cabe3584cb32043cc0c9199b0c7a5b68ddcb@seed.orai.synergynodes.com:26656\"/' $HOME/.oraid/config/config.toml
