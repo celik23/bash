@@ -5,7 +5,7 @@
 # constant
 FOLDER=".oraid"
 CHAIN_ID=Oraichain
-# VERSION=v0.41.5
+# VERSION=0.41.5
 # NODENAME=nodename
 # WALLET=wallet
 
@@ -67,14 +67,14 @@ if ! [ -x "$(command -v go)" ]; then
   sudo rm -rf /usr/local/go
   sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
   rm "go$ver.linux-amd64.tar.gz"
-  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-  source ~/.bash_profile
+  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
+  source $HOME/.bash_profile
 fi
 
 # Download and build binaries
 cd ~/ && rm -rf orai
 git clone https://github.com/oraichain/orai.git && cd ~/orai
-git checkout ${VERSION}
+git checkout "v${VERSION}"
 cd ~/orai/orai
 make install
 cd ~/
