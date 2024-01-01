@@ -21,8 +21,8 @@ default=${VERSION}
 read -p "Please enter docker pull version [$default]: " VERSION
 VERSION=${VERSION:-$default}
 
-default="Oraichain_13771328.tar.lz4"
-echo -e "Check voor new snapshot version:${GREEN}https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
+default="Oraichain_15106803.tar.lz4"
+echo -e "Check voor new snapshot version: ${GREEN}https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
@@ -50,8 +50,6 @@ sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-p
 
 #🏀 Edit orai.env & docker-compose.yml
 curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/docker-compose.yml && curl -OL https://raw.githubusercontent.com/celik23/bash/main/oraichain/orai.env
-curl -o docker-compose.yml https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/docker-compose.0.41.4.yml
-curl -OL https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/orai.env
 
 # find and replace
 sed -i -e "s/^USER *=.*/USER=$NODENAME/" $HOME/orai.env
