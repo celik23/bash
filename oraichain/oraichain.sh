@@ -59,20 +59,20 @@ sed -i -e "s/0.41.4/$VERSION/" $HOME/docker-compose.yml
 # Build and enter the container
 docker-compose pull && docker-compose up -d --force-recreate
 
-# Download Chain Data
-mkdir -p $HOME/.oraid/config
-curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C $HOME/.oraid
-
 # remove 
-rm $HOME/.oraid/config/genesis.json
+# rm $HOME/.oraid/config/genesis.json
 
 # Config app
 docker exec -it orai_node /bin/bash -c "oraid init $NODENAME --chain-id "${CHAIN_ID}""
 
+# Download Chain Data
+# mkdir -p $HOME/.oraid/config
+curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C $HOME/.oraid
+
 #⛔ oraid keys add $NODENAME 2>&1 | tee account.txt && exit
 #       👆 OR 👇
 #👉 import exist wallet (recover wallet)
-# ???docker exec -it orai_node /bin/bash -c 'oraid keys add $NODENAME --recover'
+#⛔ docker exec -it orai_node /bin/bash -c 'oraid keys add $NODENAME --recover'
 
 # Download genesis.json
 wget -O $HOME/.oraid/config/genesis.json https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json
