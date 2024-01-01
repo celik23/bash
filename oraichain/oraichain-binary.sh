@@ -7,6 +7,7 @@ FOLDER=".oraid"
 CHAIN_ID=Oraichain
 # VERSION=v0.41.5
 # NODENAME=nodename
+# WALLET=wallet
 
 
 # define screen colors:
@@ -79,7 +80,7 @@ cd ~/
 
 # Config app
 oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/$FOLDER"
-# oraid keys add $NODENAME --recover
+# oraid keys add $WALLET --recover
 
 # Download configuration
 curl -Ls https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json > $HOME/.oraid/config/addrbook.json
