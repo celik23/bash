@@ -75,6 +75,7 @@ fi
 cd ~/ && rm -rf orai
 git clone https://github.com/oraichain/orai.git && cd ~/orai
 git checkout ${VERSION}
+cd ~/orai/orai
 make install
 cd ~/
 
