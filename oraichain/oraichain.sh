@@ -60,14 +60,13 @@ sed -i -e "s/0.41.4/$VERSION/" $HOME/docker-compose.yml
 docker-compose pull && docker-compose up -d --force-recreate
 
 # Config app
-oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/$FOLDER"
-# oraid keys add $WALLET --recover
-
-# Download shapshot
-curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C $HOME/.oraid
-
 rm $HOME/.oraid/config/genesis.json
 docker exec -it orai_node /bin/bash -c 'oraid init $NODENAME --chain-id "$CHAIN_ID"'
+
+# Download Chain Data
+mkdir -p $HOME/.oraid/config
+curl -L https://snapshots.nysa.network/Oraichain/$SNAPSHOTS | tar -Ilz4 -xf - -C $HOME/.oraid
+
 #⛔ oraid keys add $NODENAME 2>&1 | tee account.txt && exit
 #       👆 OR 👇
 #👉 import exist wallet (recover wallet)
