@@ -23,7 +23,7 @@ read -p "Please enter docker pull version [$default]: " VERSION
 VERSION=${VERSION:-$default}
 
 default="Oraichain_13771328.tar.lz4"
-echo -e "${GREEN}Check voor new snapshot version: https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
+echo -e "Check voor new snapshot version:{GREEN} https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
