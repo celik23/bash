@@ -6,6 +6,10 @@
 CHAIN_ID=Oraichain
 FOLDER=.oraid
 REPO=https://github.com/oraichain/orai
+# VERSION=0.41.5
+# NODENAME=nodename
+# WALLET=wallet
+
 
 # Define screen colors:
 red='\e[0;31m'; cyan='\e[1;36m'; green='\e[0;32m'; blue='\e[1;34m'; pink='\e[1m\e[35m'; nc='\e[0m';
