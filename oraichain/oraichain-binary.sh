@@ -10,7 +10,7 @@ CHAIN_ID=Oraichain
 # WALLET=wallet
 
 # define screen colors:
-RED='\e[0;31m'; cyan='\e[1;36m'; green='\e[0;32m'; blue='\e[1;34m'; pink='\e[1m\e[35m'; nc='\e[0m';
+red='\e[0;31m'; cyan='\e[1;36m'; green='\e[0;32m'; blue='\e[1;34m'; pink='\e[1m\e[35m'; nc='\e[0m';
 
 echo -e "${cyan}\nAutomatic Installer for Oraichain!${nc}";
 
