@@ -10,9 +10,9 @@ CHAIN_ID=Oraichain
 # WALLET=wallet
 
 # define screen colors:
-RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; PINK='\e[1m\e[35m'; NC='\e[0m';
+RED='\e[0;31m'; cyan='\e[1;36m'; green='\e[0;32m'; blue='\e[1;34m'; pink='\e[1m\e[35m'; nc='\e[0m';
 
-echo -e "${CYAN}\nAutomatic Installer for Oraichain!${NC}";
+echo -e "${cyan}\nAutomatic Installer for Oraichain!${nc}";
 
 # variable / input
 default=$NODENAME
@@ -24,16 +24,16 @@ read -p "Please enter docker pull VERSION=[$default]: " VERSION
 VERSION=${VERSION:-$default}
 
 default="Oraichain_15106803.tar.lz4"
-echo -e "Check voor new snapshot version: ${GREEN}https://snapshots.nysa.network/Oraichain/#Oraichain/${NC}"
+echo -e "Check voor new snapshot version: ${green}https://snapshots.nysa.network/Oraichain/#Oraichain/${nc}"
 read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
-echo -e "${CYAN}\nVerify the information below before proceeding with the installation!\n${NC}"
-echo -e "NODENAME       : ${GREEN}$NODENAME${NC}"
-echo -e "CHAIN ID       : ${GREEN}$CHAIN_ID${NC}"
-echo -e "NODE VERSION   : ${GREEN}$VERSION${NC}"
-echo -e "NODE FOLDER    : ${GREEN}~/$FOLDER${NC}"
-echo -e "SNAPSHOTS      : ${GREEN}$SNAPSHOTS${NC}\n"
+echo -e "${cyan}\nVerify the information below before proceeding with the installation!\n${nc}"
+echo -e "NODENAME       : ${green}$NODENAME${nc}"
+echo -e "CHAIN ID       : ${green}$CHAIN_ID${nc}"
+echo -e "NODE VERSION   : ${green}$VERSION${nc}"
+echo -e "NODE FOLDER    : ${green}~/$FOLDER${nc}"
+echo -e "SNAPSHOTS      : ${green}$SNAPSHOTS${nc}\n"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
