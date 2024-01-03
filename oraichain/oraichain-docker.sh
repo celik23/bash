@@ -1,15 +1,13 @@
 #!/bin/bash
 #
 # // Copyright (C) 2023 
-#
+# // Build the orai from docker
 # constant
-CHAIN_ID=Oraichain
-FOLDER=.oraid
-REPO=https://github.com/oraichain/orai
-# VERSION=0.41.5
+# CHAIN_ID=Oraichain
+# FOLDER=".oraid"
 # NODENAME=nodename
 # WALLET=wallet
-
+# VERSION=0.41.5
 
 # Define screen colors:
 red='\e[0;31m'; cyan='\e[1;36m'; green='\e[0;32m'; blue='\e[1;34m'; pink='\e[1m\e[35m'; nc='\e[0m';
@@ -35,14 +33,17 @@ echo -e "NODENAME       : ${green}$NODENAME${nc}"
 echo -e "CHAIN ID       : ${green}$CHAIN_ID${nc}"
 echo -e "NODE VERSION   : ${green}$VERSION${nc}"
 echo -e "NODE FOLDER    : ${green}$FOLDER${nc}"
+echo -e "WALLET         : ${green}wal-${NODENAME}${nc}"
 echo -e "SNAPSHOTS      : ${green}$SNAPSHOTS${nc}\n"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
-    echo "export NODENAME=${NODENAME}" >> $HOME/.bash_profile
-    echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
-    echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
-    source $HOME/.bash_profile
+    echo "export CHAIN_ID=${CHAIN_ID}" >> ~/.bash_profile
+    echo "export FOLDER=${FOLDER}" >> ~/.bash_profile
+    echo "export NODENAME=${NODENAME}" >> ~/.bash_profile
+    echo "export WALLET=wal-${NODENAME}" >> ~/.bash_profile
+    echo "export VERSION=${VERSION}" >> ~/.bash_profile
+    source $HOME/.bash_profile  
 else
     echo "Installation cancelled!"
     exit 1
