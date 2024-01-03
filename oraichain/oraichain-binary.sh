@@ -136,7 +136,7 @@ WantedBy=multi-user.target
 EOF
 
 # Download snapshot
-# curl -L https://snapshots.nysa.network/Oraichain/${SNAPSHOTS} | tar -Ilz4 -xf - -C ~/.oraid
+curl -L https://snapshots.nysa.network/Oraichain/${SNAPSHOTS} | tar -Ilz4 -xf - -C ~/.oraid
 
 # Register and start service
 sudo systemctl daemon-reload
