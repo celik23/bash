@@ -30,7 +30,6 @@ SNAPSHOTS=${SNAPSHOTS:-$default}
 
 echo -e "${cyan}\nVerify the information below before proceeding with the installation!\n${nc}"
 echo -e "NODENAME       : ${green}$NODENAME${nc}"
-echo -e "WALLET         : ${green}wal-${NODENAME}${nc}"
 echo -e "CHAIN ID       : ${green}$CHAIN_ID${nc}"
 echo -e "NODE VERSION   : ${green}$VERSION${nc}"
 echo -e "NODE FOLDER    : ${green}$HOME/$FOLDER${nc}"
@@ -111,6 +110,18 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 # Set minimum gas price
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025orai\"|" $HOME/.oraid/config/app.toml
 
+# State Sync
+STATE_SYNC_RPC=https://rpc.orai.io:443
+LATEST_HEIGHT=$(curl -s $STATE_SYNC_RPC/block | jq -r .result.block.header.height)
+SYNC_BLOCK_HEIGHT=$(($LATEST_HEIGHT - 2002))
+SYNC_BLOCK_HASH=$(curl -s "$STATE_SYNC_RPC/block?height=$SYNC_BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+echo $LATEST_HEIGHT $SYNC_BLOCK_HEIGHT $SYNC_BLOCK_HASH
+
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$STATE_SYNC_RPC,$STATE_SYNC_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$SYNC_BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$SYNC_BLOCK_HASH\"|" $HOME/.oraid/config/config.toml
+
 echo "# fix memory leak issue add this to the bottom of app.toml">> $HOME/.oraid/config/app.toml
 echo "[wasm]" >> $HOME/.oraid/config/app.toml
 echo "query_gas_limit = 300000" >> $HOME/.oraid/config/app.toml
@@ -135,11 +146,13 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 
-# Download snapshot
 source ~/.bash_profile
+
+# Download snapshot
 # curl -L https://snapshots.nysa.network/Oraichain/${SNAPSHOTS} | tar -Ilz4 -xf - -C ~/.oraid
 
 # Register and start service
 sudo systemctl daemon-reload
 sudo systemctl enable oraid
-sudo systemctl restart oraid && sudo journalctl -u oraid -f -o cat
+# sudo systemctl restart oraid && sudo journalctl -u oraid -f -o cat
+
