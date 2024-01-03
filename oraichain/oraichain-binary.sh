@@ -3,11 +3,11 @@
 # // Copyright (C) 2023 
 # // Build the binary from source
 # constant
-FOLDER=".oraid"
-CHAIN_ID=Oraichain
-# VERSION=0.41.5
+# CHAIN_ID=Oraichain
+# FOLDER=".oraid"
 # NODENAME=nodename
 # WALLET=wallet
+# VERSION=0.41.5
 
 # define screen colors:
 red='\e[0;31m'; cyan='\e[1;36m'; green='\e[0;32m'; blue='\e[1;34m'; pink='\e[1m\e[35m'; nc='\e[0m';
@@ -32,15 +32,18 @@ echo -e "${cyan}\nVerify the information below before proceeding with the instal
 echo -e "NODENAME       : ${green}$NODENAME${nc}"
 echo -e "CHAIN ID       : ${green}$CHAIN_ID${nc}"
 echo -e "NODE VERSION   : ${green}$VERSION${nc}"
-echo -e "NODE FOLDER    : ${green}~/$FOLDER${nc}"
+echo -e "NODE FOLDER    : ${green}$HOME/$FOLDER${nc}"
+echo -e "WALLET         : ${green}wal-${NODENAME}${nc}"
 echo -e "SNAPSHOTS      : ${green}$SNAPSHOTS${nc}\n"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
-    echo "export NODENAME=${NODENAME}" >> $HOME/.bash_profile
-    echo "export CHAIN_ID=${CHAIN_ID}" >> $HOME/.bash_profile
-    echo "export FOLDER=${FOLDER}" >> $HOME/.bash_profile
-    source $HOME/.bash_profile
+    echo "export CHAIN_ID=${CHAIN_ID}" >> ~/.bash_profile
+    echo "export FOLDER=${FOLDER}" >> ~/.bash_profile
+    echo "export NODENAME=${NODENAME}" >> ~/.bash_profile
+    echo "export WALLET=wal-${NODENAME}" >> ~/.bash_profile
+    echo "export VERSION=${VERSION}" >> ~/.bash_profile
+    source $HOME/.bash_profile  
 else
     echo "Installation cancelled!"
     exit 1
@@ -65,9 +68,9 @@ if ! [ -x "$(command -v go)" ]; then
     sudo rm -rf /usr/local/go
     wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
     sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-    rm "go$ver.linux-amd64.tar.gz"
+    sudo rm "go$ver.linux-amd64.tar.gz"
     echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
-    source $HOME/.bash_profile
+    sleep 2.5 && source $HOME/.bash_profile
 fi
 
 # Download and build binaries
@@ -133,9 +136,10 @@ WantedBy=multi-user.target
 EOF
 
 # Download snapshot
-curl -L https://snapshots.nysa.network/Oraichain/${SNAPSHOTS} | tar -Ilz4 -xf - -C ~/.oraid
+# curl -L https://snapshots.nysa.network/Oraichain/${SNAPSHOTS} | tar -Ilz4 -xf - -C ~/.oraid
 
 # Register and start service
 sudo systemctl daemon-reload
 sudo systemctl enable oraid
 sudo systemctl restart oraid && sudo journalctl -u oraid -f -o cat
+source ~/.bash_profile
