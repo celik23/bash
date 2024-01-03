@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# // Copyright (C) 2023 
+# // Copyright (C) 2023  
 #
 # constant
 CHAIN_ID=Oraichain
