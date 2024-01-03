@@ -30,10 +30,10 @@ SNAPSHOTS=${SNAPSHOTS:-$default}
 
 echo -e "${cyan}\nVerify the information below before proceeding with the installation!\n${nc}"
 echo -e "NODENAME       : ${green}$NODENAME${nc}"
+echo -e "WALLET         : ${green}wal-${NODENAME}${nc}"
 echo -e "CHAIN ID       : ${green}$CHAIN_ID${nc}"
 echo -e "NODE VERSION   : ${green}$VERSION${nc}"
 echo -e "NODE FOLDER    : ${green}$HOME/$FOLDER${nc}"
-echo -e "WALLET         : ${green}wal-${NODENAME}${nc}"
 echo -e "SNAPSHOTS      : ${green}$SNAPSHOTS${nc}\n"
 
 read -p "Is the above information correct? (y/N) " choice
