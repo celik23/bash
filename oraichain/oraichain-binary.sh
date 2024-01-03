@@ -110,7 +110,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 # Set minimum gas price
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025orai\"|" $HOME/.oraid/config/app.toml
 
-# State Sync
+# State Sync (from scratch)
 STATE_SYNC_RPC=https://rpc.orai.io:443
 LATEST_HEIGHT=$(curl -s $STATE_SYNC_RPC/block | jq -r .result.block.header.height)
 SYNC_BLOCK_HEIGHT=$(($LATEST_HEIGHT - 2002))
@@ -126,7 +126,7 @@ echo "# fix memory leak issue add this to the bottom of app.toml">> $HOME/.oraid
 echo "[wasm]" >> $HOME/.oraid/config/app.toml
 echo "query_gas_limit = 300000" >> $HOME/.oraid/config/app.toml
 echo "memory_cache_size = 400" >> $HOME/.oraid/config/app.toml
-
+#
 
 # Create service
 sudo tee /etc/systemd/system/oraid.service > /dev/null <<EOF
@@ -155,3 +155,4 @@ source ~/.bash_profile
 sudo systemctl daemon-reload
 sudo systemctl enable oraid
 sudo systemctl restart oraid && sudo journalctl -u oraid -f -o cat
+#
