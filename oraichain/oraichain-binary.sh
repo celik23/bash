@@ -51,7 +51,7 @@ fi
 
 # Install dependencies
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install build-essential make gcc net-tools curl git wget jq tmux ccze make lz4 ufw -y
+sudo apt install build-essential make gcc net-tools curl git wget jq lz4 ufw -y
 
 # firewall setup
 # sudo ufw allow 443/udp
@@ -88,7 +88,7 @@ oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/$FOLDER"
 
 # Download configuration
 wget -O $HOME/.oraid/config/genesis.json https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json
-wget -O $HOME/.oraid/config/addrbook.json https://snapshots.nysa.network/Oraichain/addrbook.json $HOME/.oraid/config/addrbook.json
+wget -O $HOME/.oraid/config/addrbook.json https://snapshots.nysa.network/Oraichain/addrbook.json
 
 # Set seeds and peers
 sed -E -i 's/seeds = \".*\"/seeds = \"4d0f2d042405abbcac5193206642e1456fe89963@3.134.19.98:26656,24631e98a167492fd4c92c582cee5fd6fcd8ad59@162.55.253.58:26656,bf083c57ed53a53ccd31dc160d69063c73b340e9@3.17.175.62:26656,35c1f999d67de56736b412a1325370a8e2fdb34a@5.189.169.99:26656,5ad3b29bf56b9ba95c67f282aa281b6f0903e921@64.225.53.108:26656,d091cabe3584cb32043cc0c9199b0c7a5b68ddcb@seed.orai.synergynodes.com:26656\"/' $HOME/.oraid/config/config.toml
@@ -118,16 +118,15 @@ sync_block_hash=$(curl -s "$state_sync_rpc/block?height=$sync_block_height" | jq
 echo $latest_height $sync_block_height $sync_block_hash
 
 sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$state_sync_rpc,$state_sync_rpc\"| ; \
-s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$sync_block_height| ; \
-s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$sync_block_hash\"|" $HOME/.oraid/config/config.toml
+  s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$state_sync_rpc,$state_sync_rpc\"| ; \
+  s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$sync_block_height| ; \
+  s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$sync_block_hash\"|" $HOME/.oraid/config/config.toml
 
-# memory leak
+# fix memory leak
 echo "# fix memory leak issue add this to the bottom of app.toml">> $HOME/.oraid/config/app.toml
 echo "[wasm]" >> $HOME/.oraid/config/app.toml
 echo "query_gas_limit = 300000" >> $HOME/.oraid/config/app.toml
-echo "memory_cache_size = 400" >> $HOME/.oraid/config/app.toml
-
+echo "memory_cache_size = 400"  >> $HOME/.oraid/config/app.toml
 
 # Create service
 sudo tee /etc/systemd/system/oraid.service > /dev/null <<EOF
@@ -147,13 +146,14 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 
-source ~/.bash_profile
-
 # Download snapshot
 # curl -L https://snapshots.nysa.network/Oraichain/${SNAPSHOTS} | tar -Ilz4 -xf - -C ~/.oraid
 
 # Register and start service
 sudo systemctl daemon-reload
 sudo systemctl enable oraid
-# sudo systemctl restart oraid && sudo journalctl -u oraid -f -o cat
+sudo systemctl restart oraid && sudo journalctl -u oraid -f -o cat
 
+# Use this command to switch off your State Sync mode, after node fully synced to avoid problems in future node restarts!
+# $ sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1false|" $HOME/.oraid/config/config.toml
+#
