@@ -87,8 +87,8 @@ oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/$FOLDER"
 # oraid keys add $WALLET --recover
 
 # Download configuration
-wget -O https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json $HOME/.oraid/config/genesis.json 
-wget -O https://snapshots.nysa.network/Oraichain/addrbook.json $HOME/.oraid/config/addrbook.json
+wget -O $HOME/.oraid/config/genesis.json https://raw.githubusercontent.com/oraichain/oraichain-static-files/master/genesis.json
+wget -O $HOME/.oraid/config/addrbook.json https://snapshots.nysa.network/Oraichain/addrbook.json $HOME/.oraid/config/addrbook.json
 
 # Set seeds and peers
 sed -E -i 's/seeds = \".*\"/seeds = \"4d0f2d042405abbcac5193206642e1456fe89963@3.134.19.98:26656,24631e98a167492fd4c92c582cee5fd6fcd8ad59@162.55.253.58:26656,bf083c57ed53a53ccd31dc160d69063c73b340e9@3.17.175.62:26656,35c1f999d67de56736b412a1325370a8e2fdb34a@5.189.169.99:26656,5ad3b29bf56b9ba95c67f282aa281b6f0903e921@64.225.53.108:26656,d091cabe3584cb32043cc0c9199b0c7a5b68ddcb@seed.orai.synergynodes.com:26656\"/' $HOME/.oraid/config/config.toml
@@ -110,23 +110,24 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 # Set minimum gas price
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025orai\"|" $HOME/.oraid/config/app.toml
 
-# State Sync (from scratch)
-STATE_SYNC_RPC=https://rpc.orai.io:443
-LATEST_HEIGHT=$(curl -s $STATE_SYNC_RPC/block | jq -r .result.block.header.height)
-SYNC_BLOCK_HEIGHT=$(($LATEST_HEIGHT - 2002))
-SYNC_BLOCK_HASH=$(curl -s "$STATE_SYNC_RPC/block?height=$SYNC_BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-echo $LATEST_HEIGHT $SYNC_BLOCK_HEIGHT $SYNC_BLOCK_HASH
+# State sync
+state_sync_rpc=https://rpc.orai.io:443
+latest_height=$(curl -s $state_sync_rpc/block | jq -r .result.block.header.height)
+sync_block_height=$(($latest_height - 2002))
+sync_block_hash=$(curl -s "$state_sync_rpc/block?height=$sync_block_height" | jq -r .result.block_id.hash)
+echo $latest_height $sync_block_height $sync_block_hash
 
 sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$STATE_SYNC_RPC,$STATE_SYNC_RPC\"| ; \
-s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$SYNC_BLOCK_HEIGHT| ; \
-s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$SYNC_BLOCK_HASH\"|" $HOME/.oraid/config/config.toml
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$state_sync_rpc,$state_sync_rpc\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$sync_block_height| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$sync_block_hash\"|" $HOME/.oraid/config/config.toml
 
+# memory leak
 echo "# fix memory leak issue add this to the bottom of app.toml">> $HOME/.oraid/config/app.toml
 echo "[wasm]" >> $HOME/.oraid/config/app.toml
 echo "query_gas_limit = 300000" >> $HOME/.oraid/config/app.toml
 echo "memory_cache_size = 400" >> $HOME/.oraid/config/app.toml
-#
+
 
 # Create service
 sudo tee /etc/systemd/system/oraid.service > /dev/null <<EOF
@@ -154,5 +155,5 @@ source ~/.bash_profile
 # Register and start service
 sudo systemctl daemon-reload
 sudo systemctl enable oraid
-sudo systemctl restart oraid && sudo journalctl -u oraid -f -o cat
-#
+# sudo systemctl restart oraid && sudo journalctl -u oraid -f -o cat
+
