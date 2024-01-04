@@ -110,27 +110,23 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 # Set minimum gas price
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025orai\"|" $HOME/.oraid/config/app.toml
 
-# State sync
-state_sync_rpc=https://orai.rpc.nodex.one:443
-state_sync_peer=0e9387a4aa548998eda8f2bb4a5cd799345d5367@orai.rpc.nodex.one:11256
-latest_height=$(curl -s $state_sync_rpc/block | jq -r .result.block.header.height)
-sync_block_height=$((latest_height - 2002))
-sync_block_hash=$(curl -s "$state_sync_rpc/block?height=$sync_block_height" | jq -r .result.block_id.hash)
-echo $latest_height $sync_block_height $sync_block_hash
- 
-sed -i \
-  -e "s|^enable *=.*|enable = true|" \
-  -e "s|^rpc_servers *=.*|rpc_servers = \"$state_sync_rpc,$state_sync_rpc\"|" \
-  -e "s|^trust_height *=.*|trust_height = $sync_block_height|" \
-  -e "s|^trust_hash *=.*|trust_hash = \"$sync_block_hash\"|" \
-  -e "s|^persistent_peers *=.*|persistent_peers = \"$state_sync_peer\"|" \
-  $HOME/.oraid/config/config.toml
-
-# fix memory leak
+# Fix memory leak
 echo "# fix memory leak issue add this to the bottom of app.toml">> $HOME/.oraid/config/app.toml
 echo "[wasm]" >> $HOME/.oraid/config/app.toml
 echo "query_gas_limit = 300000" >> $HOME/.oraid/config/app.toml
 echo "memory_cache_size = 400"  >> $HOME/.oraid/config/app.toml
+
+# State sync
+state_sync_rpc=https://rpc.orai.io:443
+latest_height=$(curl -s $state_sync_rpc/block | jq -r .result.block.header.height)
+sync_block_height=$(($latest_height - 2002))
+sync_block_hash=$(curl -s "$state_sync_rpc/block?height=$sync_block_height" | jq -r .result.block_id.hash)
+echo $latest_height $sync_block_height $sync_block_hash
+
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+  s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$state_sync_rpc,$state_sync_rpc\"| ; \
+  s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$sync_block_height| ; \
+  s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$sync_block_hash\"|" $HOME/.oraid/config/config.toml
 
 # Create service
 sudo tee /etc/systemd/system/oraid.service > /dev/null <<EOF
