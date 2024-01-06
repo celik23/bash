@@ -17,7 +17,7 @@ echo -e "${cyan}\nAutomatic Installer for Oraichain!${nc}";
 # variable / input
 default=$CHAIN_ID
 read -p "Please enter CHAIN_ID=[$default]: " CHAIN_ID 
-NODENAME=${CHAIN_ID:-$default}
+CHAIN_ID=${CHAIN_ID:-$default}
 
 default=$NODENAME
 read -p "Please enter your NODENAME=[$default]: " NODENAME 
