@@ -12,13 +12,13 @@ read -p "Please enter your massa-client password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
 
 echo -e "\n${CYAN}Verify the information below before proceeding with the installation!${NC}"
-echo -e "Password	: ${GREEN}$PASSWORD${NC}"
+echo -e "Password   : ${GREEN}$PASSWORD${NC}"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
     # environment variables
-	echo "export PS1='\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] '" >> ~/.bash_profile
-	echo "export PASSWORD='${PASSWORD}'" >> ~/.bash_profile 
+    echo "export PS1='\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] '" >> ~/.bash_profile
+    echo "export PASSWORD='${PASSWORD}'" >> ~/.bash_profile 
     source ~/.bash_profile
 else
     echo -e "${RED}Installation cancelled!${NC}"
@@ -31,14 +31,20 @@ sudo apt update
 sudo apt install -y curl
 # sudo apt install git pkg-config curl build-essential libssl-dev libclang-dev cmake screen cron nano
 
-systemctl stop massad.service
-OS="linux.tar" # or "linux_arm64.tar"
-URL="https://api.github.com/repos/massalabs/massa/releases/latest"
-URL=$(curl -s ${URL} | grep "browser_download_url" | cut -d '"' -f 4 | grep ${OS})
-latest="$(basename -a ${URL})" && wget "${URL}" -O $HOME/${latest}
+systemctl stop massad.service 
+
+if [ $(uname -m) == "arm64" ]; then
+    OS="linux_arm64.tar"
+else
+    OS="linux.tar"
+fi
+
+url="https://api.github.com/repos/massalabs/massa/releases/latest"
+url=$(curl -s ${url} | grep "browser_download_url" | cut -d '"' -f 4 | grep ${OS})
+latest="$(basename -a ${url})" && wget "${url}" -O $HOME/${latest}
 tar -xvf ${latest} -C $HOME/ && rm $HOME/${latest}
 chmod +x $HOME/massa/massa-node/massa-node $HOME/massa/massa-client/massa-client 
-echo "${msg}" >> "${latest}.txt" 
+echo "${latest}" >> "${latest}.txt" 
 
 sudo tee /root/massa/massa-node/config/config.toml > /dev/null <<EOF
 [network]
