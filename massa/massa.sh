@@ -1,12 +1,16 @@
 #!/bin/bash
 #
-# // Copyright (C) 2023 
+# // Copyright (C) 2023-2024
 #
 
 # Define screen colors:
 RED="\e[0;31m"; CYAN="\e[1;36m"; GREEN="\e[0;32m"; BLUE="\e[1;34m"; MAGENTA="\e[1m\e[35m"; NC="\e[0m";
 
 # variable | input
+default=${NODENAME}
+read -p "Please enter your massa-client password [$default]: " NODENAME
+NODENAME=${NODENAME:-$default}
+
 default=${PASSWORD}
 read -p "Please enter your massa-client password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
@@ -33,7 +37,7 @@ sudo apt install -y curl
 
 systemctl stop massad.service 
 
-if [ $(uname -m) == "arm64" ]; then
+if [ $(uname -m) == "aarch64" ]; then
     OS="linux_arm64.tar"
 else
     OS="linux.tar"
@@ -46,16 +50,9 @@ tar -xvf ${latest} -C $HOME/ && rm $HOME/${latest}
 chmod +x $HOME/massa/massa-node/massa-node $HOME/massa/massa-client/massa-client 
 echo "${latest}" >> "${latest}.txt" 
 
-sudo tee /root/massa/massa-node/config/config.toml > /dev/null <<EOF
-[network]
-# routable_ip ="$(curl -4 ifconfig.co)"
-# routable_ip ="$(curl -6 ifconfig.co)"
+wget -O $HOME/massa/massa-node/config/config.toml https://raw.githubusercontent.com/celik23/bash/main/massa/node-config.toml
+wget -O $HOME/massa/massa-client/config/config.toml https://raw.githubusercontent.com/celik23/bash/main/massa/client-config.toml
 
-[bootstrap]
-max_ping = 10000
-EOF
-sudo nano /root/massa/massa-node/config/config.toml
-#🔖 -------------------------------------
 #👉 services
 sudo tee /etc/systemd/system/massad.service > /dev/null <<EOF
 [Unit]
@@ -66,7 +63,7 @@ After=network-online.target
 Environment="RUST_BACKTRACE=full"
 WorkingDirectory=$HOME/massa/massa-node
 User=$USER
-ExecStart=$HOME/massa/massa-node/massa-node -p "${PASSWORD}"
+ExecStart=$HOME/massa/massa-node/massa-node -p "${PASSWORD}" 
 Restart=always
 RestartSec=3
 
@@ -77,4 +74,4 @@ EOF
 systemctl daemon-reload 
 systemctl enable massad 
 systemctl restart massad && journalctl -u massad -f -o cat 
-
+#
