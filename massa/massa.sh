@@ -4,28 +4,29 @@
 #
 
 # Define screen colors:
-RED="\e[0;31m"; CYAN="\e[1;36m"; GREEN="\e[0;32m"; BLUE="\e[1;34m"; MAGENTA="\e[1m\e[35m"; NC="\e[0m";
+red="\e[0;31m"; cyan="\e[1;36m"; green="\e[0;32m"; blue="\e[1;34m"; magenta="\e[1m\e[35m"; NC="\e[0m";
 
 # variable | input
-default=${NODENAME}
-read -p "Please enter your massa-client password [$default]: " NODENAME
-NODENAME=${NODENAME:-$default}
+default=${nodename}
+read -p "Please enter your massa-client password [$default]: " nodename
+nodename=${nodename:-$default}
 
-default=${PASSWORD}
+default=${password}
 read -p "Please enter your massa-client password [$default]: " PASSWORD
 PASSWORD=${PASSWORD:-$default}
 
-echo -e "\n${CYAN}Verify the information below before proceeding with the installation!${NC}"
-echo -e "Password   : ${GREEN}$PASSWORD${NC}"
+echo -e "\n${cyan}Verify the information below before proceeding with the installation!${NC}"
+echo -e "Nodename   : ${green}$nodename${NC}"
+echo -e "Password   : ${green}$PASSWORD${NC}"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
     # environment variables
     echo "export PS1='\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] '" >> ~/.bash_profile
-    echo "export PASSWORD='${PASSWORD}'" >> ~/.bash_profile 
+    echo "export PASSWORD='${password}'" >> ~/.bash_profile 
     source ~/.bash_profile
 else
-    echo -e "${RED}Installation cancelled!${NC}"
+    echo -e "${red}Installation cancelled!${NC}"
     exit 1
 fi
 
@@ -63,7 +64,7 @@ After=network-online.target
 Environment="RUST_BACKTRACE=full"
 WorkingDirectory=$HOME/massa/massa-node
 User=$USER
-ExecStart=$HOME/massa/massa-node/massa-node -p "${PASSWORD}" 
+ExecStart=$HOME/massa/massa-node/massa-node -p "${password}" 
 Restart=always
 RestartSec=3
 
