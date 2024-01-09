@@ -23,7 +23,7 @@ read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
     # environment variables
     echo "export PS1='\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] '" >> ~/.bash_profile
-    echo "export password='${password}'" >> ~/.bash_profile 
+    echo "export nodename='${nodename}'" >> ~/.bash_profile 
     echo "export password='${password}'" >> ~/.bash_profile 
     source ~/.bash_profile
 else
