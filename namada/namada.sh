@@ -7,30 +7,30 @@
 RED='\e[0;31m'; CYAN='\e[1;36m'; GREEN='\e[0;32m'; BLUE='\e[1;34m'; MAGENTA='\e[1m\e[35m'; NC='\e[0m';
 
 # Input
-default=${VALIDATOR_ALIAS}
-read -p "Please enter your moniker name [$default]: " VALIDATOR_ALIAS
-VALIDATOR_ALIAS=${VALIDATOR_ALIAS:-$default}
+default=${MONIKER}
+read -p "Please enter your moniker-name [$default]: " MONIKER
+MONIKER=${MONIKER:-$default}
 
-default=${PASSWORD}
-read -p "Please enter your password [$default]: " PASSWORD
-PASSWORD=${PASSWORD:-$default}
+default=${WALLLET}
+read -p "Please enter your wallet-name [$default]: " WALLLET
+WALLLET=${WALLLET:-$default}
 
 default=${CHAIN_ID}
 read -p "Please enter CHAIN ID  [$default]: " CHAIN_ID
 CHAIN_ID=${CHAIN_ID:-$default}
 
 echo "Verify the information below before proceeding with the installation!\n"
-echo -e "CHAIN_ID        : ${GREEN}$CHAIN_ID${NC}"
-echo -e "VALIDATOR_ALIAS : ${GREEN}$VALIDATOR_ALIAS${NC}"
-echo -e "PASSWORD        : ${GREEN}$PASSWORD${NC}"
+echo -e "CHAIN_ID   : ${GREEN}$CHAIN_ID${NC}"
+echo -e "MONIKER    : ${GREEN}$MONIKER${NC}"
+echo -e "WALLLET    : ${GREEN}$WALLLET${NC}"
 echo -e "${MAGENTA}Recover validator & wallte files!${NC}"
 
 # environment variables 🍒
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
   echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
-  echo "export VALIDATOR_ALIAS='$VALIDATOR_ALIAS'" >> ~/.bash_profile
-  echo "export PASSWORD='$PASSWORD'" >> ~/.bash_profile
+  echo "export MONIKER='$MONIKER'" >> ~/.bash_profile
+  echo "export WALLLET='$WALLLET'" >> ~/.bash_profile
   echo "export CHAIN_ID=$CHAIN_ID" >> ~/.bash_profile
   source $HOME/.bash_profile
 else
