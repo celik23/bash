@@ -79,8 +79,8 @@ WantedBy=multi-user.target
 EOF
 
 # Only for PRE-GENESIS validator || if you not a pre gen validator skip this section
-namadac utils join-network --chain-id $CHAIN_ID \
---pre-genesis-path $HOME/.local/share/namada/pre-genesis/$MONIKER
+namadac utils join-network --chain-id $CHAIN_ID 
+# --pre-genesis-path $HOME/.local/share/namada/pre-genesis/$MONIKER
 sleep 2.5
 
 sudo systemctl daemon-reload
