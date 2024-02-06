@@ -11,9 +11,9 @@ default=${MONIKER}
 read -p "Please enter your moniker-name [$default]: " MONIKER
 MONIKER=${MONIKER:-$default}
 
-default=${WALLLET}
-read -p "Please enter your wallet-name [$default]: " WALLLET
-WALLLET=${WALLLET:-$default}
+default=${WALLET}
+read -p "Please enter your wallet-name [$default]: " WALLET
+WALLET=${WALLET:-$default}
 
 default=${CHAIN_ID}
 read -p "Please enter CHAIN ID  [$default]: " CHAIN_ID
@@ -22,7 +22,7 @@ CHAIN_ID=${CHAIN_ID:-$default}
 echo "Verify the information below before proceeding with the installation!\n"
 echo -e "CHAIN_ID   : ${GREEN}$CHAIN_ID${NC}"
 echo -e "MONIKER    : ${GREEN}$MONIKER${NC}"
-echo -e "WALLLET    : ${GREEN}$WALLLET${NC}"
+echo -e "WALLET     : ${GREEN}$WALLET${NC}"
 echo -e "${MAGENTA}Recover validator & wallte files!${NC}"
 
 # environment variables 🍒
@@ -30,7 +30,7 @@ read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
   echo 'export PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] "' >> ~/.bash_profile
   echo "export MONIKER='$MONIKER'" >> ~/.bash_profile
-  echo "export WALLLET='$WALLLET'" >> ~/.bash_profile
+  echo "export WALLET='$WALLET'" >> ~/.bash_profile
   echo "export CHAIN_ID=$CHAIN_ID" >> ~/.bash_profile
   source $HOME/.bash_profile
 else
@@ -79,7 +79,7 @@ WantedBy=multi-user.target
 EOF
 
 # Only for PRE-GENESIS validator || if you not a pre gen validator skip this section
-namadac utils join-network --chain-id $CHAIN_ID 
+namadac utils join-network --chain-id $CHAIN_ID
 sleep 2.5
 
 sudo systemctl daemon-reload
