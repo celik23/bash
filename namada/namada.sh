@@ -84,7 +84,9 @@ sleep 2.5
 
 sudo systemctl daemon-reload
 sudo systemctl enable namadad
-sudo systemctl start namadad
-sleep 2.5
 
+sleep 2.5
+reboot
+
+sudo systemctl start namadad
 sudo journalctl -u namadad -f -o cat 
