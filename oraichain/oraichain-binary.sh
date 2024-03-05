@@ -20,7 +20,7 @@ read -p "Please enter CHAIN_ID=[$default]: " CHAIN_ID
 CHAIN_ID=${CHAIN_ID:-$default}
 
 default=$MONIKER
-read -p "Please enter your NODENAME=[$default]: " MONIKER 
+read -p "Please enter your MONIKER=[$default]: " MONIKER 
 MONIKER=${MONIKER:-$default}
 
 default=${VERSION}
@@ -33,8 +33,8 @@ read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
 echo -e "${cyan}\nVerify the information below before proceeding with the installation!\n${nc}"
-echo -e "NODENAME       : ${green}$MONIKER${nc}"
-echo -e "NODENAME       : ${green}$WALLET${nc}"
+echo -e "MONIKER        : ${green}$MONIKER${nc}"
+echo -e "WALLET         : ${green}$WALLET${nc}"
 echo -e "CHAIN ID       : ${green}$CHAIN_ID${nc}"
 echo -e "NODE VERSION   : ${green}$VERSION${nc}"
 echo -e "NODE FOLDER    : ${green}$HOME/$FOLDER${nc}"
