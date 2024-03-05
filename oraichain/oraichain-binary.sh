@@ -5,7 +5,7 @@
 # constant
 # CHAIN_ID=Oraichain
 # FOLDER=".oraid"
-# NODENAME=nodename
+# MONIKER=nodename
 # WALLET=wallet
 # VERSION=0.41.5
 
@@ -19,9 +19,9 @@ default=$CHAIN_ID
 read -p "Please enter CHAIN_ID=[$default]: " CHAIN_ID 
 CHAIN_ID=${CHAIN_ID:-$default}
 
-default=$NODENAME
-read -p "Please enter your NODENAME=[$default]: " NODENAME 
-NODENAME=${NODENAME:-$default}
+default=$MONIKER
+read -p "Please enter your NODENAME=[$default]: " MONIKER 
+MONIKER=${MONIKER:-$default}
 
 default=${VERSION}
 read -p "Please enter docker pull VERSION=[$default]: " VERSION
@@ -33,7 +33,8 @@ read -p "Enter new snapshot name [$default]: " SNAPSHOTS
 SNAPSHOTS=${SNAPSHOTS:-$default}
 
 echo -e "${cyan}\nVerify the information below before proceeding with the installation!\n${nc}"
-echo -e "NODENAME       : ${green}$NODENAME${nc}"
+echo -e "NODENAME       : ${green}$MONIKER${nc}"
+echo -e "NODENAME       : ${green}$WALLET${nc}"
 echo -e "CHAIN ID       : ${green}$CHAIN_ID${nc}"
 echo -e "NODE VERSION   : ${green}$VERSION${nc}"
 echo -e "NODE FOLDER    : ${green}$HOME/$FOLDER${nc}"
@@ -43,8 +44,8 @@ read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
     echo "export CHAIN_ID=${CHAIN_ID}" >> ~/.bash_profile
     echo "export FOLDER=${FOLDER}" >> ~/.bash_profile
-    echo "export NODENAME=${NODENAME}" >> ~/.bash_profile
-    echo "export WALLET=wal-${NODENAME}" >> ~/.bash_profile
+    echo "export MONIKER=${MONIKER}" >> ~/.bash_profile
+    echo "export WALLET=${WALLET}" >> ~/.bash_profile
     echo "export VERSION=${VERSION}" >> ~/.bash_profile
     source $HOME/.bash_profile  
 else
@@ -88,7 +89,7 @@ make install
 cd ~/
 
 # Config app
-oraid init $NODENAME --chain-id $CHAIN_ID --home "$HOME/$FOLDER"
+oraid init $MONIKER --chain-id $CHAIN_ID --home "$HOME/$FOLDER"
 # oraid keys add $WALLET --recover
 
 # Download configuration
