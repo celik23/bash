@@ -7,24 +7,24 @@
 red="\e[0;31m"; cyan="\e[1;36m"; green="\e[0;32m"; blue="\e[1;34m"; magenta="\e[1m\e[35m"; nc="\e[0m";
 
 # variable | input
-default=${nodename}
-read -p "Please enter your massa-client nodename [$default]: " nodename
-nodename=${nodename:-$default}
+default=${MONIKER}
+read -p "Please enter your massa-client nodename [$default]: " MONIKER
+MONIKER=${MONIKER:-$default}
 
-default=${password}
-read -p "Please enter your massa-client password [$default]: " password
-password=${password:-$default}
+default=${PASSWORD}
+read -p "Please enter your massa-client password [$default]: " PASSWORD
+PASSWORD=${PASSWORD:-$default}
 
 echo -e "\n${cyan}Verify the information below before proceeding with the installation!${nc}"
-echo -e "Nodename   : ${green}$nodename${nc}"
-echo -e "Password   : ${green}$password${nc}"
+echo -e "Nodename   : ${green}$MONIKER${nc}"
+echo -e "Password   : ${green}$PASSWORD${nc}"
 
 read -p "Is the above information correct? (y/N) " choice
 if [[ $choice == [Yy]* ]]; then
     # environment variables
     echo "export PS1='\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]\[\e[38;5;172m\]\u\[\e[m\]@\[\e[1;34m\]\h:\[\e[1;36m\]\w\[\e[1;35m\]\$\[\e[0m\] '" >> ~/.bash_profile
-    echo "export nodename='${nodename}'" >> ~/.bash_profile 
-    echo "export password='${password}'" >> ~/.bash_profile 
+    echo "export nodename='${MONIKER}'" >> ~/.bash_profile 
+    echo "export password='${PASSWORD}'" >> ~/.bash_profile 
     source ~/.bash_profile
 else
     echo -e "${red}Installation cancelled!${nc}"
@@ -66,7 +66,7 @@ After=network-online.target
 Environment="RUST_BACKTRACE=full"
 WorkingDirectory=$HOME/massa/massa-node
 User=$USER
-ExecStart=$HOME/massa/massa-node/massa-node -p "${password}" 
+ExecStart=$HOME/massa/massa-node/massa-node -p "${PASSWORD}" 
 Restart=always
 RestartSec=3
 
