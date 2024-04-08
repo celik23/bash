@@ -4,7 +4,7 @@ import socket
 import time
 from datetime import datetime
 
-template = "{NAME}\t{TIME}\t{MSG}"
+template = "{NAME}\t{NOW}\t{MSG}"
 
 class Server():
 	def __init__(self, name, host, port, failure):
@@ -22,19 +22,23 @@ class Server():
 		except socket.error:
 			return False
 
+	def write_file(self,msg):
+		self.failure = (datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3])
+		print(template.format(NAME=self.name,NOW=self.failure,MSG=msg))
+		with open('internet.log', 'a+', encoding='utf-8') as f:
+			f.write(template.format(NAME=self.name,NOW=self.failure,MSG=msg+"\n"))
+
 
 	# report only isp or router down!
 	def check_connectivity(self):
 		if self.watchdog():
 			if self.failure:
-				now = (datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3])
-				print(template.format(NAME=self.name,TIME=now,MSG="UP"))
+				self.write_file('UP')
 				self.failure = None
 			return True
 		else:
 			if not self.failure:
-				self.failure = (datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3])
-				print(template.format(NAME=self.name,TIME=self.failure,MSG="DOWN"))
+				self.write_file('DOWN')
 			return False
 
 if __name__ == "__main__":
@@ -42,10 +46,10 @@ if __name__ == "__main__":
 	router = Server('router','192.168.2.254',80,True)
 	isp = Server('google','google.nl',80,True)
 
+	# check more often if there's already an issue.
 	while True:
 		try:
 			time.sleep(0.5)
-			# check more often if there's already an issue.
 			if router.check_connectivity():
 				isp.check_connectivity()
 		except KeyboardInterrupt:
