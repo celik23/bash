@@ -38,13 +38,19 @@ class Server():
 			return False
 
 if __name__ == "__main__":
-
+	# check first isp-router second google.nl
 	router = Server('router','192.168.2.254',80,True)
 	isp = Server('google','google.nl',80,True)
 
 	while True:
-		time.sleep(0.5)
 
-		if router.check_connectivity():
-			isp.check_connectivity()
 
+		try:
+			time.sleep(0.5)
+			# check more often if there's already an issue.
+			if router.check_connectivity():
+				isp.check_connectivity()
+		except KeyboardInterrupt:
+			print("\nGood bye! Hope your ISP issues are resolved!")
+			exit()
+#
