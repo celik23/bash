@@ -43,8 +43,6 @@ if __name__ == "__main__":
 	isp = Server('google','google.nl',80,True)
 
 	while True:
-
-
 		try:
 			time.sleep(0.5)
 			# check more often if there's already an issue.
