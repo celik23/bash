@@ -38,8 +38,6 @@ class Server():
 				f.write(msg+'\n')
 
 
-
-
 if __name__ == "__main__":
 	# check isp-router and google.nl
 	servers = [Server('router', '192.168.2.254', 80, None), Server('google', '8.8.8.8', 53, None)]
