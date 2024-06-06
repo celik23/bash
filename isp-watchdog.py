@@ -56,4 +56,4 @@ if __name__ == "__main__":
 		except KeyboardInterrupt:
 			print("\nGood bye! Hope your ISP issues are resolved!")
 			exit()
-# tracert 8.8.8.8
+# 
