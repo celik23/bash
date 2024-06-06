@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-# ISP Downtime Monitoring | [pi]-----[router]-----[google] ❌✅
+# ISP Downtime Monitoring | [pi]---->[router]---->[google] <- [ ❌✅ ]
 # pip install socket
 import socket
-import time
 from datetime import datetime
-from time import strftime, localtime
+from time import strftime, localtime, time
 
 template = "{NAME}\t{TIME}\t{LENGTH}\t{ERROR}"
 
@@ -14,7 +13,6 @@ class Server():
 		self.host = host
 		self.port = port
 		self.failure = failure
-
 
 	def check_connectivity(self):
 		try:
@@ -27,33 +25,31 @@ class Server():
 
 		except OSError as error:
 			if not self.failure:
-				self.failure = time.time()
-
-
+				self.failure = time()
 
 	def write_to_file(self):
-		duration = time.time() - self.failure
+		duration = time() - self.failure
 		tm = (datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 		msg = template.format(NAME=self.name, TIME=tm, LENGTH=duration, ERROR='❌')
-		print(msg)
+		print(msg)		
 
-		with open('internet.log', 'a+', encoding='utf-8') as f:
-			f.write(msg+'\n')
+		if duration > 3.5:
+			with open('internet.log', 'a+', encoding='utf-8') as f:
+				f.write(msg+'\n')
+
 
 
 
 if __name__ == "__main__":
-	# check first isp-router second google.nl
-	servers = [Server('google','8.8.8.8',53,None)]
-	# servers = [Server('router','192.168.2.254',80,None), Server('google','8.8.8.8',53,None)]
+	# check isp-router and google.nl
+	servers = [Server('router', '192.168.2.254', 80, None), Server('google', '8.8.8.8', 53, None)]
 	
-	servers[0].failure = time.time()
+	servers[0].failure = time()
 	servers[0].check_connectivity()
 
 	# check more often if there's already an issue.
 	while True:
 		try:
-			time.sleep(0.2)
 			for server in servers:
 				server.check_connectivity()
 
