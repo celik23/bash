@@ -1,7 +1,3 @@
-#!/bin/bash
-#
-# // Copyright (C) 2023-2024
-#
 # input password
 default=${PASSWORD}
 read -p "Please enter your massa-client password [$default]: " PASSWORD
@@ -16,12 +12,13 @@ source $HOME/.bash_profile
 sudo apt -qy update && sudo apt -qy upgrade
 sudo apt -qy install curl git jq lz4 build-essential fail2ban ufw
 
-# find CPU architecture
-OS=$([[ $(uname -m) == "aarch64" ]] && echo "_arm64" || echo "")
+# Determine the operating system and architecture
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+ARCH=$([[ $(uname -m) == "aarch64" ]] && echo "_arm64" || echo "")
 
 # install and init app
 export VER=2.4
-FILE="massa_MAIN.${VER}_release_linux${OS}.tar.gz"
+FILE="massa_MAIN.${VER}_release_${OS}${ARCH}.tar.gz"
 URL="https://github.com/massalabs/massa/releases/download/MAIN.${VER}/${FILE}"
 wget "${URL}" -O $HOME/${FILE}
 tar -xvf $HOME/${FILE} -C $HOME/
@@ -52,4 +49,4 @@ systemctl daemon-reload
 systemctl enable massad
 
 sudo systemctl restart massad && sudo journalctl -fu massad -o cat 
-
+#
