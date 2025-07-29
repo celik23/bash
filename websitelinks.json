@@ -89,6 +89,12 @@
     "catagori": "react",
     "url": "https://scratch-dark.goktengri.nl"
   },
+    {
+    "logo": "https://github.com/massalabs.png",
+    "name": "shopsy",
+    "catagori": "react",
+    "url": "https://shopsy.goktengri.nl"
+  },
   {
     "logo": "https://github.com/massalabs.png",
     "name": "tic-tac-toe",
