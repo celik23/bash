@@ -7,6 +7,12 @@
   },
   {
     "logo": "https://github.com/massalabs.png",
+    "name": "brew-haven",
+    "catagori": "react",
+    "url": "https://brew-haven.goktengri.nl"
+  },
+  {
+    "logo": "https://github.com/massalabs.png",
     "name": "color-palette",
     "catagori": "react",
     "url": "https://color-palette.goktengri.nl"
@@ -89,7 +95,7 @@
     "catagori": "react",
     "url": "https://scratch-dark.goktengri.nl"
   },
-    {
+  {
     "logo": "https://github.com/massalabs.png",
     "name": "shopsy",
     "catagori": "react",
