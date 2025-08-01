@@ -1,176 +1,130 @@
 [
   {
-    "logo": "https://github.com/massalabs.png",
     "name": "aqportfolio",
-    "catagori": "react",
-    "url": "https://aqportfolio.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
     "name": "brew-haven",
-    "catagori": "react",
-    "url": "https://brew-haven.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
     "name": "color-palette",
-    "catagori": "react",
-    "url": "https://color-palette.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
-    "name": "comforty-ecommerc",
-    "catagori": "react",
-    "url": "https://comforty-ecommerce.goktengri.nl"
+    "name": "comforty-ecommerce",
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
     "name": "cosmetic",
-    "catagori": "react",
-    "url": "https://cosmetic.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
     "name": "dental",
-    "catagori": "react",
-    "url": "https://dental.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
+    "name": "dona",
+    "category ": "react"
+  },
+  {
     "name": "e-commerce",
-    "catagori": "cireactl",
-    "url": "https://e-commerce.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
-    "name": "ice-cream 2de",
-    "catagori": "react",
-    "url": "https://ice-cream2.goktengri.nl"
+    "name": "ice-cream",
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
     "name": "in2hiar",
-    "catagori": "react",
-    "url": "https://in2hiar.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
     "name": "navbar",
-    "catagori": "react",
-    "url": "https://navbar.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
     "name": "nexovate",
-    "catagori": "react",
-    "url": "https://nexovate.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
     "name": "pedro-tech",
-    "catagori": "react",
-    "url": "https://pedro-tech.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
-    "name": "perfume 2de",
-    "catagori": "react",
-    "url": "https://perfume2.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
-    "name": "portfolio-dark",
-    "catagori": "react",
-    "url": "https://portfolio-dark.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
-    "name": "qr-code",
-    "catagori": "react",
-    "url": "https://qr-code.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
-    "name": "scratch-dark",
-    "catagori": "react",
-    "url": "https://scratch-dark.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
-    "name": "shopsy",
-    "catagori": "react",
-    "url": "https://shopsy.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
-    "name": "tic-tac-toe",
-    "catagori": "react",
-    "url": "https://tic-tac-toe.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/oraichain.png",
-    "name": "burger",
-    "catagori": "cli",
-    "url": "https://burger.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
-    "name": "coffee",
-    "catagori": "cli",
-    "url": "https://coffee.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
-    "name": "ice cream",
-    "catagori": "plc",
-    "url": "https://ice-cream.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/oraichain.png",
-    "name": "moderen-interior",
-    "catagori": "cli",
-    "url": "https://moderen-interior.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
-    "name": "realestate",
-    "catagori": "cil",
-    "url": "https://realestate.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
     "name": "perfume",
-    "catagori": "cli",
-    "url": "https://perfume.goktengri.nl"
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
-    "name": "plant",
-    "catagori": "cli",
-    "url": "https://plant.goktengri.nl"
+    "name": "portfolio-dark",
+    "category ": "react"
   },
   {
-    "logo": "https://github.com/massalabs.png",
-    "name": "vite-course",
-    "catagori": "cdn",
-    "url": "https://vite-course.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
-    "name": "vue-cosmetic",
-    "catagori": "vue",
-    "url": "https://vue-cosmetic.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
-    "name": "vue-sidebar",
-    "catagori": "vue",
-    "url": "https://vue-sidebar.goktengri.nl"
-  },
-  {
-    "logo": "https://github.com/massalabs.png",
     "name": "portfolio-sitebar",
-    "catagori": "next.js",
-    "url": "https://portfolio-sitebar.goktengri.nl"
+    "category ": "react"
+  },
+  {
+    "name": "qr-code",
+    "category ": "react"
+  },
+  {
+    "name": "scratch-dark",
+    "category ": "react"
+  },
+  {
+    "name": "shopsy",
+    "category ": "react"
+  },
+  {
+    "name": "tic-tac-toe",
+    "category ": "react"
+  },
+  {
+    "name": "burger",
+    "category ": "cli"
+  },
+  {
+    "name": "coffee",
+    "category ": "cli"
+  },
+  {
+    "name": "vergunning",
+    "category ": "cdn"
+  },
+  {
+    "name": "vite-course",
+    "category ": "cdn"
+  },
+  {
+    "name": "ice-cream2",
+    "category ": "cli"
+  },
+  {
+    "name": "moderen-interior",
+    "category ": "cli"
+  },
+  {
+    "name": "realestate",
+    "category ": "cil"
+  },
+  {
+    "name": "perfume2",
+    "category ": "cli"
+  },
+  {
+    "name": "plant",
+    "category ": "cli"
+  },
+  {
+    "name": "vue-cosmetic",
+    "category ": "vue"
+  },
+  {
+    "name": "vue-sidebar",
+    "category ": "vue"
+  },
+  {
+    "name": "portfolio-sitebar",
+    "category ": "next.js"
   }
 ]
