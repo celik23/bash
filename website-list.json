@@ -1,126 +1,126 @@
 [
   {
     "name": "aqportfolio",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "brew-haven",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "color-palette",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "comforty-ecommerce",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "cosmetic",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "dental",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "dona",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "e-commerce",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "in2hiar",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "navbar",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "nexovate",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "pedro-tech",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "perfume",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "portfolio-dark",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "portfolio-sitebar",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "qr-code",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "scratch-dark",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "shopsy",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "tic-tac-toe",
-    "category ": "react"
+    "category": "react"
   },
   {
     "name": "burger",
-    "category ": "cli"
+    "category": "cli"
   },
   {
     "name": "coffee",
-    "category ": "cli"
+    "category": "cli"
   },
   {
     "name": "vergunning",
-    "category ": "cdn"
+    "category": "cdn"
   },
   {
     "name": "vite-course",
-    "category ": "cdn"
+    "category": "cdn"
   },
   {
     "name": "ice-cream2",
-    "category ": "cli"
+    "category": "cli"
   },
   {
     "name": "moderen-interior",
-    "category ": "cli"
+    "category": "cli"
   },
   {
     "name": "realestate",
-    "category ": "cil"
+    "category": "cil"
   },
   {
     "name": "perfume2",
-    "category ": "cli"
+    "category": "cli"
   },
   {
     "name": "plant",
-    "category ": "cli"
+    "category": "cli"
   },
   {
     "name": "vue-cosmetic",
-    "category ": "vue"
+    "category": "vue"
   },
   {
     "name": "vue-sidebar",
-    "category ": "vue"
+    "category": "vue"
   },
   {
     "name": "portfolio-sitebar",
-    "category ": "next.js"
+    "category": "next.js"
   }
 ]
