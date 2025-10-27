@@ -2,8 +2,17 @@
 #
 # // Copyright (C) 2025
 
+# Setting Monday as the First Day
+# sudo nano /etc/default/locale
+# LC_TIME="en_IE.UTF-8"
+echo 'LC_TIME="en_IE.UTF-8"' > /etc/default/locale
+
 # KDE Partition Manager
 sudo apt install partitionmanager
+
+# Printer services
+sudo systemctl start cups
+sudo systemctl enable cups
 
 # google-chrome
 sudo apt-get install libxss1 libappindicator1 libindicator7
