@@ -17,3 +17,13 @@ sudo snap install snapd
 sudo snap install brave
 
 #vscode
+sudo apt update
+sudo apt upgrade
+sudo apt install dirmngr ca-certificates software-properties-common apt-transport-https curl -y
+curl -fSsL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/vscode.gpg >/dev/null
+echo deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/vscode stable main | sudo tee /etc/apt/sources.list.d/vscode.list
+sudo apt update
+sudo apt install code
+sudo apt install code-insiders
+
+
