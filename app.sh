@@ -11,6 +11,10 @@ echo 'LC_TIME="en_IE.UTF-8"' | sudo tee -a /etc/default/locale
 sudo apt install partitionmanager
 
 # Printer services
+sudo apt update
+sudo apt install cups
+sudo apt install printer-driver-cups-pdf
+
 sudo systemctl start cups
 sudo systemctl enable cups
 
