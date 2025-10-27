@@ -2,6 +2,7 @@
 #
 # // Copyright (C) 2025
 
+# KDE Partition Manager
 sudo apt install partitionmanager
 
 # google-chrome
