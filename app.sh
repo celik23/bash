@@ -3,9 +3,7 @@
 # // Copyright (C) 2025
 
 # Setting Monday as the First Day
-# sudo nano /etc/default/locale
-# LC_TIME="en_IE.UTF-8"
-echo 'LC_TIME="nl_NL.UTF-8"' | sudo tee -a /etc/default/locale
+echo 'LC_TIME=nl_NL.UTF-8' | sudo tee -a /etc/default/locale
 
 # Configure automatic login
 sudo sed -i "/AutomaticLoginEnable =/, /AutomaticLogin =/ {
