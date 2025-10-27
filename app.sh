@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # // Copyright (C) 2025
-
+#
 # Setting Monday as the First Day
 echo 'LC_TIME=nl_NL.UTF-8' | sudo tee -a /etc/default/locale
 
@@ -18,7 +18,6 @@ sudo apt install partitionmanager
 sudo apt update
 sudo apt install cups
 sudo apt install printer-driver-cups-pdf
-
 sudo systemctl start cups
 sudo systemctl enable cups
 # Settings > Printers > Unlock > HP_LaserJet_M402dw_AF41C3
@@ -29,7 +28,7 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome*.deb
 # sudo apt-get install -f
 
-# Breave
+# Brave
 sudo apt update
 sudo apt install snapd
 sudo snap install snapd
@@ -48,12 +47,25 @@ sudo apt install code-insiders
 # Sublime Text - Text Editing, Done Right
 https://www.sublimetext.com/
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/apt/keyrings/sublimehq-pub.asc > /dev/null
-
 echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
-
 sudo apt-get update
 sudo apt-get install sublime-text
 
 # Install Grub Customizer
 sudo apt install grub-customizer
 
+lsblk
+sudo fdisk -l
+
+# # mount
+# sudo mount -o rw,remount /boot/efi
+# sudo mkdir /mnt/efi
+# sudo mount /dev/sda1 -t vfat /mnt
+# cd /mnt/efi
+
+# # unmount
+# sudo unmount /dev/sda1
+
+# # NVRAM entry to boot.
+# sudo efibootmgr -v
+# sudo efibootmgr --delete-bootnum --bootnum 3
