@@ -21,6 +21,7 @@ sudo apt install printer-driver-cups-pdf
 
 sudo systemctl start cups
 sudo systemctl enable cups
+# Settings > Printers > Unlock > HP_LaserJet_M402dw_AF41C3
 
 # google-chrome
 sudo apt-get install libxss1 libappindicator1 libindicator7
