@@ -8,8 +8,8 @@
 echo 'LC_TIME="nl_NL.UTF-8"' | sudo tee -a /etc/default/locale
 
 # Configure automatic login
-echo "AutomaticLoginEnable = true" | sudo tee -a /etc/gdm3/daemon.conf
-echo "AutomaticLogin = kaan" | sudo tee -a /etc/gdm3/daemon.conf
+echo'AutomaticLoginEnable = true' | sudo tee -a /etc/gdm3/daemon.conf
+echo'AutomaticLogin = kaan' | sudo tee -a /etc/gdm3/daemon.conf
 
 # KDE Partition Manager
 sudo apt install partitionmanager
