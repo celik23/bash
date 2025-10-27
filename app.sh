@@ -8,7 +8,7 @@
 echo 'LC_TIME="nl_NL.UTF-8"' | sudo tee -a /etc/default/locale
 
 # Configure automatic login
-sed -i "/minimum-gas-prices =/, /halt-height =/ {
+sed -i "/AutomaticLoginEnable =/, /AutomaticLogin =/ {
   s|AutomaticLoginEnable =.*|AutomaticLoginEnable = true2|;
   s|AutomaticLogin =.*|AutomaticLogin = kaan2|;
 }" /etc/gdm3/daemon.conf
