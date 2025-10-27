@@ -5,7 +5,7 @@
 # Setting Monday as the First Day
 # sudo nano /etc/default/locale
 # LC_TIME="en_IE.UTF-8"
-echo 'LC_TIME="en_IE.UTF-8"' | sudo tee -a /etc/default/locale
+echo 'LC_TIME="nl_NL.UTF-8"' | sudo tee -a /etc/default/locale
 
 # KDE Partition Manager
 sudo apt install partitionmanager
