@@ -12,10 +12,10 @@ sudo sed -i "/AutomaticLoginEnable =/, /AutomaticLogin =/ {
 }" /etc/gdm3/daemon.conf
 
 # KDE Partition Manager
-sudo apt install partitionmanager
+sudo apt install partitionmanager -y
 
 # Printer services
-sudo apt update
+sudo apt update -y
 sudo apt install cups
 sudo apt install printer-driver-cups-pdf
 sudo systemctl start cups
@@ -29,31 +29,29 @@ sudo apt install ./google-chrome*.deb
 # sudo apt-get install -f
 
 # Brave
-sudo apt update
+sudo apt update -y
 sudo apt install snapd
 sudo snap install snapd
 sudo snap install brave
 
 #vscode
-sudo apt update
-sudo apt upgrade
+sudo apt update -y
+sudo apt upgrade -y
 sudo apt install dirmngr ca-certificates software-properties-common apt-transport-https curl -y
 curl -fSsL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/vscode.gpg >/dev/null
 echo deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/vscode stable main | sudo tee /etc/apt/sources.list.d/vscode.list
-sudo apt update
+sudo apt update -y
 sudo apt install code
 sudo apt install code-insiders
 
 # Sublime Text - Text Editing, Done Right
-https://www.sublimetext.com/
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/apt/keyrings/sublimehq-pub.asc > /dev/null
 echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
-sudo apt-get update
-sudo apt-get install sublime-text
+sudo apt update -y
+sudo apt install sublime-text
 
 # Install Grub Customizer
-sudo apt install grub-customizer
-
+sudo apt install grub-customizer -y
 lsblk
 sudo fdisk -l
 
@@ -73,4 +71,3 @@ sudo fdisk -l
 # Pardus GNOME Greeter
 # - Mac Style
 # - Pardus Style
-
