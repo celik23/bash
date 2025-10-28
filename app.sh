@@ -69,3 +69,8 @@ sudo fdisk -l
 # # NVRAM entry to boot.
 # sudo efibootmgr -v
 # sudo efibootmgr --delete-bootnum --bootnum 3
+
+# Pardus GNOME Greeter
+# - Mac Style
+# - Pardus Style
+
