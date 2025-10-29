@@ -61,6 +61,10 @@ sudo apt install grub-customizer -y
 lsblk
 sudo fdisk -l
 
+# File manager
+# Ctrl + Alt + T
+# nautilus admin:/
+
 # superfile
 # bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
 
