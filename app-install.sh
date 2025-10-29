@@ -2,17 +2,7 @@
 #
 # // Copyright (C) 2025
 #
-
-### snapd ###
-# Brave
-sudo apt update -y
-sudo apt install snapd
-sudo snap install snapd
-sudo snap install brave
-
-# KeePassXC
-sudo snap install keepassxc
-
+# setup gonme
 # Setting Monday as the First Day
 echo 'LC_TIME=nl_NL.UTF-8' | sudo tee -a /etc/default/locale
 
@@ -21,6 +11,17 @@ sudo sed -i \
     -e 's/^\s*#\?\s*AutomaticLoginEnable\s*=.*/AutomaticLoginEnable = true/' \
     -e 's/^\s*#\?\s*AutomaticLogin\s*=.*/AutomaticLogin = kaan/' \
     /etc/gdm3/daemon.conf
+
+### snapd ###
+sudo apt update -y
+sudo apt install snapd
+sudo snap install snapd
+
+# Brave
+sudo snap install brave
+
+# KeePassXC
+sudo snap install keepassxc
 
 # KDE Partition Manager
 sudo apt install partitionmanager -y
