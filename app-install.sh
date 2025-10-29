@@ -40,6 +40,10 @@ sudo snap install keepassxc
 # superfile
 # bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
 
+# yazi
+# apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
+
+
 #vscode
 sudo apt update -y
 sudo apt upgrade -y
