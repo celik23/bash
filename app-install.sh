@@ -34,6 +34,9 @@ sudo apt install snapd
 sudo snap install snapd
 sudo snap install brave
 
+# KeePassXC
+sudo snap install keepassxc
+
 #vscode
 sudo apt update -y
 sudo apt upgrade -y
