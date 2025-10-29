@@ -2,6 +2,17 @@
 #
 # // Copyright (C) 2025
 #
+
+### snapd ###
+# Brave
+sudo apt update -y
+sudo apt install snapd
+sudo snap install snapd
+sudo snap install brave
+
+# KeePassXC
+sudo snap install keepassxc
+
 # Setting Monday as the First Day
 echo 'LC_TIME=nl_NL.UTF-8' | sudo tee -a /etc/default/locale
 
@@ -27,15 +38,6 @@ sudo apt-get install libxss1 libappindicator1 libindicator7
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome*.deb
 # sudo apt-get install -f
-
-# Brave
-sudo apt update -y
-sudo apt install snapd
-sudo snap install snapd
-sudo snap install brave
-
-# KeePassXC
-sudo snap install keepassxc
 
 # superfile
 # bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
