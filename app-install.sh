@@ -39,13 +39,6 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome*.deb
 # sudo apt-get install -f
 
-# superfile
-# bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
-
-# yazi
-# apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
-
-
 #vscode
 sudo apt update -y
 sudo apt upgrade -y
@@ -66,6 +59,12 @@ sudo apt install sublime-text
 sudo apt install grub-customizer -y
 lsblk
 sudo fdisk -l
+
+# superfile
+# bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
+
+# yazi
+# apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
 
 # # mount
 # sudo mount -o rw,remount /boot/efi
