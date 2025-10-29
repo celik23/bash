@@ -37,6 +37,9 @@ sudo snap install brave
 # KeePassXC
 sudo snap install keepassxc
 
+# superfile
+bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
+
 #vscode
 sudo apt update -y
 sudo apt upgrade -y
