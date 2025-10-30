@@ -22,10 +22,13 @@ sudo snap install snapd
 sudo snap install brave
 
 # KeePassXC
-sudo snap install keepassxc
+sudo snap install keepassxc -y
 
 # KDE Partition Manager
 sudo apt install partitionmanager -y
+
+# File manager krusader
+sudo apt install krusader -y
 
 # Printer services
 sudo apt update -y
