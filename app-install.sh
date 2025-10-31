@@ -30,6 +30,9 @@ sudo apt install partitionmanager -y
 # File manager krusader
 sudo apt install krusader -y
 
+# Filezilla
+sudo apt-get install filezilla   
+
 # Printer services
 sudo apt update -y
 sudo apt install cups
