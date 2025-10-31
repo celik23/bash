@@ -31,7 +31,7 @@ sudo apt install partitionmanager -y
 sudo apt install krusader -y
 
 # Filezilla
-sudo apt-get install filezilla   
+sudo apt-get install filezilla -y 
 
 # Printer services
 sudo apt update -y
