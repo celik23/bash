@@ -3,6 +3,9 @@
 # // Copyright (C) 2025
 #
 # setup gonme
+sudo apt update -y
+sudo apt upgrade -y
+
 # Setting Monday as the First Day
 echo 'LC_TIME=nl_NL.UTF-8' | sudo tee -a /etc/default/locale
 
@@ -12,10 +15,6 @@ sudo sed -i \
     -e 's/^\s*#\?\s*AutomaticLogin\s*=.*/AutomaticLogin = kaan/' \
     /etc/gdm3/daemon.conf
 
-### snapd ###
-sudo apt update -y
-sudo apt upgrade -y
-
 # KDE Partition Manager
 sudo apt install partitionmanager -y
 
@@ -24,6 +23,9 @@ sudo apt install krusader -y
 
 # Filezilla
 sudo apt install filezilla -y 
+
+# Install Grub Customizer
+sudo apt install grub-customizer -y
 
 # Printer services
 sudo apt install cups
@@ -52,9 +54,6 @@ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/ap
 echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
 sudo apt-get update
 sudo apt-get install sublime-text
-
-# Install Grub Customizer
-sudo apt install grub-customizer -y
 
 ###
 # Install snap
