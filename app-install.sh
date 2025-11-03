@@ -23,7 +23,7 @@ sudo apt install partitionmanager -y
 sudo apt install krusader -y
 
 # Filezilla
-sudo apt-get install filezilla -y 
+sudo apt install filezilla -y 
 
 # Printer services
 sudo apt install cups
@@ -44,8 +44,6 @@ sudo apt install sublime-text -y
 
 # Install Grub Customizer
 sudo apt install grub-customizer -y
-lsblk
-sudo fdisk -l
 
 ###
 # Install snap
@@ -66,6 +64,8 @@ sudo snap install firefox
 #sudo snap refresh firefox
 
 
+lsblk
+sudo fdisk -l
 
 # File manager
 # Ctrl + Alt + T
