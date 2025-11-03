@@ -59,9 +59,6 @@ sudo snap install snapd
 # Brave | KeePassXC | Firefox
 sudo snap install brave keepassxc firefox
 
-# Firefox update
-#sudo snap refresh firefox
-
 lsblk
 sudo fdisk -l
 
@@ -71,9 +68,6 @@ sudo fdisk -l
 
 # superfile
 # bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
-
-# yazi
-# apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
 
 # # mount
 # sudo mount -o rw,remount /boot/efi
