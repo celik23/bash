@@ -15,22 +15,7 @@ sudo sed -i \
 ### snapd ###
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install snapd -y
-sudo snap install snapd
 
-# Brave
-sudo snap install brave
-
-# KeePassXC
-sudo snap install keepassxc
-
-# Firefox lates
-sudo snap install firefox
-
-# Firefox update
-#sudo snap refresh firefox
-
-###
 # KDE Partition Manager
 sudo apt install partitionmanager -y
 
@@ -61,6 +46,26 @@ sudo apt install sublime-text -y
 sudo apt install grub-customizer -y
 lsblk
 sudo fdisk -l
+
+###
+# Install snap
+sudo apt install snapd -y
+sudo snap install snapd
+
+
+# Brave
+sudo snap install brave
+
+# KeePassXC
+sudo snap install keepassxc
+
+# Firefox lates
+sudo snap install firefox
+
+# Firefox update
+#sudo snap refresh firefox
+
+
 
 # File manager
 # Ctrl + Alt + T
