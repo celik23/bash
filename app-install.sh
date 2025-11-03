@@ -62,7 +62,6 @@ sudo snap install brave keepassxc firefox
 # Firefox update
 #sudo snap refresh firefox
 
-
 lsblk
 sudo fdisk -l
 
