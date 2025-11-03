@@ -15,7 +15,7 @@ sudo sed -i \
 ### snapd ###
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install snapd
+sudo apt install snapd -y
 sudo snap install snapd
 
 # Brave
