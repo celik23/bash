@@ -22,10 +22,10 @@ sudo snap install snapd
 sudo snap install brave
 
 # KeePassXC
-sudo snap install keepassxc -y
+sudo snap install keepassxc
 
 # Firefox lates
-sudo snap install firefox -y
+sudo snap install firefox
 
 ###
 # KDE Partition Manager
