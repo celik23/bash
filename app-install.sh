@@ -27,6 +27,9 @@ sudo snap install keepassxc
 # Firefox lates
 sudo snap install firefox
 
+# Firefox update
+#sudo snap refresh firefox
+
 ###
 # KDE Partition Manager
 sudo apt install partitionmanager -y
