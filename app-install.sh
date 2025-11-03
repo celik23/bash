@@ -32,15 +32,26 @@ sudo systemctl start cups
 sudo systemctl enable cups
 # Settings > Printers > Unlock > HP_LaserJet_M402dw_AF41C3
 
-# Google-chrome-stable
-sudo apt install google-chrome-stable -y
-# sudo apt purge google-chrome-stable
+# Google-Chrome
+sudo apt-get install libxss1 libappindicator1 libindicator7
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome*.deb
 
 #VSCode
-sudo apt install code -y
+sudo apt update
+sudo apt upgrade
+sudo apt install dirmngr ca-certificates software-properties-common apt-transport-https curl -y
+curl -fSsL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/vscode.gpg >/dev/null
+echo deb [arch=amd64 signed-by=/usr/share/keyrings/vscode.gpg] https://packages.microsoft.com/repos/vscode stable main | sudo tee /etc/apt/sources.list.d/vscode.list
+sudo apt update
+sudo apt install code
+sudo apt install code-insiders
 
 # Sublime Text
-sudo apt install sublime-text -y
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/apt/keyrings/sublimehq-pub.asc > /dev/null
+echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
+sudo apt-get update
+sudo apt-get install sublime-text
 
 # Install Grub Customizer
 sudo apt install grub-customizer -y
