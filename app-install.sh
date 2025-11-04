@@ -35,7 +35,7 @@ sudo systemctl enable cups
 # Settings > Printers > Unlock > HP_LaserJet_M402dw_AF41C3
 
 # Google-Chrome
-sudo apt-get install libxss1 libappindicator1 libindicator7
+sudo apt install libxss1 libappindicator1 libindicator7
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome*.deb
 
