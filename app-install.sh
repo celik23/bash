@@ -69,8 +69,14 @@ sudo apt install sublime-text
 sudo apt install snapd -y
 sudo snap install snapd
 
-# Brave | KeePassXC | Firefox
-sudo snap install brave keepassxc firefox
+# Brave
+sudo snap install brave
+
+# KeePassXC
+sudo snap install keepassxc
+
+# Firefox
+sudo snap install firefox
 
 lsblk
 sudo fdisk -l
