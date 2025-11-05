@@ -27,6 +27,9 @@ sudo apt install filezilla -y
 # Install Grub Customizer
 sudo apt install grub-customizer -y
 
+# GNOME partition editor
+sudo apt install gparted -y
+
 # Printer services
 sudo apt install cups
 sudo apt install printer-driver-cups-pdf
