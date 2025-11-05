@@ -16,7 +16,7 @@ sudo sed -i \
     /etc/gdm3/daemon.conf
 
 # KDE Partition Manager
-sudo apt install partitionmanager -y
+# sudo apt install partitionmanager -y
 
 # GNOME partition editor
 sudo apt install gparted -y
