@@ -18,6 +18,9 @@ sudo sed -i \
 # KDE Partition Manager
 sudo apt install partitionmanager -y
 
+# GNOME partition editor
+sudo apt install gparted -y
+
 # File manager krusader
 sudo apt install krusader -y
 
@@ -27,12 +30,8 @@ sudo apt install filezilla -y
 # Install Grub Customizer
 sudo apt install grub-customizer -y
 
-# GNOME partition editor
-sudo apt install gparted -y
-
 # Printer services
-sudo apt install cups
-sudo apt install printer-driver-cups-pdf
+sudo apt install -y cups printer-driver-cups-pdf
 sudo systemctl start cups
 sudo systemctl enable cups
 # Settings > Printers > Unlock > HP_LaserJet_M402dw_AF41C3
