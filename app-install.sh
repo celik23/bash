@@ -84,6 +84,7 @@ sudo fdisk -l
 # File manager
 # Ctrl + Alt + T
 # nautilus admin:/
+# sudo krusader
 
 # superfile
 # bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
