@@ -56,13 +56,11 @@ Signed-By: /usr/share/keyrings/microsoft.gpg
 EOF
 
 # 3. Update package lists and install VS Code
-sudo apt update
 sudo apt install code
 
 # Sublime Text
 sudo wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/apt/keyrings/sublimehq-pub.asc > /dev/null
 echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
-sudo apt update
 sudo apt install sublime-text
 
 
