@@ -15,7 +15,7 @@ sudo sed -i \
     -e 's/^\s*#\?\s*AutomaticLogin\s*=.*/AutomaticLogin = kaan/' \
     /etc/gdm3/daemon.conf
 
-# KDE Partition Manager
+# KDE partition Manager
 # sudo apt install partitionmanager -y
 
 # GNOME partition editor
