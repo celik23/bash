@@ -78,6 +78,9 @@ sudo snap install keepassxc
 # Firefox
 sudo snap install firefox
 
+# Sublime Text
+sudo snap install --classic code
+
 lsblk
 sudo fdisk -l
 
