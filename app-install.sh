@@ -2,7 +2,7 @@
 #
 # // Copyright (C) 2025
 #
-# setup gonme
+echo "# setup gonme"
 sudo apt update -y
 sudo apt upgrade -y
 
