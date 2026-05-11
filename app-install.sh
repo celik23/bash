@@ -6,46 +6,46 @@
 sudo apt update -y
 sudo apt upgrade -y
 
-# Setting Monday as the First Day
+echo "# Setting Monday as the First Day"
 echo 'LC_TIME=nl_NL.UTF-8' | sudo tee -a /etc/default/locale
 
-# Configure automatic login
+echo "# Configure automatic login"
 sudo sed -i \
     -e 's/^\s*#\?\s*AutomaticLoginEnable\s*=.*/AutomaticLoginEnable = true/' \
     -e 's/^\s*#\?\s*AutomaticLogin\s*=.*/AutomaticLogin = kaan/' \
     /etc/gdm3/daemon.conf
 
-# KDE partition Manager
+echo "# KDE partition Manager"
 # sudo apt install partitionmanager -y
 
-# GNOME partition editor
+echo "# GNOME partition editor"
 sudo apt install gparted -y
 
-# File manager krusader
+echo "# File manager krusader"
 sudo apt install krusader -y
 
-# Filezilla
+echo "# Filezilla"
 sudo apt install filezilla -y 
 
-# Install Grub Customizer
+echo "# Install Grub Customizer"
 sudo apt install grub-customizer -y
 
-# Printer services
+echo "# Printer services"
 sudo apt install -y cups printer-driver-cups-pdf
 sudo systemctl start cups
 sudo systemctl enable cups
-# Settings > Printers > Unlock > HP_LaserJet_M402dw_AF41C3
+echo "# Settings > Printers > Unlock > HP_LaserJet_M402dw_AF41C3"
 
-# Google-Chrome
+echo "# Google-Chrome"
 sudo apt install libxss1 libappindicator1 libindicator7
 sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome*.deb
 
-# VSCode install
-# 1. Import Microsoft’s GPG key
+echo "# VSCode install"
+echo "# 1. Import Microsoft’s GPG key"
 sudo wget -qO /usr/share/keyrings/microsoft.gpg https://packages.microsoft.com/keys/microsoft.asc
 
-# 2. Add the VS Code repository
+echo "# 2. Add the VS Code repository"
 sudo tee /etc/apt/sources.list.d/vscode.sources > /dev/null << 'EOF'
 Types: deb
 URIs: https://packages.microsoft.com/repos/code
@@ -55,30 +55,30 @@ Architectures: amd64,arm64,armhf
 Signed-By: /usr/share/keyrings/microsoft.gpg
 EOF
 
-# 3. Update package lists and install VS Code
+echo "# 3. Update package lists and install VS Code"
 sudo apt install code
 
-# Sublime Text
+echo "# Sublime Text"
 sudo wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/apt/keyrings/sublimehq-pub.asc > /dev/null
 echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
 sudo apt install sublime-text
 
 
 ###
-# Install snap
+echo "# Install snap"
 sudo apt install snapd -y
 sudo snap install snapd
 
-# Brave
+echo "# Brave"
 sudo snap install brave
 
-# KeePassXC
+echo "# KeePassXC"
 sudo snap install keepassxc
 
-# Firefox
+echo "# Firefox"
 sudo snap install firefox
 
-# Sublime Text
+echo "# Sublime Text"
 sudo snap install --classic code
 
 lsblk
@@ -86,7 +86,8 @@ sudo fdisk -l
 
 # File manager
 # Ctrl + Alt + T
-# nautilus admin:/
+# nautilus admin:///
+# sudo subl
 # sudo krusader
 
 # superfile
