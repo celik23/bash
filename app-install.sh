@@ -22,6 +22,9 @@ echo "# GNOME partition editor"
 sudo apt install gparted -y
 
 echo "# File manager krusader"
+sudo apt install dolphin -y
+
+echo "# File manager krusader"
 sudo apt install krusader -y
 
 echo "# Filezilla"
