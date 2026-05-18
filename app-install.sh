@@ -76,36 +76,8 @@ echo "# KeePassXC"
 sudo snap install keepassxc
 
 echo "# Firefox"
-sudo snap install firefox
+# sudo snap install firefox
 
-echo "# Sublime Text"
+echo "# VS code"
 sudo snap install --classic code
 
-lsblk
-sudo fdisk -l
-
-# File manager
-# Ctrl + Alt + T
-# nautilus admin:///
-# sudo subl
-# sudo krusader
-
-# superfile
-# bash -c "$(curl -sLo- https://superfile.netlify.app/install.sh)"
-
-# # mount
-# sudo mount -o rw,remount /boot/efi
-# sudo mkdir /mnt/efi
-# sudo mount /dev/sda1 -t vfat /mnt
-# cd /mnt/efi
-
-# # unmount
-# sudo unmount /dev/sda1
-
-# # NVRAM entry to boot.
-# sudo efibootmgr -v
-# sudo efibootmgr --delete-bootnum --bootnum 3
-
-# Pardus GNOME Greeter
-# - Mac Style
-# - Pardus Style
