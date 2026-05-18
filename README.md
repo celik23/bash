@@ -3,7 +3,7 @@
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/app-install.sh) arg arg
 ```
 
-## cachos (arch)
+## cachos (cachyos)
 ```
-bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/arch.sh) arg arg
+bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/cachyoss.sh) arg arg
 ```
