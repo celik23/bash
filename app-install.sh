@@ -30,16 +30,10 @@ sudo apt install filezilla -y
 echo "# Install Grub Customizer"
 sudo apt install grub-customizer -y
 
-echo "# Printer services"
-sudo apt install -y cups printer-driver-cups-pdf
-sudo systemctl start cups
-sudo systemctl enable cups
-echo "# Settings > Printers > Unlock > HP_LaserJet_M402dw_AF41C3"
-
-echo "# Google-Chrome"
-sudo apt install libxss1 libappindicator1 libindicator7
-sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome*.deb
+# echo "# Google-Chrome"
+# sudo apt install libxss1 libappindicator1 libindicator7
+# sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+# sudo apt install ./google-chrome*.deb
 
 echo "# VSCode install"
 echo "# 1. Import Microsoft’s GPG key"
@@ -81,3 +75,10 @@ echo "# Firefox"
 echo "# VS code"
 sudo snap install --classic code
 
+echo "# Printer services"
+sudo apt install -y cups printer-driver-cups-pdf
+sudo systemctl start cups
+sudo systemctl enable cups
+echo "# Settings > Printers > Unlock > HP_LaserJet_M402dw_AF41C3"
+
+#
