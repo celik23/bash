@@ -23,7 +23,8 @@ sudo pacman -S --noconfirm \
     gparted \
     keepassxc\
     filezilla
-    
+
+echo "# ffmpeg"
 sudo pacman -S --noconfirm \
     mpv \
     ffmpeg
