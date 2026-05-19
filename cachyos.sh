@@ -60,7 +60,8 @@ Exec=/home/kaan/start-browser-link.sh
 Icon=application-x-shellscript
 Name=firefox-start-browser-link.sh
 Type=Application
-X-KDE-AutostartScript=true\n' > /home/kaan/.config/autostart/start-browser-link.sh.desktop
+X-KDE-AutostartScript=true
+' > /home/kaan/.config/autostart/start-browser-link.sh.desktop
 
 echo "# autologin kde plasma"
 # Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
