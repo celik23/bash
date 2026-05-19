@@ -5,5 +5,5 @@ bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/app-install.s
 
 ## cachos (cachyos)
 ```
-bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/cachyos.sh) arg arg
+curl -s https://raw.githubusercontent.com/celik23/bash/main/cachyos.sh | bash -s -- arg arg
 ```
