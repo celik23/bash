@@ -1,4 +1,6 @@
 
+#!/bin/bash
+#
 #💻 cachyos: 
 # -S	install/sync packages
 # -y	refresh package databases
