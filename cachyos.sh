@@ -1,12 +1,13 @@
 
 #!/bin/bash
 
-# 💻 CachyOS / Arch Linux
 # -S  install/sync packages
 # -y  refresh package databases
 # -u  upgrade all packages
 
+echo "# 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
+#sudo pacman --sync --refresh --sysupgrade --noconfirm
 
 echo "# Browser: brave, chromium, keepassxc"
 sudo pacman -S --noconfirm \
