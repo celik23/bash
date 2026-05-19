@@ -45,8 +45,8 @@ sudo pacman -S --noconfirm \
 paru -S -noconfirm onlyoffice-bin
 
 echo "# Text editor"
-sudo pacman -S -noconfirm code 
-paru -S -noconfirm sublime-text # > q > y
+sudo pacman -S --noconfirm code 
+paru -S --noconfirm sublime-text # > q > y
 
 echo "# Autostart monitoring"
 printf '#!/bin/bash
