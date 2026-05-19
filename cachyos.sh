@@ -30,3 +30,5 @@ firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
 sudo chmod +x ~/start-browser-link.sh
 # KDE > System > System settings >Autostart > Add New > Login Script > ~/start-browser-link.sh 
 
+echo "# autologin kde plasma"
+# Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
