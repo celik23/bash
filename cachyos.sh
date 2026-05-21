@@ -9,11 +9,16 @@ echo "# 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
 #sudo pacman --sync --refresh --sysupgrade --noconfirm
 
+echo "# Install paru"
+sudo pacman -S --noconfirm \
+    paru
+
 echo "# Browser: brave, chromium, keepassxc"
 sudo pacman -S --noconfirm \
     brave \
     chromium 
 
+echo "# Install discover and htop"
 sudo pacman -S --noconfirm \
     discover \
     htop \
@@ -33,6 +38,8 @@ sudo pacman -S --noconfirm \
 echo "# Only office"
 sudo pacman -S --noconfirm \
     onlyoffice-bin
+
+echo "# Only office with paru"
 paru -S -noconfirm onlyoffice-bin
 
 echo "# Text editor"
@@ -44,7 +51,7 @@ printf '#!/bin/bash
 firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
 ' > ~/start-browser-link.sh
 
-echo "# Autostart
+echo "# Autostart"
 sudo chmod +x ~/start-browser-link.sh
 # GUI: KDE > System > System settings > Autostart > Add New > Login Script > ~/start-browser-link.sh 
 printf '[Desktop Entry]
