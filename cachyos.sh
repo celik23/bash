@@ -64,3 +64,7 @@ X-KDE-AutostartScript=true
 
 echo "# autologin kde plasma"
 # Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
+
+# EndeavourOS add ntfs and exfat
+sudo pacman -S ntfs-3g exfatprogs
+
