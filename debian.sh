@@ -56,7 +56,8 @@ echo "# Firefox"
 echo "# VS code"
 sudo snap install --classic code
 
-# Install Flatpak
+###
+echo "# Install Flatpak"
 sudo apt install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org
 flatpak install flathub org.onlyoffice.desktopeditors
