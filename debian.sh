@@ -56,6 +56,9 @@ echo "# Firefox"
 echo "# VS code"
 sudo snap install --classic code
 
+echo "# Install onlyoffice"
+sudo snap install onlyoffice-desktopeditors
+
 ###
 echo "# Install Flatpak"
 sudo apt install flatpak
