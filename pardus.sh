@@ -21,7 +21,7 @@ echo "# KDE partition Manager"
 echo "# GNOME partition editor"
 sudo apt install gparted -y
 
-echo "# File manager krusader"
+echo "# File manager dolphin"
 sudo apt install dolphin -y
 
 echo "# File manager krusader"
