@@ -38,6 +38,10 @@ sudo wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /e
 echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
 sudo apt install sublime-text
 
+echo "# Uninstall libreoffice"
+sudo apt parge "libreoffice*" -y
+sudo apt autoremove -y
+sudo apt clean
 
 ###
 echo "# Install snap"
@@ -61,9 +65,9 @@ sudo snap install onlyoffice-desktopeditors
 
 ###
 echo "# Install Flatpak"
-sudo apt install flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org
-flatpak install flathub org.onlyoffice.desktopeditors
+# sudo apt install flatpak
+# flatpak remote-add --if-not-exists flathub https://flathub.org
+# flatpak install flathub org.onlyoffice.desktopeditors
 
 echo "# Printer services"
 sudo apt install -y cups printer-driver-cups-pdf
