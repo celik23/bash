@@ -48,7 +48,7 @@ Type=Application
 X-KDE-AutostartScript=true
 ' > /home/kaan/.config/autostart/start-browser-link.sh.desktop
 
-echo "# autologin kde plasma"
+echo "# Autologin kde plasma"
 # Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
 
 # EndeavourOS add ntfs and exfat
