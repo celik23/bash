@@ -9,41 +9,32 @@ echo "# 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
 #sudo pacman --sync --refresh --sysupgrade --noconfirm
 
-echo "# Install paru"
-sudo pacman -S --noconfirm \
-    paru
-
 echo "# Browser: brave, chromium, keepassxc"
-sudo pacman -S --noconfirm \
-    brave \
-    chromium 
+sudo pacman -S --noconfirm brave chromium 
 
 echo "# Install discover and htop"
-sudo pacman -S --noconfirm \
-    discover \
-    htop \
+sudo pacman -S --noconfirm discover htop 
 
 echo "# Tools"
-sudo pacman -S --noconfirm \
-    p7zip \
-    gparted \
-    keepassxc\
-    filezilla
+sudo pacman -S --noconfirm p7zip gparted keepassxc filezilla
 
 echo "# ffmpeg"
-sudo pacman -S --noconfirm \
-    mpv \
-    ffmpeg
+sudo pacman -S --noconfirm mpv ffmpeg
 
 echo "# Only office"
-sudo pacman -S --noconfirm \
-    onlyoffice-bin
+sudo pacman -S --noconfirm onlyoffice-bin
 
+echo "# Text editor VScode"
+sudo pacman -S --noconfirm code 
+
+###
+echo "# Install paru"
+sudo pacman -S --noconfirm paru
+    
 echo "# Only office with paru"
 paru -S -noconfirm onlyoffice-bin
 
-echo "# Text editor"
-sudo pacman -S --noconfirm code 
+echo "# Text editor sublime text"
 paru -S --noconfirm sublime-text # > q > y
 
 echo "# Autostart monitoring"
