@@ -1,24 +1,19 @@
 
 #!/bin/bash
 
-# -S  install/sync packages
-# -y  refresh package databases
-# -u  upgrade all packages
-
 echo "# 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
-#sudo pacman --sync --refresh --sysupgrade --noconfirm
 
-echo "# Browser: brave, chromium, keepassxc"
+echo "# Browser: brave, chromium"
 sudo pacman -S --noconfirm brave chromium 
 
 echo "# Install discover and htop"
 sudo pacman -S --noconfirm discover htop 
 
-echo "# Tools"
+echo "# Tools P7zip gparted keepassxc filezilla"
 sudo pacman -S --noconfirm p7zip gparted keepassxc filezilla
 
-echo "# ffmpeg"
+echo "# mpv ffmpeg"
 sudo pacman -S --noconfirm mpv ffmpeg
 
 echo "# Only office"
