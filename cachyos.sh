@@ -4,7 +4,7 @@
 echo "# 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
 
-echo "# Browser: brave, chromium"
+echo "# Browser: chromium"
 sudo pacman -S --noconfirm chromium 
 
 echo "# Install discover and htop"
