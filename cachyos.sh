@@ -4,6 +4,9 @@
 echo "# 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
 
+echo "# konsole nano kio-admin git htop flatpak wget curl"
+sudo pacman -S nano kio-admin git htop flatpak wget curl
+
 echo "# Browser: chromium"
 sudo pacman -S --noconfirm chromium 
 
