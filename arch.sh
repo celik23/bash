@@ -19,8 +19,11 @@ sudo pacman -S --noconfirm p7zip gparted keepassxc filezilla
 echo "### mpv ffmpeg"
 sudo pacman -S --noconfirm mpv ffmpeg
 
-echo "# Text editor VScode"
+echo "### Text editor VScode"
 sudo pacman -S --noconfirm code 
+
+echo "### KDE Plasma-Discover"
+sudo pacman -S plasma-discover
 
 # ###
 echo "### Install paru AUR-helper"
