@@ -25,7 +25,7 @@ echo "### $(paru --version | head -1)"
 pac() {
     for pkg in "$@"; do
         echo "Installing: $pkg ..."
-        #sudo pacman -S --noconfirm "$pkg"
+        sudo pacman -S --noconfirm "$pkg"
     done
 }
 
@@ -40,7 +40,7 @@ pac "${pac_packages[@]}"
 par() {
     for pkg in "$@"; do
         echo "Installing: $pkg ..."
-        #paru -S --noconfirm "$pkg"
+        paru -S --noconfirm "$pkg"
     done
 }
 
