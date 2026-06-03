@@ -51,13 +51,13 @@ install pacman "${pac_packages[@]}"
 install paru "${aur_packages[@]}"
 
 
-echo "# Autostart monitoring"
+echo "\e[32m# Autostart monitoring\e[0m"
 sudo printf '#!/bin/bash
 firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
 ' > ~/start-browser-link.sh
 sudo chmod +x ~/start-browser-link.sh
 
-echo -e "\e[32m # Autostart \e[0m"
+echo -e "\e[32m# Autostart \e[0m"
 # GUI: KDE > System > System settings > (System) Autostart > Add New > Login Script > ~/start-browser-link.sh 
 sudo printf '[Desktop Entry]
 Exec=/home/kaan/start-browser-link.sh
