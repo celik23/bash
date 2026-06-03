@@ -51,7 +51,7 @@ install pacman "${pac_packages[@]}"
 install paru "${aur_packages[@]}"
 
 
-echo "\e[32m# Autostart monitoring\e[0m"
+echo -e "\e[32m# Autostart monitoring\e[0m"
 sudo printf '#!/bin/bash
 firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
 ' > ~/start-browser-link.sh
