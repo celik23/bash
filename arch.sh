@@ -40,7 +40,7 @@ install() {
 
 pac_packages=(
     nano kio-admin git htop flatpak wget curl ark gparted keepassxc
-    chromium filezilla mpv ffmpeg code discover
+    chromium filezilla mpv ffmpeg code discover ntfs-3g exfatprogs
 )
 
 aur_packages=(
@@ -72,6 +72,4 @@ X-KDE-AutostartScript=true
 echo "# Autologin kde plasma"
 # Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
 
-# EndeavourOS add ntfs and exfat
-sudo pacman -S ntfs-3g exfatprogs
 
