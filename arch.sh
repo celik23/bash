@@ -74,5 +74,21 @@ sudo tee /etc/plasmalogin.conf >/dev/null <<EOF
 Session=plasma.desktop
 User=kaan
 EOF
+
+#1. Eerst CUPS installeren en starten
+sudo pacman -S cups cups-pdf system-config-printer
+sudo systemctl enable --now cups
+
+#2. HP drivers (aanrader)
+sudo pacman -S hplip
+
+#3. Printer toevoegen (beste methode: IPP Everywhere)
+sudo lpadmin -p HP_M402dw -E \
+  -v ipp://192.168.0.248/ipp/print \
+  -m everywhere
+
+#5. Printer instellen als default
+sudo lpoptions -d HP_M402dw
+
 #
 
