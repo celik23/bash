@@ -4,6 +4,14 @@
 echo "### 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
 
+echo "### Install paru AUR-helper"
+sudo pacman -S git base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+paru --version
+
+# function pacman
 pac() {
     for pkg in "$@"; do
         echo "Installing: $pkg ..."
@@ -16,23 +24,23 @@ packages=(
     chromium filezilla mpv ffmpeg
     code plasma-discover
 )
-
 pac "${packages[@]}"
 
+# function paru
+par() {
+    for pkg in "$@"; do
+        echo "Installing: $pkg ..."
+        paru -S --noconfirm "$pkg"
+    done
+}
 
-# ###
-echo "### Install paru AUR-helper"
-sudo pacman -S git base-devel
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-paru --version
-    
-echo "### Only office with paru"
-paru -S --noconfirm onlyoffice-bin
+packages=(
+    onlyoffice-bin sublime-text
+)
+par "${packages[@]}"
 
-echo "### Text editor sublime text"
-paru -S --noconfirm sublime-text
+
+
 
 echo "# Autostart monitoring"
 printf '#!/bin/bash
