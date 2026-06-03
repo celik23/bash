@@ -57,9 +57,9 @@ echo "# Autostart monitoring"
 printf '#!/bin/bash
 firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
 ' > ~/start-browser-link.sh
+sudo chmod +x ~/start-browser-link.sh
 
 echo "# Autostart"
-sudo chmod +x ~/start-browser-link.sh
 # GUI: KDE > System > System settings > Autostart > Add New > Login Script > ~/start-browser-link.sh 
 printf '[Desktop Entry]
 Exec=/home/kaan/start-browser-link.sh
