@@ -26,18 +26,18 @@ echo "# Text editor VScode"
 sudo pacman -S --noconfirm code 
 
 # ###
-echo "# Install paru AUR-helper"
+echo "### Install paru AUR-helper"
 sudo pacman -S git base-devel
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 paru --version
     
-echo "# Only office with paru"
+echo "### Only office with paru"
 paru -S --noconfirm onlyoffice-bin
 
-echo "# Text editor sublime text"
-paru -S --noconfirm sublime-text # > q > y
+echo "### Text editor sublime text"
+paru -S --noconfirm sublime-text
 
 echo "# Autostart monitoring"
 printf '#!/bin/bash
