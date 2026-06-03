@@ -51,8 +51,6 @@ install pacman "${pac_packages[@]}"
 install paru "${aur_packages[@]}"
 
 
-
-
 echo "# Autostart monitoring"
 printf '#!/bin/bash
 firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
@@ -71,7 +69,6 @@ X-KDE-AutostartScript=true
 
 # Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
 echo -e "\e[32m# Autologin kde plasma\e[0m"
-sudo mkdir -p /etc/sddm.conf.d
 printf '[Autologin]
 Session=plasma.desktop
 User=kaan
