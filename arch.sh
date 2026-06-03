@@ -4,26 +4,21 @@
 echo "### 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
 
-echo "### konsole nano kio-admin git htop flatpak wget curl arc"
-sudo pacman -S nano kio-admin git htop flatpak wget curl arc
+pac() {
+    for pkg in "$@"; do
+        echo "Installing: $pkg ..."
+        #sudo pacman -S --noconfirm "$pkg"
+    done
+}
 
-echo "### Browser: chromium"
-sudo pacman -S --noconfirm chromium 
+packages=(
+    nano kio-admin git htop flatpak wget curl ark gparted keepassxc
+    chromium filezilla mpv ffmpeg
+    code plasma-discover
+)
 
-echo "### Install discover and htop"
-sudo pacman -S --noconfirm discover htop 
+pac "${packages[@]}"
 
-echo "### Tools P7zip gparted keepassxc filezilla"
-sudo pacman -S --noconfirm p7zip gparted keepassxc filezilla
-
-echo "### mpv ffmpeg"
-sudo pacman -S --noconfirm mpv ffmpeg
-
-echo "### Text editor VScode"
-sudo pacman -S --noconfirm code 
-
-echo "### KDE Plasma-Discover"
-sudo pacman -S plasma-discover
 
 # ###
 echo "### Install paru AUR-helper"
