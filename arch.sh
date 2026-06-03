@@ -69,9 +69,10 @@ X-KDE-AutostartScript=true
 
 # Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
 echo -e "\e[32m# Autologin kde plasma\e[0m"
-sudo printf '[Autologin]
+sudo tee /etc/plasmalogin.conf >/dev/null <<EOF
+[Autologin]
 Session=plasma.desktop
 User=kaan
-' > /etc/plasmalogin.conf
+EOF
 #
 
