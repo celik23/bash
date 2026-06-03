@@ -59,7 +59,7 @@ firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
 ' > ~/start-browser-link.sh
 sudo chmod +x ~/start-browser-link.sh
 
-echo "\e[32m # Autostart \e[0m"
+echo -e "\e[32m # Autostart \e[0m"
 # GUI: KDE > System > System settings > (System) Autostart > Add New > Login Script > ~/start-browser-link.sh 
 printf '[Desktop Entry]
 Exec=/home/kaan/start-browser-link.sh
@@ -69,7 +69,12 @@ Type=Application
 X-KDE-AutostartScript=true
 ' > /home/kaan/.config/autostart/start-browser-link.sh.desktop
 
-echo "# Autologin kde plasma"
 # Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
-
+echo -e "\e[32m# Autologin kde plasma\e[0m"
+sudo mkdir -p /etc/sddm.conf.d
+printf '[Autologin]
+Session=plasma.desktop
+User=kaan
+' > /etc/plasmalogin.conf
+#
 
