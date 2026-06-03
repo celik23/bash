@@ -52,14 +52,14 @@ install paru "${aur_packages[@]}"
 
 
 echo "# Autostart monitoring"
-printf '#!/bin/bash
+sudo printf '#!/bin/bash
 firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
 ' > ~/start-browser-link.sh
 sudo chmod +x ~/start-browser-link.sh
 
 echo -e "\e[32m # Autostart \e[0m"
 # GUI: KDE > System > System settings > (System) Autostart > Add New > Login Script > ~/start-browser-link.sh 
-printf '[Desktop Entry]
+sudo printf '[Desktop Entry]
 Exec=/home/kaan/start-browser-link.sh
 Icon=application-x-shellscript
 Name=firefox-start-browser-link.sh
@@ -69,7 +69,7 @@ X-KDE-AutostartScript=true
 
 # Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
 echo -e "\e[32m# Autologin kde plasma\e[0m"
-printf '[Autologin]
+sudo printf '[Autologin]
 Session=plasma.desktop
 User=kaan
 ' > /etc/plasmalogin.conf
