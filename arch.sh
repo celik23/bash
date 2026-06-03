@@ -7,7 +7,7 @@ sudo pacman -Syu --noconfirm
 pac() {
     for pkg in "$@"; do
         echo "Installing: $pkg ..."
-        #sudo pacman -S --noconfirm "$pkg"
+        sudo pacman -S --noconfirm "$pkg"
     done
 }
 
