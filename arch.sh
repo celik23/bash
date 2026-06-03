@@ -32,18 +32,12 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 paru --version
-
-echo "### Install Onlyoffce"
-git clone https://aur.archlinux.org/onlyoffice-bin.git
-cd onlyoffice-bin
-makepkg -si
-
     
-# echo "# Only office with paru"
-# paru -S -noconfirm onlyoffice-bin
+echo "# Only office with paru"
+paru -S --noconfirm onlyoffice-bin
 
-# echo "# Text editor sublime text"
-# paru -S --noconfirm sublime-text # > q > y
+echo "# Text editor sublime text"
+paru -S --noconfirm sublime-text # > q > y
 
 echo "# Autostart monitoring"
 printf '#!/bin/bash
