@@ -1,44 +1,53 @@
 
-#!/bin/bash
-#
+
+#!/usr/bin/env bash
+
+set -e
+
 echo "### 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
 
-echo "### Install paru AUR-helper"
-sudo pacman -S git base-devel
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-paru --version
+#
+# Paru installeren indien nodig
+if ! command -v paru >/dev/null 2>&1; then
+    echo "### Install paru"
+    sudo pacman -S --needed --noconfirm git base-devel
+    git clone https://aur.archlinux.org/paru.git /tmp/paru
+    (
+        cd /tmp/paru
+        makepkg -si --noconfirm
+    )
+fi
+
+echo "### $(paru --version | head -1)"
 
 # function pacman
 pac() {
     for pkg in "$@"; do
         echo "Installing: $pkg ..."
-        sudo pacman -S --noconfirm "$pkg"
+        #sudo pacman -S --noconfirm "$pkg"
     done
 }
 
-packages=(
+pac_packages=(
     nano kio-admin git htop flatpak wget curl ark gparted keepassxc
     chromium filezilla mpv ffmpeg
     code plasma-discover
 )
-pac "${packages[@]}"
+pac "${pac_packages[@]}"
 
 # function paru
 par() {
     for pkg in "$@"; do
         echo "Installing: $pkg ..."
-        paru -S --noconfirm "$pkg"
+        #paru -S --noconfirm "$pkg"
     done
 }
 
-packages=(
+aur_packages=(
     onlyoffice-bin sublime-text
 )
-par "${packages[@]}"
-
+par "${aur_packages[@]}"
 
 
 
