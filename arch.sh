@@ -19,7 +19,7 @@ if ! command -v paru >/dev/null 2>&1; then
 fi
 echo "### $(paru --version | head -1)"
 
-# function pacman
+# function pacman/paru
 install() {
     local manager="$1"
     shift
@@ -37,13 +37,11 @@ install() {
 
 pac_packages=(
     nano kio-admin git htop flatpak wget curl ark gparted keepassxc
-    chromium filezilla mpv ffmpeg
-    code plasma-discover
+    chromium filezilla mpv ffmpeg code plasma-discover
 )
 
 aur_packages=(
-    onlyoffice-bin
-    sublime-text
+    onlyoffice-bin sublime-text
 )
 
 install pacman "${pac_packages[@]}"
