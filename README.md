@@ -5,5 +5,5 @@ bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian.sh) ar
 
 ## cachos (cachyos)
 ```
-curl -s https://raw.githubusercontent.com/celik23/bash/main/cachyos.sh | bash -s -- arg arg
+curl -s https://raw.githubusercontent.com/celik23/bash/main/arch.sh | bash -s -- arg arg
 ```
