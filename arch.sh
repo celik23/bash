@@ -1,26 +1,23 @@
 
 #!/bin/bash
-
-echo "# 💻 CachyOS / Arch Linux "
+#
+echo "### 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
 
-echo "# konsole nano kio-admin git htop flatpak wget curl"
-sudo pacman -S nano kio-admin git htop flatpak wget curl
+echo "### konsole nano kio-admin git htop flatpak wget curl arc"
+sudo pacman -S nano kio-admin git htop flatpak wget curl arc
 
-echo "# Browser: chromium"
+echo "### Browser: chromium"
 sudo pacman -S --noconfirm chromium 
 
-echo "# Install discover and htop"
+echo "### Install discover and htop"
 sudo pacman -S --noconfirm discover htop 
 
-echo "# Tools P7zip gparted keepassxc filezilla"
+echo "### Tools P7zip gparted keepassxc filezilla"
 sudo pacman -S --noconfirm p7zip gparted keepassxc filezilla
 
-echo "# mpv ffmpeg"
+echo "### mpv ffmpeg"
 sudo pacman -S --noconfirm mpv ffmpeg
-
-# echo "# Only office"
-# sudo pacman -S --noconfirm onlyoffice-bin
 
 echo "# Text editor VScode"
 sudo pacman -S --noconfirm code 
