@@ -1,5 +1,4 @@
 
-
 #!/usr/bin/env bash
 
 set -e
@@ -18,14 +17,21 @@ if ! command -v paru >/dev/null 2>&1; then
         makepkg -si --noconfirm
     )
 fi
-
 echo "### $(paru --version | head -1)"
 
 # function pacman
-pac() {
+install() {
+    local manager="$1"
+    shift
+
     for pkg in "$@"; do
-        echo "Installing: $pkg ..."
-        sudo pacman -S --noconfirm "$pkg"
+        echo "Installing $manager $pkg ..."
+
+        if [[ "$manager" == "pacman" ]]; then
+            sudo pacman -S --needed --noconfirm "$pkg"
+        else
+            paru -S --needed --noconfirm "$pkg"
+        fi
     done
 }
 
@@ -34,20 +40,15 @@ pac_packages=(
     chromium filezilla mpv ffmpeg
     code plasma-discover
 )
-pac "${pac_packages[@]}"
-
-# function paru
-par() {
-    for pkg in "$@"; do
-        echo "Installing: $pkg ..."
-        paru -S --noconfirm "$pkg"
-    done
-}
 
 aur_packages=(
-    onlyoffice-bin sublime-text
+    onlyoffice-bin
+    sublime-text
 )
-par "${aur_packages[@]}"
+
+install pacman "${pac_packages[@]}"
+install paru "${aur_packages[@]}"
+
 
 
 
