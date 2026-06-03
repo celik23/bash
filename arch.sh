@@ -26,8 +26,8 @@ echo "# Text editor VScode"
 sudo pacman -S --noconfirm code 
 
 # ###
-# echo "# Install paru"
-# sudo pacman -S --noconfirm paru
+echo "# Install paru AUR-helper"
+sudo pacman -S --noconfirm paru
     
 # echo "# Only office with paru"
 # paru -S -noconfirm onlyoffice-bin
