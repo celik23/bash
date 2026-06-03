@@ -60,7 +60,7 @@ firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
 sudo chmod +x ~/start-browser-link.sh
 
 echo "# Autostart"
-# GUI: KDE > System > System settings > Autostart > Add New > Login Script > ~/start-browser-link.sh 
+# GUI: KDE > System > System settings > (System) Autostart > Add New > Login Script > ~/start-browser-link.sh 
 printf '[Desktop Entry]
 Exec=/home/kaan/start-browser-link.sh
 Icon=application-x-shellscript
