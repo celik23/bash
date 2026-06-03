@@ -44,7 +44,7 @@ pac_packages=(
 )
 
 aur_packages=(
-    onlyoffice-bin sublime-text whatsapp-for-linux
+    onlyoffice-bin sublime-text
 )
 
 install pacman "${pac_packages[@]}"
