@@ -53,7 +53,7 @@ echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable
 sudo apt install sublime-text
 
 echo "# Uninstall libreoffice"
-sudo apt parge "libreoffice*" -y
+sudo apt purge 'libreoffice*' -y
 sudo apt autoremove -y
 sudo apt clean
 
