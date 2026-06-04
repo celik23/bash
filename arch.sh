@@ -75,7 +75,7 @@ Session=plasma.desktop
 User=kaan
 EOF
 
-#1. install and start CUPS
+#1. Install and start CUPS
 sudo pacman -S cups cups-pdf system-config-printer
 sudo systemctl enable --now cups
 
@@ -87,7 +87,7 @@ sudo lpadmin -p HP_M402dw -E \
   -v ipp://192.168.0.248/ipp/print \
   -m everywhere
 
-#5. Set default print
+#4. Set default print
 sudo lpoptions -d HP_M402dw
 
 #
