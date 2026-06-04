@@ -74,5 +74,4 @@ sudo lpadmin -p HP_M402dw -E \
 #4. Set default print
 sudo lpoptions -d HP_M402dw
 
-
 #
