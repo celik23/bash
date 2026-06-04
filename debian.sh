@@ -57,10 +57,27 @@ sudo apt parge "libreoffice*" -y
 sudo apt autoremove -y
 sudo apt clean
 
-echo "# Printer services"
-sudo apt install -y cups printer-driver-cups-pdf
-sudo systemctl start cups
-sudo systemctl enable cups
+# echo "# Printer services"
+# sudo apt install -y cups printer-driver-cups-pdf
+# sudo systemctl start cups
+# sudo systemctl enable cups
+
 echo "# Settings > Printers > Unlock > HP_M402dw"
+echo -e "\e[32m# Printer\e[0m HP_402dw"
+#1. Install and start CUPS
+sudo apt install -y cups cups-pdf system-config-printer
+sudo systemctl enable --now cups
+
+#2. HP drivers
+sudo apt install -y hplip
+
+#3. Add print
+sudo lpadmin -p HP_M402dw -E \
+  -v ipp://192.168.0.248/ipp/print \
+  -m everywhere
+
+#4. Set default print
+sudo lpoptions -d HP_M402dw
+
 
 #
