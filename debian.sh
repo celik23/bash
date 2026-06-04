@@ -20,7 +20,7 @@ install() {
         if [[ "$manager" == "apt" ]]; then
             sudo apt install -y "$pkg"
         else
-            sudo snap install -y "$pkg"
+            sudo snap install "$pkg"
         fi
     done
 }
