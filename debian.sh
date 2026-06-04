@@ -73,6 +73,6 @@ echo "# Printer services"
 sudo apt install -y cups printer-driver-cups-pdf
 sudo systemctl start cups
 sudo systemctl enable cups
-echo "# Settings > Printers > Unlock > HP_LaserJet_M402dw_AF41C3"
+echo "# Settings > Printers > Unlock > HP_M402dw"
 
 #
