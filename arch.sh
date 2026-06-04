@@ -83,7 +83,7 @@ sudo pacman -S cups cups-pdf system-config-printer
 sudo systemctl enable --now cups
 
 #2. HP drivers
-sudo pacman -S hplip
+sudo pacman -S --noconfirm hplip
 
 #3. Add print
 sudo lpadmin -p HP_M402dw -E \
