@@ -65,7 +65,7 @@ sudo apt clean
 echo "# Settings > Printers > Unlock > HP_M402dw"
 echo -e "\e[32m# Printer\e[0m HP_402dw"
 #1. Install and start CUPS
-sudo apt install -y cups cups-pdf system-config-printer
+sudo apt install -y cups system-config-printer
 sudo systemctl enable --now cups
 
 #2. HP drivers
