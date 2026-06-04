@@ -58,13 +58,15 @@ sudo chmod +x ~/start-browser-link.sh
 
 # GUI: KDE > System > System settings > (System) Autostart > Add New > Login Script > ~/start-browser-link.sh 
 echo -e "\e[32m# Autostart\e[0m monitoring"
-sudo printf '[Desktop Entry]
-Exec=/home/kaan/start-browser-link.sh
+mkdir -p ~/.config/autostart
+sudo tee ~/.config/autostart/start-browser-link.sh.desktop >/dev/null <<EOF
+[Desktop Entry]
+Exec=~/start-browser-link.sh
 Icon=application-x-shellscript
 Name=firefox-start-browser-link.sh
 Type=Application
 X-KDE-AutostartScript=true
-' > /home/kaan/.config/autostart/start-browser-link.sh.desktop
+EOF
 
 # Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
 echo -e "\e[32m# Autologin\e[0m kde plasma"
