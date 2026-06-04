@@ -50,14 +50,14 @@ install pacman "${pac_packages[@]}"
 install paru "${aur_packages[@]}"
 
 
-echo -e "\e[32m# Autostart monitoring\e[0m"
+echo -e "\e[32m# Autostart\e[0m Script"
 sudo printf '#!/bin/bash
 firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
 ' > ~/start-browser-link.sh
 sudo chmod +x ~/start-browser-link.sh
 
 # GUI: KDE > System > System settings > (System) Autostart > Add New > Login Script > ~/start-browser-link.sh 
-echo -e "\e[32m# Autostart \e[0m"
+echo -e "\e[32m# Autostart\e[0m monitoring"
 sudo printf '[Desktop Entry]
 Exec=/home/kaan/start-browser-link.sh
 Icon=application-x-shellscript
@@ -67,13 +67,14 @@ X-KDE-AutostartScript=true
 ' > /home/kaan/.config/autostart/start-browser-link.sh.desktop
 
 # Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
-echo -e "\e[32m# Autologin kde plasma\e[0m"
+echo -e "\e[32m# Autologin\e[0m kde plasma"
 sudo tee /etc/plasmalogin.conf >/dev/null <<EOF
 [Autologin]
 Session=plasma.desktop
 User=kaan
 EOF
 
+echo -e "\e[32m# Printer\e[0m HP_402dw"
 #1. Install and start CUPS
 sudo pacman -S cups cups-pdf system-config-printer
 sudo systemctl enable --now cups
