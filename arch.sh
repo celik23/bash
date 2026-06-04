@@ -1,7 +1,7 @@
 
 #!/usr/bin/env bash
 #
-set -e
+set +e     # Continue on error
 
 echo "### 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
