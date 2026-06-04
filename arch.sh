@@ -51,9 +51,10 @@ install paru "${aur_packages[@]}"
 
 
 echo -e "\e[32m# Autostart\e[0m Script"
-sudo printf '#!/bin/bash
+sudo tee ~/start-browser-link.sh >/dev/null <<EOF
+#!/bin/bash
 firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
-' > ~/start-browser-link.sh
+EOF
 sudo chmod +x ~/start-browser-link.sh
 
 # GUI: KDE > System > System settings > (System) Autostart > Add New > Login Script > ~/start-browser-link.sh 
