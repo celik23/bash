@@ -57,8 +57,8 @@ firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
 ' > ~/start-browser-link.sh
 sudo chmod +x ~/start-browser-link.sh
 
-echo -e "\e[32m# Autostart \e[0m"
 # GUI: KDE > System > System settings > (System) Autostart > Add New > Login Script > ~/start-browser-link.sh 
+echo -e "\e[32m# Autostart \e[0m"
 sudo printf '[Desktop Entry]
 Exec=/home/kaan/start-browser-link.sh
 Icon=application-x-shellscript
@@ -75,19 +75,19 @@ Session=plasma.desktop
 User=kaan
 EOF
 
-#1. Eerst CUPS installeren en starten
+#1. install and start CUPS
 sudo pacman -S cups cups-pdf system-config-printer
 sudo systemctl enable --now cups
 
-#2. HP drivers (aanrader)
+#2. HP drivers
 sudo pacman -S hplip
 
-#3. Printer toevoegen (beste methode: IPP Everywhere)
+#3. Add print
 sudo lpadmin -p HP_M402dw -E \
   -v ipp://192.168.0.248/ipp/print \
   -m everywhere
 
-#5. Printer instellen als default
+#5. Set default print
 sudo lpoptions -d HP_M402dw
 
 #
