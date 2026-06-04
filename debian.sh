@@ -18,9 +18,9 @@ install() {
         echo -e "${GREEN}Installing $manager${NC} $pkg ..."
 
         if [[ "$manager" == "apt" ]]; then
-            sudo apt -install -y "$pkg"
+            sudo apt install -y "$pkg"
         else
-            sudo snap -install -y "$pkg"
+            sudo snap install -y "$pkg"
         fi
     done
 }
