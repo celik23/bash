@@ -1,12 +1,11 @@
 
 #!/usr/bin/env bash
-
+#
 set -e
 
 echo "### 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
 
-#
 # Paru installeren indien nodig
 if ! command -v paru >/dev/null 2>&1; then
     echo "### Install paru"
@@ -28,7 +27,7 @@ install() {
     local NC='\033[0m'
     
     for pkg in "$@"; do
-        echo -e "${GREEN}Installing $manager $pkg ...${NC}"
+        echo -e "${GREEN}Installing $manager${NC} $pkg ..."
 
         if [[ "$manager" == "pacman" ]]; then
             sudo pacman -S --needed --noconfirm "$pkg"
