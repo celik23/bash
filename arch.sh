@@ -38,7 +38,7 @@ install() {
 }
 
 pac_packages=(
-    nano kio-admin git htop flatpak wget curl ark gparted keepassxc
+    dolphin kate nano kio-admin git htop flatpak wget curl ark gparted keepassxc
     chromium filezilla mpv ffmpeg code discover ntfs-3g exfatprogs
 )
 
