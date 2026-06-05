@@ -19,9 +19,13 @@ fi
 echo "### $(paru --version | head -1)"
 
 
-$ git clone https://aur.archlinux.org/yay.git 	# AUR-helper zoals yay:
-$ cd yay
-$ makepkg -si --noconfirm
+if ! command -v paru >/dev/null 2>&1; then
+    git clone https://aur.archlinux.org/yay.git 	# AUR-helper zoals yay:
+    (
+        cd yay
+        makepkg -si --noconfirm
+    )
+fi
 
 yay -S brave-bin
 
