@@ -6,7 +6,7 @@ set +e     # Continue on error
 echo "### 💻 CachyOS / Arch Linux "
 sudo pacman -Syu --noconfirm
 
-# Paru installeren indien nodig
+#  Installeren app via AUR
 if ! command -v paru >/dev/null 2>&1; then
     echo "### Install paru"
     sudo pacman -S --needed --noconfirm git base-devel
@@ -17,6 +17,14 @@ if ! command -v paru >/dev/null 2>&1; then
     )
 fi
 echo "### $(paru --version | head -1)"
+
+
+$ git clone https://aur.archlinux.org/yay.git 	# AUR-helper zoals yay:
+$ cd yay
+$ makepkg -si --noconfirm
+
+yay -S brave-bin
+
 
 # function pacman/paru
 install() {
