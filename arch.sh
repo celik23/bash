@@ -83,8 +83,8 @@ mkdir -p "$HOME/.config/autostart"
 sudo tee $HOME/.config/autostart/start-browser-link.desktop >/dev/null <<EOF
 [Desktop Entry]
 Type=Application
-Name=Browser Links
-Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.64:8888/ http://192.168.0.64:3001"
+Name=Firefox
+Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.64:8888/ http://192.168.0.64:3001/"
 EOF
 
 # --------------------------------------------------
