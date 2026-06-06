@@ -45,7 +45,7 @@ install_packages() {
 
 install_paru() {
     command -v paru >/dev/null && return
-    msg "Installing paru"
+    msg "Installing paru ..."
     sudo pacman -S --needed --noconfirm git base-devel
 
     rm -rf /tmp/paru
@@ -60,7 +60,7 @@ install_paru() {
 # --------------------------------------------------
 # System update
 # --------------------------------------------------
-msg "Update CachyOS / Arch Linux"
+msg "Update Arch Linux"
 sudo pacman -Syu --noconfirm
 
 # --------------------------------------------------
@@ -80,8 +80,7 @@ install_packages paru "${AUR_PACKAGES[@]}"
 # --------------------------------------------------
 msg "Autostart browser"
 
-cat > "$HOME/start-browser-link.sh" <<'EOF'
-#!/bin/bash
+sudo tee $HOME/start-browser-link.sh >/dev/null <<EOF
 firefox \
   "http://192.168.0.64:8888/" \
   "http://192.168.0.64:3001"
@@ -91,7 +90,7 @@ chmod +x "$HOME/start-browser-link.sh"
 
 mkdir -p "$HOME/.config/autostart"
 
-cat > "$HOME/.config/autostart/start-browser-link.desktop" <<EOF
+sudo tee $HOME/.config/autostart/start-browser-link.desktop >/dev/null <<EOF
 [Desktop Entry]
 Type=Application
 Name=Browser Links
@@ -104,7 +103,6 @@ EOF
 # KDE Autologin
 # --------------------------------------------------
 msg "KDE autologin"
-
 sudo mkdir -p /etc/sddm.conf.d
 
 sudo tee /etc/sddm.conf.d/autologin.conf >/dev/null <<EOF
