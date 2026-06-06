@@ -5,28 +5,22 @@ set +e   # Continue on error
 # --------------------------------------------------
 # Config
 # --------------------------------------------------
-
 PRINTER_IP="192.168.0.248"
 PRINTER_NAME="HP_M402dw"
 
 PAC_PACKAGES=(
-    dolphin kate nano kio-admin
-    git htop flatpak wget curl ark
-    gparted keepassxc chromium
-    filezilla mpv ffmpeg code
+    dolphin kate nano kio-admin git htop flatpak wget curl ark
+    gparted keepassxc chromium filezilla mpv ffmpeg code
     discover ntfs-3g exfatprogs
 )
 
 AUR_PACKAGES=(
-    onlyoffice-bin
-    sublime-text
-    brave-bin
+    onlyoffice-bin sublime-text brave-bin
 )
 
 # --------------------------------------------------
 # Helpers
 # --------------------------------------------------
-
 GREEN='\033[0;32m'
 NC='\033[0m'
 
@@ -51,9 +45,7 @@ install_packages() {
 
 install_paru() {
     command -v paru >/dev/null && return
-
     msg "Installing paru"
-
     sudo pacman -S --needed --noconfirm git base-devel
 
     rm -rf /tmp/paru
@@ -68,29 +60,24 @@ install_paru() {
 # --------------------------------------------------
 # System update
 # --------------------------------------------------
-
 msg "Update CachyOS / Arch Linux"
 sudo pacman -Syu --noconfirm
 
 # --------------------------------------------------
 # paru
 # --------------------------------------------------
-
 install_paru
-
 msg "$(paru --version | head -1)"
 
 # --------------------------------------------------
 # Packages
 # --------------------------------------------------
-
 install_packages pacman "${PAC_PACKAGES[@]}"
 install_packages paru "${AUR_PACKAGES[@]}"
 
 # --------------------------------------------------
 # Autostart browser
 # --------------------------------------------------
-
 msg "Autostart browser"
 
 cat > "$HOME/start-browser-link.sh" <<'EOF'
@@ -116,7 +103,6 @@ EOF
 # --------------------------------------------------
 # KDE Autologin
 # --------------------------------------------------
-
 msg "KDE autologin"
 
 sudo mkdir -p /etc/sddm.conf.d
@@ -130,7 +116,6 @@ EOF
 # --------------------------------------------------
 # Printer
 # --------------------------------------------------
-
 msg "Install printer"
 
 sudo pacman -S --needed --noconfirm \
@@ -151,6 +136,5 @@ sudo lpoptions -d "$PRINTER_NAME"
 # --------------------------------------------------
 # Done
 # --------------------------------------------------
-
 msg "DONE"
 #
