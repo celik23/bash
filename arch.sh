@@ -1,33 +1,45 @@
-
 #!/usr/bin/env bash
 #
-set +e     # Continue on error
+set +e   # Continue on error
 
-echo "### 💻 CachyOS / Arch Linux "
-sudo -v pacman -Syu --noconfirm
+# --------------------------------------------------
+# Config
+# --------------------------------------------------
 
-#  Installeren app via AUR
-if ! command -v paru >/dev/null 2>&1; then
-    echo "### Install paru"
-    sudo pacman -S --needed --noconfirm git base-devel
-    git clone https://aur.archlinux.org/paru.git /tmp/paru
-    (
-        cd /tmp/paru
-        makepkg -si --noconfirm
-    )
-fi
-echo "### $(paru --version | head -1)"
+PRINTER_IP="192.168.0.248"
+PRINTER_NAME="HP_M402dw"
 
-# function pacman/paru
-install() {
+PAC_PACKAGES=(
+    dolphin kate nano kio-admin
+    git htop flatpak wget curl ark
+    gparted keepassxc chromium
+    filezilla mpv ffmpeg code
+    discover ntfs-3g exfatprogs
+)
+
+AUR_PACKAGES=(
+    onlyoffice-bin
+    sublime-text
+    brave-bin
+)
+
+# --------------------------------------------------
+# Helpers
+# --------------------------------------------------
+
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+msg() {
+    echo -e "${GREEN}### $*${NC}"
+}
+
+install_packages() {
     local manager="$1"
     shift
 
-    local GREEN='\033[0;32m'
-    local NC='\033[0m'
-    
     for pkg in "$@"; do
-        echo -e "${GREEN}Installing $manager${NC} $pkg ..."
+        msg "Installing $pkg"
 
         if [[ "$manager" == "pacman" ]]; then
             sudo pacman -S --needed --noconfirm "$pkg"
@@ -37,71 +49,108 @@ install() {
     done
 }
 
-pac_packages=(
-    dolphin kate nano kio-admin git htop flatpak wget curl ark gparted keepassxc
-    chromium filezilla mpv ffmpeg code discover ntfs-3g exfatprogs
-)
+install_paru() {
+    command -v paru >/dev/null && return
 
-aur_packages=(
-    onlyoffice-bin sublime-text
-)
+    msg "Installing paru"
 
-install pacman "${pac_packages[@]}"
-install paru "${aur_packages[@]}"
+    sudo pacman -S --needed --noconfirm git base-devel
 
+    rm -rf /tmp/paru
+    git clone https://aur.archlinux.org/paru.git /tmp/paru
 
-echo -e "\e[32m# Autostart\e[0m Script"
-sudo tee ~/start-browser-link.sh >/dev/null <<EOF
+    (
+        cd /tmp/paru
+        makepkg -si --noconfirm
+    )
+}
+
+# --------------------------------------------------
+# System update
+# --------------------------------------------------
+
+msg "Update CachyOS / Arch Linux"
+sudo pacman -Syu --noconfirm
+
+# --------------------------------------------------
+# paru
+# --------------------------------------------------
+
+install_paru
+
+msg "$(paru --version | head -1)"
+
+# --------------------------------------------------
+# Packages
+# --------------------------------------------------
+
+install_packages pacman "${PAC_PACKAGES[@]}"
+install_packages paru "${AUR_PACKAGES[@]}"
+
+# --------------------------------------------------
+# Autostart browser
+# --------------------------------------------------
+
+msg "Autostart browser"
+
+cat > "$HOME/start-browser-link.sh" <<'EOF'
 #!/bin/bash
-firefox "http://192.168.0.64:8888/" "http://192.168.0.64:3001"
+firefox \
+  "http://192.168.0.64:8888/" \
+  "http://192.168.0.64:3001"
 EOF
-sudo chmod +x ~/start-browser-link.sh
 
-# KDE Menu > System > System settings > (System) Autostart > Add New > Login Script > ~/start-browser-link.sh 
-echo -e "\e[32m# Autostart\e[0m monitoring"
-mkdir -p ~/.config/autostart
-sudo tee ~/.config/autostart/start-browser-link.sh.desktop >/dev/null <<EOF
+chmod +x "$HOME/start-browser-link.sh"
+
+mkdir -p "$HOME/.config/autostart"
+
+cat > "$HOME/.config/autostart/start-browser-link.desktop" <<EOF
 [Desktop Entry]
-Exec=~/start-browser-link.sh
-Icon=application-x-shellscript
-Name=firefox-start-browser-link.sh
 Type=Application
+Name=Browser Links
+Exec=$HOME/start-browser-link.sh
+Icon=application-x-shellscript
 X-KDE-AutostartScript=true
 EOF
 
-# KDE Menu > System > System Settings > Login Screen > Automatically log in: ✅ as user: kaan
-echo -e "\e[32m# Autologin\e[0m kde plasma"
-sudo tee /etc/plasmalogin.conf >/dev/null <<EOF
+# --------------------------------------------------
+# KDE Autologin
+# --------------------------------------------------
+
+msg "KDE autologin"
+
+sudo mkdir -p /etc/sddm.conf.d
+
+sudo tee /etc/sddm.conf.d/autologin.conf >/dev/null <<EOF
 [Autologin]
+User=$USER
 Session=plasma.desktop
-User=kaan
 EOF
 
-echo -e "\e[32m# Printer\e[0m HP_402dw"
-#1. Install and start CUPS
-sudo pacman -S cups cups-pdf system-config-printer
+# --------------------------------------------------
+# Printer
+# --------------------------------------------------
+
+msg "Install printer"
+
+sudo pacman -S --needed --noconfirm \
+    cups \
+    system-config-printer \
+    hplip
+
 sudo systemctl enable --now cups
 
-#2. HP drivers
-sudo pacman -S --noconfirm hplip
+sudo lpadmin \
+    -p "$PRINTER_NAME" \
+    -E \
+    -v "ipp://$PRINTER_IP/ipp/print" \
+    -m everywhere
 
-#3. Add print
-sudo lpadmin -p HP_M402dw -E \
-  -v ipp://192.168.0.248/ipp/print \
-  -m everywhere
+sudo lpoptions -d "$PRINTER_NAME"
 
-#4. Set default print
-sudo lpoptions -d HP_M402dw
+# --------------------------------------------------
+# Done
+# --------------------------------------------------
 
-
-echo "### AUR-helper zoals yay"
-if ! command -v yay >/dev/null 2>&1; then
-    git clone https://aur.archlinux.org/yay.git
-    (
-        cd yay
-        makepkg -si --noconfirm
-    )
-fi
-yay -S --needed --noconfirm brave-bin
+msg "DONE"
 #
-
