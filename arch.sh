@@ -80,21 +80,13 @@ install_packages paru "${AUR_PACKAGES[@]}"
 # --------------------------------------------------
 msg "Autostart browser"
 
-sudo tee $HOME/start-browser-link.sh >/dev/null <<EOF
-firefox \
-  "http://192.168.0.64:8888/" \
-  "http://192.168.0.64:3001"
-EOF
-
-chmod +x "$HOME/start-browser-link.sh"
-
 mkdir -p "$HOME/.config/autostart"
 
 sudo tee $HOME/.config/autostart/start-browser-link.desktop >/dev/null <<EOF
 [Desktop Entry]
 Type=Application
 Name=Browser Links
-Exec=$HOME/start-browser-link.sh
+Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.64:8888/ http://192.168.0.64:3001"
 Icon=application-x-shellscript
 X-KDE-AutostartScript=true
 EOF
