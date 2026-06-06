@@ -79,9 +79,7 @@ install_packages paru "${AUR_PACKAGES[@]}"
 # Autostart browser
 # --------------------------------------------------
 msg "Autostart browser"
-
 mkdir -p "$HOME/.config/autostart"
-
 sudo tee $HOME/.config/autostart/start-browser-link.desktop >/dev/null <<EOF
 [Desktop Entry]
 Type=Application
@@ -94,7 +92,6 @@ EOF
 # --------------------------------------------------
 msg "KDE autologin"
 sudo mkdir -p /etc/sddm.conf.d
-
 sudo tee /etc/sddm.conf.d/autologin.conf >/dev/null <<EOF
 [Autologin]
 User=$USER
@@ -105,7 +102,6 @@ EOF
 # Printer
 # --------------------------------------------------
 msg "Install printer"
-
 sudo pacman -S --needed --noconfirm \
     cups \
     system-config-printer \
