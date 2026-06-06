@@ -4,7 +4,7 @@
 set +e     # Continue on error
 
 echo "### 💻 CachyOS / Arch Linux "
-sudo pacman -Syu --noconfirm
+sudo -v pacman -Syu --noconfirm
 
 #  Installeren app via AUR
 if ! command -v paru >/dev/null 2>&1; then
