@@ -18,7 +18,7 @@ if ! command -v paru >/dev/null 2>&1; then
 fi
 echo "### $(paru --version | head -1)"
 
-# AUR-helper zoals yay
+echo "### AUR-helper zoals yay"
 if ! command -v yay >/dev/null 2>&1; then
     git clone https://aur.archlinux.org/yay.git
     (
