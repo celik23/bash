@@ -87,8 +87,6 @@ sudo tee $HOME/.config/autostart/start-browser-link.desktop >/dev/null <<EOF
 Type=Application
 Name=Browser Links
 Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.64:8888/ http://192.168.0.64:3001"
-Icon=application-x-shellscript
-X-KDE-AutostartScript=true
 EOF
 
 # --------------------------------------------------
