@@ -18,17 +18,6 @@ if ! command -v paru >/dev/null 2>&1; then
 fi
 echo "### $(paru --version | head -1)"
 
-echo "### AUR-helper zoals yay"
-if ! command -v yay >/dev/null 2>&1; then
-    git clone https://aur.archlinux.org/yay.git
-    (
-        cd yay
-        makepkg -si --noconfirm
-    )
-fi
-yay -S --needed --noconfirm brave-bin
-
-
 # function pacman/paru
 install() {
     local manager="$1"
@@ -104,5 +93,15 @@ sudo lpadmin -p HP_M402dw -E \
 #4. Set default print
 sudo lpoptions -d HP_M402dw
 
+
+echo "### AUR-helper zoals yay"
+if ! command -v yay >/dev/null 2>&1; then
+    git clone https://aur.archlinux.org/yay.git
+    (
+        cd yay
+        makepkg -si --noconfirm
+    )
+fi
+yay -S --needed --noconfirm brave-bin
 #
 
