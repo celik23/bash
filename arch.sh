@@ -26,7 +26,7 @@ if ! command -v yay >/dev/null 2>&1; then
         makepkg -si --noconfirm
     )
 fi
-yay -S --needed brave-bin
+yay -S --needed --noconfirm brave-bin
 
 
 # function pacman/paru
