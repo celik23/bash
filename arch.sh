@@ -121,18 +121,13 @@ sudo lpoptions -d "$PRINTER_NAME"
 # --------------------------------------------------
 msg "Setting locale (24h time)..."
 
-sudo sed -i 's/#nl_NL.UTF-8 UTF-8/nl_NL.UTF-8 UTF-8/' /etc/locale.gen
+sudo sed -i 's/^#nl_NL.UTF-8 UTF-8/nl_NL.UTF-8 UTF-8/' /etc/locale.gen
 sudo locale-gen
 
 cat <<EOF | sudo tee /etc/locale.conf
 LANG=en_US.UTF-8
 LC_TIME=nl_NL.UTF-8
-LC_TIME_FORMAT=nl_NL.UTF-8
 EOF
-
-export LANG=en_US.UTF-8
-export LC_TIME=nl_NL.UTF-8
-export LC_TIME_FORMAT=nl_NL.UTF-8
 
 # --------------------------------------------------
 # Done
