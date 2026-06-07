@@ -2,6 +2,8 @@
 #
 # // Copyright (C) 2025
 set +e     # Continue on error
+# Vraag 1 keer om sudo wachtwoord
+sudo -v || exit 1
 #
 echo "# setup gonme"
 sudo apt update -y && sudo apt upgrade -y
