@@ -11,7 +11,7 @@ PRINTER_NAME="HP_M402dw"
 PAC_PACKAGES=(
     dolphin kate nano kio-admin git htop flatpak wget curl ark
     gparted keepassxc chromium filezilla mpv ffmpeg code
-    discover ntfs-3g exfatprogs krusader rsync
+    discover doublecmd-qt6 krusader rsync ntfs-3g exfatprogs
 )
 
 AUR_PACKAGES=(
