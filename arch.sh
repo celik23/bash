@@ -119,7 +119,7 @@ sudo lpoptions -d "$PRINTER_NAME"
 # --------------------------------------------------
 # 24h
 # --------------------------------------------------
-echo "Setting locale (24h time)..."
+msg "Setting locale (24h time)..."
 
 sudo sed -i 's/#nl_NL.UTF-8 UTF-8/nl_NL.UTF-8 UTF-8/' /etc/locale.gen
 sudo locale-gen
