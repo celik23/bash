@@ -91,8 +91,7 @@ EOF
 # KDE Autologin
 # --------------------------------------------------
 msg "KDE autologin"
-sudo mkdir -p /etc/sddm.conf.d
-sudo tee /etc/sddm.conf.d/autologin.conf >/dev/null <<EOF
+sudo tee /etc/plasmalogin.conf >/dev/null <<EOF
 [Autologin]
 User=$USER
 Session=plasma.desktop
