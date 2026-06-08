@@ -5,9 +5,6 @@ set +e   # Continue on error
 # --------------------------------------------------
 # Config
 # --------------------------------------------------
-PRINTER_IP="192.168.0.248"
-PRINTER_NAME="HP_M402dw"
-
 PAC_PACKAGES=(
     dolphin kate nano kio-admin git htop flatpak wget curl ark
     gparted keepassxc chromium filezilla mpv ffmpeg code
@@ -84,7 +81,7 @@ sudo tee $HOME/.config/autostart/start-browser-link.desktop >/dev/null <<EOF
 [Desktop Entry]
 Type=Application
 Name=Firefox
-Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.64:8888/ http://192.168.0.64:3001/"
+Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.64:3001/ http://192.168.0.64:8888/"
 EOF
 
 # --------------------------------------------------
@@ -100,6 +97,9 @@ EOF
 # --------------------------------------------------
 # Printer
 # --------------------------------------------------
+PRINTER_IP="192.168.0.248"
+PRINTER_NAME="HP_M402dw"
+
 msg "Install printer"
 sudo pacman -S --needed --noconfirm \
     cups \
