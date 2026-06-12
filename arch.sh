@@ -133,6 +133,7 @@ EOF
 # --------------------------------------------------
 # Hide a volume in Dolphin/udisks
 # --------------------------------------------------
+msg "Hide a volume in Dolphin/udisks ..."
 sudo tee /etc/udev/rules.d/99-hide-vtoyefi.rules >/dev/null <<EOF
 ENV{ID_FS_LABEL}=="VTOYEFI", ENV{UDISKS_IGNORE}="1"
 EOF
