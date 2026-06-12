@@ -9,7 +9,7 @@ PAC_PACKAGES=(
     dolphin kate nano kio-admin git htop flatpak wget curl ark
     gparted keepassxc chromium filezilla mpv ffmpeg code
     discover doublecmd-qt6 krusader rsync ntfs-3g exfatprogs
-    iwctl
+    iw
 )
 
 AUR_PACKAGES=(
