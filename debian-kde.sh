@@ -90,10 +90,10 @@ PRINTER_NAME="HP_M402dw"
 msg "Install printer"
 
 sudo systemctl enable --now cups
-sudo lpadmin
-    -p "$PRINTER_NAME"
-    -E
-    -v "ipp://$PRINTER_IP/ipp/print"
+sudo lpadmin \
+    -p "$PRINTER_NAME" \
+    -E \
+    -v "ipp://$PRINTER_IP/ipp/print" \
     -m everywhere
 
 sudo lpoptions -d "$PRINTER_NAME"
