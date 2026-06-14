@@ -55,8 +55,6 @@ sudo systemctl enable --now snapd.socket
 snap list
 snap find onlyoffice
 sudo snap install onlyoffice-desktopeditors
-sudo snap install sublime-text --classic
-sudo snap install code --classic
 
 # --------------------------------------------------
 # Set Dutch locale
