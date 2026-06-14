@@ -15,7 +15,7 @@ APT_PACKAGES=(
 )
 
 SNAP_PACKAGES=(
-    onlyoffice-bin sublime-text brave-bin
+    onlyoffice-bin sublime-text brave
 )
 
 install_packages() {
