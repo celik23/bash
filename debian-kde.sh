@@ -40,6 +40,10 @@ install_packages "${PACKAGES[@]}"
 msg "Enable snap"
 sudo systemctl enable --now snapd.socket
 
+snap list
+snap find onlyoffice
+sudo snap install onlyoffice-desktopeditors
+
 # --------------------------------------------------
 # Set Dutch locale
 # --------------------------------------------------
