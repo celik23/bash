@@ -43,8 +43,8 @@ sudo apt upgrade -y
 # --------------------------------------------------
 # Install packages
 # --------------------------------------------------
-install_packages "${APT_PACKAGES[@]}"
-install_packages "${SNAP_PACKAGES[@]}"
+install_packages apt "${APT_PACKAGES[@]}"
+install_packages snap "${SNAP_PACKAGES[@]}"
 
 # --------------------------------------------------
 # Enable snap
