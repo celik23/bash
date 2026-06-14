@@ -34,7 +34,6 @@ sudo apt upgrade -y
 install_packages "${PACKAGES[@]}"
 
 # --------------------------------------------------
-
 # Enable snap
 # --------------------------------------------------
 msg "Enable snap"
