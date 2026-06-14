@@ -15,7 +15,7 @@ APT_PACKAGES=(
 )
 
 SNAP_PACKAGES=(
-    onlyoffice-bin sublime-text brave code
+    onlyoffice-desktopeditors sublime-text brave code
 )
 
 install_packages() {
