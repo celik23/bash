@@ -9,9 +9,13 @@ msg() {
 echo -e "${GREEN}### $*${NC}"
 }
 
-PACKAGES=(
+APT_PACKAGES=(
     snapd gparted krusader filezilla grub-customizer doublecmd-qt ark cups
     system-config-printer hplip
+)
+
+SNAP_PACKAGES=(
+    onlyoffice-bin sublime-text brave-bin
 )
 
 install_packages() {
@@ -39,7 +43,8 @@ sudo apt upgrade -y
 # --------------------------------------------------
 # Install packages
 # --------------------------------------------------
-install_packages "${PACKAGES[@]}"
+install_packages "${APT_PACKAGES[@]}"
+install_packages "${SNAP_PACKAGES[@]}"
 
 # --------------------------------------------------
 # Enable snap
