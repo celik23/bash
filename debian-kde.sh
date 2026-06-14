@@ -28,7 +28,7 @@ install_packages() {
         if [[ "$manager" == "apt" ]]; then
             sudo apt install -y "$pkg"
         else
-            sudo snap install "$pkg" --classic
+            snap install "$pkg" --classic
         fi
     done
 }
