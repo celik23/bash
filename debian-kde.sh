@@ -15,9 +15,17 @@ PACKAGES=(
 )
 
 install_packages() {
+    local manager="$1"
+    shift
+
     for pkg in "$@"; do
         msg "Installing $pkg"
-        sudo apt install -y "$pkg"
+
+        if [[ "$manager" == "apt" ]]; then
+            sudo apt install -y "$pkg"
+        else
+            sudo snap install "$pkg" --classic
+        fi
     done
 }
 
@@ -62,21 +70,6 @@ sudo tee /etc/sddm.conf.d/autologin.conf >/dev/null <<EOF
 User=$USER
 Session=plasma
 EOF
-
-# --------------------------------------------------
-# Sublime Text repository
-# --------------------------------------------------
-# msg "Install Sublime Text"
-# sudo mkdir -p /etc/apt/keyrings
-# wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg
-# | gpg --dearmor
-# | sudo tee /etc/apt/keyrings/sublime.gpg >/dev/null
-
-# echo "deb [signed-by=/etc/apt/keyrings/sublime.gpg] https://download.sublimetext.com/ apt/stable/"
-# | sudo tee /etc/apt/sources.list.d/sublime-text.list
-
-# sudo apt update
-# sudo apt install -y sublime-text
 
 # --------------------------------------------------
 # Remove LibreOffice
