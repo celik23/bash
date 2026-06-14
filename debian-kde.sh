@@ -67,20 +67,12 @@ Session=plasma
 EOF
 
 # --------------------------------------------------
-# Remove LibreOffice
-# --------------------------------------------------
-# msg "Remove LibreOffice"
-# sudo apt purge 'libreoffice*' -y
-# sudo apt autoremove -y
-
-# --------------------------------------------------
 # Add Printer
 # --------------------------------------------------
 PRINTER_IP="192.168.0.248"
 PRINTER_NAME="HP_M402dw"
 
 msg "Install printer"
-
 sudo systemctl enable --now cups
 if ! lpstat -p "$PRINTER_NAME" >/dev/null 2>&1; then
     sudo lpadmin \
@@ -91,10 +83,16 @@ if ! lpstat -p "$PRINTER_NAME" >/dev/null 2>&1; then
 fi
 
 sudo lpoptions -d "$PRINTER_NAME"
+lpstat -p     # Show printers
 
-# Show printers
-lpstat -p
+# --------------------------------------------------
+# Remove LibreOffice
+# --------------------------------------------------
+# msg "Remove LibreOffice"
+# sudo apt purge 'libreoffice*' -y
+# sudo apt autoremove -y
 
-msg "DONE"
 snap list 
 snap find onlyoffice
+
+msg "DONE"
