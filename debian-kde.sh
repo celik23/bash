@@ -74,7 +74,7 @@ EOF
 # sudo apt autoremove -y
 
 # --------------------------------------------------
-# Printercode 
+# Add Printer
 # --------------------------------------------------
 PRINTER_IP="192.168.0.248"
 PRINTER_NAME="HP_M402dw"
