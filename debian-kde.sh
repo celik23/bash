@@ -49,12 +49,12 @@ install_packages snap "${SNAP_PACKAGES[@]}"
 # --------------------------------------------------
 # Enable snap
 # --------------------------------------------------
-msg "Enable snap"
-sudo systemctl enable --now snapd.socket
+# msg "Enable snap"
+# sudo systemctl enable --now snapd.socket
 
-snap list
-snap find onlyoffice
-sudo snap install onlyoffice-desktopeditors
+# snap list
+# snap find onlyoffice
+# sudo snap install onlyoffice-desktopeditors
 
 # --------------------------------------------------
 # Set Dutch locale
