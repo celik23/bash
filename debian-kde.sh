@@ -98,4 +98,7 @@ sudo lpadmin \
 
 sudo lpoptions -d "$PRINTER_NAME"
 
+# Show printers
+lpstat -p
+
 msg "DONE"
