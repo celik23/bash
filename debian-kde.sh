@@ -94,3 +94,5 @@ sudo lpoptions -d "$PRINTER_NAME"
 lpstat -p
 
 msg "DONE"
+snap list 
+snap find onlyoffice
