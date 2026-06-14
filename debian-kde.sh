@@ -1,72 +1,84 @@
-
 #!/bin/bash
-#
-# // Copyright (C) 2026
-set +e     # Continue on error
 
-# --------------------------------------------------
-# Config
-# --------------------------------------------------
-PAC_PACKAGES=(
-    snapd gparted dolphin krusader filezilla grub-customizer doublecmd-qt6 ark
-)
+set +e
 
-SNAP_PACKAGES=(
-    onlyoffice-bin sublime-text brave-bin
-)
-
-# --------------------------------------------------
-# Helpers
-# --------------------------------------------------
 GREEN='\033[0;32m'
 NC='\033[0m'
 
 msg() {
-    echo -e "${GREEN}### $*${NC}"
+echo -e "${GREEN}### $*${NC}"
 }
 
-install_packages() {
-    local manager="$1"
-    shift
+PACKAGES=(
+    snapd gparted krusader filezilla grub-customizer doublecmd-qt ark cups
+    system-config-printer hplip
+)
 
+install_packages() {
     for pkg in "$@"; do
         msg "Installing $pkg"
-
-        if [[ "$manager" == "apt" ]]; then
-            sudo apt -y install "$pkg"
-        else
-            snap apt -y install "$pkg"
-        fi
+        sudo apt install -y "$pkg"
     done
 }
 
+# --------------------------------------------------
+# Update system
+# --------------------------------------------------
+msg "Updating system"
+sudo apt update
+sudo apt upgrade -y
 
 # --------------------------------------------------
-# System update
+# Install packages
 # --------------------------------------------------
-sudo apt update -y && sudo apt upgrade -y
+install_packages "${PACKAGES[@]}"
 
-install_packages apt "${PAC_PACKAGES[@]}"
-install_packages snap "${SNAP_PACKAGES[@]}"
+# --------------------------------------------------
 
-msg "# Setting Monday as the First Day"
-msg 'LC_TIME=nl_NL.UTF-8' | sudo tee -a /etc/default/locale
+# Enable snap
+# --------------------------------------------------
+msg "Enable snap"
+sudo systemctl enable --now snapd.socket
 
-msg "# Configure automatic login"
-sudo sed -i \
-    -e 's/^\s*#\?\s*AutomaticLoginEnable\s*=.*/AutomaticLoginEnable = true/' \
-    -e 's/^\s*#\?\s*AutomaticLogin\s*=.*/AutomaticLogin = kaan/' \
-    /etc/gdm3/daemon.conf
+# --------------------------------------------------
+# Set Dutch locale
+# --------------------------------------------------
+msg "Set locale"
+grep -q '^LC_TIME=' /etc/default/locale ||
+echo 'LC_TIME=nl_NL.UTF-8' | sudo tee -a /etc/default/locale
 
-msg "# Sublime Text"
-sudo wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/apt/keyrings/sublimehq-pub.asc > /dev/null
-msg -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
-sudo apt install sublime-text
+# --------------------------------------------------
+# Configure SDDM autologin (KDE)
+# --------------------------------------------------
+msg "Configure autologin"
+sudo mkdir -p /etc/sddm.conf.d
+sudo tee /etc/sddm.conf.d/autologin.conf >/dev/null <<EOF
+[Autologin]
+User=$USER
+Session=plasma
+EOF
 
-msg "# Uninstall libreoffice"
+# --------------------------------------------------
+# Sublime Text repository
+# --------------------------------------------------
+msg "Install Sublime Text"
+sudo mkdir -p /etc/apt/keyrings
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg
+| gpg --dearmor
+| sudo tee /etc/apt/keyrings/sublime.gpg >/dev/null
+
+echo "deb [signed-by=/etc/apt/keyrings/sublime.gpg] https://download.sublimetext.com/ apt/stable/"
+| sudo tee /etc/apt/sources.list.d/sublime-text.list
+
+sudo apt update
+sudo apt install -y sublime-text
+
+# --------------------------------------------------
+# Remove LibreOffice
+# --------------------------------------------------
+msg "Remove LibreOffice"
 sudo apt purge 'libreoffice*' -y
 sudo apt autoremove -y
-sudo apt clean
 
 # --------------------------------------------------
 # Printer
@@ -74,21 +86,15 @@ sudo apt clean
 PRINTER_IP="192.168.0.248"
 PRINTER_NAME="HP_M402dw"
 
-msg "Install printer $PRINTER_NAME"
-sudo pacman -S --needed --noconfirm \
-    cups \
-    system-config-printer \
-    hplip
+msg "Install printer"
 
 sudo systemctl enable --now cups
-
-sudo lpadmin \
-    -p "$PRINTER_NAME" \
-    -E \
-    -v "ipp://$PRINTER_IP/ipp/print" \
+sudo lpadmin
+    -p "$PRINTER_NAME"
+    -E
+    -v "ipp://$PRINTER_IP/ipp/print"
     -m everywhere
 
 sudo lpoptions -d "$PRINTER_NAME"
 
 msg "DONE"
-#
