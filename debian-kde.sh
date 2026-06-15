@@ -2,13 +2,9 @@
 
 set +e
 
-GREEN='\033[0;32m'
-NC='\033[0m'
-
-msg() {
-echo -e "${GREEN}### $*${NC}"
-}
-
+# --------------------------------------------------
+# Config
+# --------------------------------------------------
 APT_PACKAGES=(
     snapd gparted krusader filezilla grub-customizer doublecmd-qt ark cups
     system-config-printer hplip
@@ -17,6 +13,16 @@ APT_PACKAGES=(
 SNAP_PACKAGES=(
     onlyoffice-desktopeditors sublime-text brave code
 )
+
+# --------------------------------------------------
+# Helpers
+# --------------------------------------------------
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+msg() {
+echo -e "${GREEN}### $*${NC}"
+}
 
 install_packages() {
     local manager="$1"
@@ -54,6 +60,18 @@ install_packages snap "${SNAP_PACKAGES[@]}"
 msg "Set locale"
 grep -q '^LC_TIME=' /etc/default/locale ||
 echo 'LC_TIME=nl_NL.UTF-8' | sudo tee -a /etc/default/locale
+
+# --------------------------------------------------
+# Autostart browser
+# --------------------------------------------------
+msg "Autostart browser"
+mkdir -p "$HOME/.config/autostart"
+sudo tee $HOME/.config/autostart/start-browser-link.desktop >/dev/null <<EOF
+[Desktop Entry]
+Type=Application
+Name=Firefox
+Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.64:3001/ http://192.168.0.64:8888/"
+EOF
 
 # --------------------------------------------------
 # Configure SDDM autologin (KDE)
