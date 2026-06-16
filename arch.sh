@@ -12,7 +12,7 @@ PAC_PACKAGES=(
 )
 
 AUR_PACKAGES=(
-    onlyoffice-bin sublime-text brave-bin
+    onlyoffice-bin sublime-text brave-bin whatsit-git
 )
 
 # --------------------------------------------------
