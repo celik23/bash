@@ -114,9 +114,9 @@ EOF
 # --------------------------------------------------
 # Remove LibreOffice
 # --------------------------------------------------
-# msg "Remove LibreOffice"
-# sudo apt purge 'libreoffice*' -y
-# sudo apt autoremove -y
+msg "Remove LibreOffice"
+sudo apt purge 'libreoffice*' -y
+sudo apt autoremove -y
 
 snap list 
 snap find onlyoffice
