@@ -11,7 +11,7 @@ APT_PACKAGES=(
 )
 
 SNAP_PACKAGES=(
-    onlyoffice-desktopeditors sublime-text brave code
+    onlyoffice-desktopeditors sublime-text brave code whatsie
 )
 
 # --------------------------------------------------
