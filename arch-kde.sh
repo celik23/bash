@@ -104,13 +104,16 @@ sudo pacman -S --needed --noconfirm \
 
 sudo systemctl enable --now cups
 
-sudo lpadmin \
-    -p "$PRINTER_NAME" \
-    -E \
-    -v "ipp://$PRINTER_IP/ipp/print" \
-    -m everywhere
+if ! lpstat -p "$PRINTER_NAME" >/dev/null 2>&1; then
+    sudo lpadmin \
+        -p "$PRINTER_NAME" \
+        -E \
+        -v "ipp://$PRINTER_IP/ipp/print" \
+        -m everywhere
+fi
 
 sudo lpoptions -d "$PRINTER_NAME"
+lpstat -p     # Show printers
 
 # --------------------------------------------------
 # 24h
