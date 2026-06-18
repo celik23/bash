@@ -8,8 +8,7 @@ set +e   # Continue on error
 PAC_PACKAGES=(
     dolphin kate nano kio-admin git htop flatpak wget curl ark
     gparted keepassxc chromium filezilla mpv code discover
-    doublecmd-qt6 krusader rsync ntfs-3g exfatprogs iw
-    spectacle
+    doublecmd-qt6 rsync ntfs-3g exfatprogs iw spectacle
 )
 
 AUR_PACKAGES=(
