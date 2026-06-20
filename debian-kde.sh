@@ -6,8 +6,9 @@ set +e
 # Config
 # --------------------------------------------------
 APT_PACKAGES=(
-    snapd gparted krusader filezilla grub-customizer doublecmd-qt ark cups
+    snapd gparted krusader filezilla doublecmd-qt ark cups
     system-config-printer hplip
+    # grub-customizer
 )
 
 SNAP_PACKAGES=(
