@@ -28,7 +28,7 @@ install() {
 }
 
 pac_packages=(
-    snapd gparted dolphin krusader filezilla grub-customizer doublecmd-qt6 ark
+    snapd gparted dolphin krusader filezilla grub-customizer doublecmd-qt6 ark kate
 )
 
 aur_packages=(
