@@ -14,3 +14,12 @@ bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-kde.sh
 ```
 curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -s -- arg arg
 ```
+
+
+Of nog compacter:
+
+```md
+## Debian<br>
+**Gnome Desktop**
+```bash
+bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian.sh) arg arg
