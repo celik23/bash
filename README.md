@@ -1,16 +1,16 @@
-## debian gnome (debian,pardus)
-# Gnome-Desktop
+# debian
+### Gnome-Desktop
 ```
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian.sh) arg arg
 ```
 
-# KDE-Desktop
+### KDE-Desktop
 ```
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-kde.sh) arg arg
 ```
 
-## arch
-# KDE-Desktop
+# arch
+### KDE-Desktop
 ```
 curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -s -- arg arg
 ```
