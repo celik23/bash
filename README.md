@@ -1,6 +1,6 @@
-## Debian
+## Debian<br>
 
-**Gnome Desktop**<br>
+**Gnome Desktop**
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian.sh) arg arg
 ```
