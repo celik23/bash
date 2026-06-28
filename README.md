@@ -11,7 +11,6 @@ bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-kde.sh
 
 
 
-
 ## Arch-Linux
 **KDE Desktop**
 ```bash
