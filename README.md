@@ -9,6 +9,7 @@ bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian.sh) ar
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-kde.sh) arg arg
 ```
 
+<br>
 ## Arch-Linux
 **KDE Desktop**
 ```bash
