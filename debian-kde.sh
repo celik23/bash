@@ -7,7 +7,7 @@ set +e
 # --------------------------------------------------
 APT_PACKAGES=(
     snapd gparted krusader filezilla doublecmd-qt ark cups
-    system-config-printer hplip
+    system-config-printer hplip gwenview
 )
 
 SNAP_PACKAGES=(
