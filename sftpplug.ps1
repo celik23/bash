@@ -52,7 +52,7 @@ function Install-Office {
 
          Write-Host "Microsoft Office 2024" `
         "$DriveLetter\setup\microsoft_office_x64_2024\setup.exe" `
-        "/configure","configuration.xml"
+        "/configure","$DriveLetter\setup\configuration.xml"
 }
 
 
