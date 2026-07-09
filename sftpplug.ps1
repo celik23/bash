@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Name : setup-apps.ps1
+Name : sftpplug.ps1
 
 .DESCRIPTION
 Description : Incremental backup naar USB-disk v2.0 (c) HC 2004-2025 ...
