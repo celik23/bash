@@ -62,7 +62,7 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
 $architecture = (Get-CimInstance Win32_Processor).AddressWidth
 
 If ($architecture -eq 64) {
-	# Microsoft Store install ( winget search kate | winget install --id KDE.Kate )
+	# Microsoft Store install ( winget search kate | winget install --id KDE.Kate | winget upgrade --all)
 
 	# Tools
 	Install-Winget Ghisler.TotalCommander
@@ -87,7 +87,6 @@ If ($architecture -eq 64) {
 	#Install-Winget GoLang.Go
 
 	# Utillitie
-	# winget search authenticator | winget upgrade --all
 	# winget install --id 9N6GL0BVKPHN #FirstOrder Authenticator 2FA
 	
 	$python = Get-Command python -ErrorAction SilentlyContinue
