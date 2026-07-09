@@ -89,7 +89,7 @@ If ($architecture -eq 64) {
 	# Utillitie
 	# Install-Winget 9N6GL0BVKPHN #Authenticator 2FA
 
-	# Python Launcher (py.exe):
+	# Python Launcher (python.exe):
 	if (Get-Command python -ErrorAction SilentlyContinue) {
 	    python -m pip install --upgrade pip
 	    python -m pip install WMI pywin32 colorama
