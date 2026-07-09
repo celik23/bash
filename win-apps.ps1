@@ -87,7 +87,7 @@ If ($architecture -eq 64) {
 	#Install-Winget GoLang.Go
 
 	# Utillitie
-	# winget install --id 9N6GL0BVKPHN #FirstOrder Authenticator 2FA
+	# Install-Winget 9N6GL0BVKPHN #Authenticator 2FA
 	
 	$python = Get-Command python -ErrorAction SilentlyContinue
 
