@@ -35,21 +35,10 @@ function Install-TotalCommander {
     $pluginDir = "C:\Program Files\totalcmd\plugins\wfx\sftpplug"
 
     Write-Host "Downloading SFTP plugin..."
+    Invoke-WebRequest -Uri $url -OutFile $zip
 
-    Invoke-WebRequest `
-        -Uri $url `
-        -OutFile $zip
-
-    New-Item `
-        -ItemType Directory `
-        -Force `
-        -Path $pluginDir | Out-Null
-
-    & "C:\Program Files\7-Zip\7z.exe" x `
-        $zip `
-        "-o$pluginDir" `
-        -y
-
+    New-Item -ItemType Directory -Force -Path $pluginDir | Out-Null
+    & "C:\Program Files\7-Zip\7z.exe" x $zip "-o$pluginDir" -y
     Remove-Item $zip -Force
 
     Write-Host "SFTP plugin installed." -ForegroundColor Green
