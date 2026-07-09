@@ -9,7 +9,6 @@ Description : Incremental backup naar USB-disk v2.0 (c) HC 2004-2025 ...
 Author	: H. Celik
 Version	: 1.1
 Date	: 16-01-2016,10-07-2026 H. Celik
-
 #>
 
 function Find-DriveLetter {
