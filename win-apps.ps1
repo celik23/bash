@@ -62,7 +62,7 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
 $architecture = (Get-CimInstance Win32_Processor).AddressWidth
 
 If ($architecture -eq 64) {
-	# Microsoft Store install ( winget search kate )
+	# Microsoft Store install ( winget search kate | winget install --id KDE.Kate )
 
 	# Tools
 	Install-Winget Ghisler.TotalCommander
