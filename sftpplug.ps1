@@ -34,12 +34,11 @@ function Install-TotalCommander {
     }
 
     New-Item -ItemType Directory -Force `
-        "C:\Program Files\totalcmd\plugins\wfx\sftpplug" |
-        Out-Null
+        "C:\Program Files\totalcmd\plugins\wfx\sftpplug" | Out-Null
 
     & "C:\Program Files\7-Zip\7z.exe" x `
         "$DriveLetter\setup\totalcmd\sftpplug.zip" `
-        "-oC:\Program Files\totalcmd\plugins\wfx\sftpplug" `
+        -o"C:\Program Files\totalcmd\plugins\wfx\sftpplug" `
         -y
 
     Copy-Item `
