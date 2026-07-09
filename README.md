@@ -22,3 +22,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 irm https://raw.githubusercontent.com/celik23/bash/main/win-apps.ps1 | iex
 irm https://raw.githubusercontent.com/celik23/bash/main/sftpplug.ps1 | iex
 ```
+
+```
+$env:Path =
+    [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" +
+    [System.Environment]::GetEnvironmentVariable("Path", "User")
+```
