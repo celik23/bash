@@ -13,6 +13,8 @@ Date	: 16-01-2016,10-07-2026 H. Celik
 set-executionpolicy -executionpolicy ByPass
 #>
 
+# Variables
+
 function Install-Winget {
     param(
         [Parameter(Mandatory)]
@@ -31,10 +33,6 @@ function Install-Winget {
 
 # Window Title
 $host.UI.RawUI.WindowTitle = "install apps"
-
-# Variables
-$FullScriptpath = $MyInvocation.MyCommand.Path
-$Scriptpath = Split-Path $FullScriptpath
 
 New-Item -ItemType Directory -Force "$env:USERPROFILE\data" | Out-Null
 New-Item -ItemType Directory -Force "C:\temp" | Out-Null
