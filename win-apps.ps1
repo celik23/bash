@@ -88,6 +88,9 @@ If ($architecture -eq 64) {
 
 	# Utillitie
 	# Install-Winget 9N6GL0BVKPHN #Authenticator 2FA
+	$env:Path = `
+	    [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" +
+	    [System.Environment]::GetEnvironmentVariable("Path","User")
 	
 	$python = Get-Command python -ErrorAction SilentlyContinue
 
