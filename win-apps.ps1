@@ -90,9 +90,9 @@ If ($architecture -eq 64) {
 	# Install-Winget 9N6GL0BVKPHN #Authenticator 2FA
 
 	# Python Launcher (py.exe):
-	if (Get-Command py -ErrorAction SilentlyContinue) {
-	    py -m pip install --upgrade pip
-	    py -m pip install WMI pywin32 colorama
+	if (Get-Command python -ErrorAction SilentlyContinue) {
+	    python -m pip install --upgrade pip
+	    python -m pip install WMI pywin32 colorama
 	} else {
 	    Write-Host "Python Launcher (py.exe) not found." -ForegroundColor Yellow
 	}
