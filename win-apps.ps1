@@ -14,11 +14,17 @@ set-executionpolicy -executionpolicy ByPass
 #>
 
 function Install-Winget {
-    param([string]$Id)
+    param(
+        [Parameter(Mandatory)]
+        [string]$Id
+    )
+
+    Write-Host "`nInstalling $Id..." -ForegroundColor Cyan
 
     winget install `
         --id $Id `
         -e `
+        --silent `
         --accept-package-agreements `
         --accept-source-agreements
 }
