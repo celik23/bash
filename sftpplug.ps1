@@ -91,5 +91,3 @@ if (-not $DriveLetter) {
 
 Read-Host "`nPress ENTER to exit"
 
-pause
-
