@@ -49,7 +49,10 @@ function Install-TotalCommander {
 }
 
 function Install-Office {
-
+    if ((Read-Host "`nInstall Microsoft office? (y/N)").ToLower() -ne "y") {
+        return
+    }
+    
     $setup = "$DriveLetter\setup\microsoft_office_x64_2024\setup.exe"
     $config = "$DriveLetter\setup\microsoft_office_x64_2024\configuration.xml"
 
