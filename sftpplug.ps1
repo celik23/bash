@@ -17,7 +17,6 @@ function Find-DriveLetter {
     )
 
     foreach ($volume in Get-Volume | Where-Object DriveLetter) {
-
         if ($VolumeNames -contains $volume.FileSystemLabel) {
             return "$($volume.DriveLetter):"
         }
