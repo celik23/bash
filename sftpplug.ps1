@@ -25,24 +25,34 @@ function Find-DriveLetter {
     return $null
 }
 
-
 function Install-TotalCommander {
     if ((Read-Host "`nInstall Total Commander SFTP plugin? (y/N)").ToLower() -ne "y") {
         return
     }
 
-    New-Item -ItemType Directory -Force `
-        "C:\Program Files\totalcmd\plugins\wfx\sftpplug" | Out-Null
+    $url = "https://www.totalcommander.ch/win/fs/sftpplug.zip"
+    $zip = Join-Path $env:TEMP "sftpplug.zip"
+    $pluginDir = "C:\Program Files\totalcmd\plugins\wfx\sftpplug"
+
+    Write-Host "Downloading SFTP plugin..."
+
+    Invoke-WebRequest `
+        -Uri $url `
+        -OutFile $zip
+
+    New-Item `
+        -ItemType Directory `
+        -Force `
+        -Path $pluginDir | Out-Null
 
     & "C:\Program Files\7-Zip\7z.exe" x `
-        "$DriveLetter\setup\totalcmd\sftpplug.zip" `
-        -o"C:\Program Files\totalcmd\plugins\wfx\sftpplug" `
+        $zip `
+        "-o$pluginDir" `
         -y
 
-    Copy-Item `
-        "$DriveLetter\setup\totalcmd\wincmd.*" `
-        "C:\Program Files\totalcmd" `
-        -Force
+    Remove-Item $zip -Force
+
+    Write-Host "SFTP plugin installed." -ForegroundColor Green
 }
 
 function Install-Office {
