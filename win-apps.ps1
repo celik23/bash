@@ -96,7 +96,7 @@ Write-Host "This script will install multiple applications" -ForegroundColor Yel
 Write-Host "and modify settings on this computer." -ForegroundColor Yellow
 Write-Host ""
 
-$choice = Read-Host "Continue with the installation? (y/n)"
+$choice = Read-Host "Continue with the installation? (y/N)"
 
 if ($choice.ToLower() -ne 'y') {
     Write-Host "Operation cancelled." -ForegroundColor Red
