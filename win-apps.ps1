@@ -94,7 +94,7 @@ If ($architecture -eq 64) {
 	    python -m pip install --upgrade pip
 	    python -m pip install WMI pywin32 colorama
 	} else {
-	    Write-Host "Python Launcher (py.exe) not found." -ForegroundColor Yellow
+	    Write-Host "Python Launcher (python.exe) not found." -ForegroundColor Yellow
 	}
 } 
 
