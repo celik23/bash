@@ -91,19 +91,11 @@ If ($architecture -eq 64) {
 
 	# Python Launcher (py.exe):
 	if (Get-Command py -ErrorAction SilentlyContinue) {
-	    py -m pip install --upgrade pip WMI pywin32 colorama
+	    py -m pip install --upgrade pip
+	    py -m pip install WMI pywin32 colorama
+	} else {
+	    Write-Host "Python Launcher (py.exe) not found." -ForegroundColor Yellow
 	}
-
-	# $env:Path = `
-	#     [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" +
-	#     [System.Environment]::GetEnvironmentVariable("Path","User")
-	
-	# $python = Get-Command python -ErrorAction SilentlyContinue
-
-	# if ($python) {
-	# 	& $python.Source -m pip install --upgrade pip WMI pywin32  colorama
-	# } 
-
 } 
 
 pause
