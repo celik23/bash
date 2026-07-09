@@ -51,8 +51,7 @@ function Install-TotalCommander {
 
 function Install-Office {
 
-    Choice-Install `
-        "Microsoft Office 2024" `
+         Write-Host "Microsoft Office 2024" `
         "$DriveLetter\setup\microsoft_office_x64_2024\setup.exe" `
         "/configure","configuration.xml"
 }
