@@ -71,7 +71,7 @@ If ($architecture -eq 64) {
 
 	# Editors
 	Install-Winget KDE.Kate
-	Install-Winget WhatsApp.WhatsApp
+	Install-Winget 9NKSQGP7F2NH #WhatsApp
 	Install-Winget SublimeHQ.SublimeText.4
 	Install-Winget Notepad++.Notepad++
 	Install-Winget Microsoft.VisualStudioCode
