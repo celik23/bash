@@ -1,4 +1,3 @@
-
 <#
 .SYNOPSIS
 Name : setup-apps.ps1
@@ -59,6 +58,10 @@ function Install-Office {
 }
 
 
+$DriveLetter = Find-DriveLetter `
+    "NVMe4-2T",
+    "ssd1-2T"
+
 if (-not $DriveLetter) {
     Write-Host "Installation disk not found." -ForegroundColor Red
     pause
@@ -75,20 +78,18 @@ if (!(Test-Path "C:\Program Files\7-Zip\7z.exe")) {
     return
 }
 
-
-$DriveLetter = Find-DriveLetter `
-    "NVMe4-2T",
-    "ssd1-2T"
-
 if (-not $DriveLetter) {
     Write-Host "Installation disk not found." -ForegroundColor Red
     pause
     exit
+} else {
+    Write-Host "Found: $($DriveLetter)" -ForegroundColor Green
 }
 
-Install-TotalCommander
-Install-Office
+#Install-TotalCommander
+#Install-Office
 
 Read-Host "`nPress ENTER to exit"
 
 pause
+
