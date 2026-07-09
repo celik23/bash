@@ -26,6 +26,13 @@ function Install-Winget {
 # Window Title
 $host.UI.RawUI.WindowTitle = "install apps"
 
+# Variables
+$FullScriptpath = $MyInvocation.MyCommand.Path
+$Scriptpath = Split-Path $FullScriptpath
+
+New-Item -ItemType Directory -Force "$env:USERPROFILE\data" | Out-Null
+New-Item -ItemType Directory -Force "C:\temp" | Out-Null
+
 Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host " Windows Application Installer" -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
@@ -41,13 +48,11 @@ if ($choice.ToLower() -ne 'y') {
     exit
 }
 
-# Variables
-$FullScriptpath = $MyInvocation.MyCommand.Path
-$Scriptpath = Split-Path $FullScriptpath
-
-New-Item -ItemType Directory -Force "$env:USERPROFILE\data" | Out-Null
-New-Item -ItemType Directory -Force "C:\temp" | Out-Null
-
+if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+    Write-Host "Winget is not installed." -ForegroundColor Red
+    pause
+    exit
+}
 
 # CPU architecture
 $architecture = (Get-CimInstance Win32_Processor).AddressWidth
@@ -84,16 +89,8 @@ If ($architecture -eq 64) {
 	$python = Get-Command python -ErrorAction SilentlyContinue
 
 	if ($python) {
-		& $python.Source -m pip install --upgrade `
-		    pip `
-		    WMI `
-		    pywin32 `
-		    colorama
-
-	} else {
-
-	    Write-Host "Python is niet geïnstalleerd."
-	}
+		& $python.Source -m pip install --upgrade pip WMI pywin32  colorama
+	} 
 
 } 
 
