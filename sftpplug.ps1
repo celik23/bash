@@ -50,9 +50,27 @@ function Install-TotalCommander {
 
 function Install-Office {
 
-         Write-Host "Microsoft Office 2024" `
-        "$DriveLetter\setup\microsoft_office_x64_2024\setup.exe" `
-        "/configure","$DriveLetter\setup\configuration.xml"
+    $setup = "$DriveLetter\setup\microsoft_office_x64_2024\setup.exe"
+    $config = "$DriveLetter\setup\configuration.xml"
+
+    if (!(Test-Path $setup)) {
+        Write-Host "Office setup not found: $setup" -ForegroundColor Red
+        return
+    }
+
+    if (!(Test-Path $config)) {
+        Write-Host "Office configuration not found: $config" -ForegroundColor Red
+        return
+    }
+
+    Write-Host "Installing Microsoft Office 2024..." -ForegroundColor Cyan
+
+    Start-Process `
+        -FilePath $setup `
+        -ArgumentList "/configure", $config `
+        -Wait
+
+    Write-Host "Microsoft Office installation finished." -ForegroundColor Green
 }
 
 
