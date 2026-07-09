@@ -28,7 +28,6 @@ function Find-DriveLetter {
 
 
 function Install-TotalCommander {
-
     if ((Read-Host "`nInstall Total Commander SFTP plugin? (y/N)").ToLower() -ne "y") {
         return
     }
