@@ -86,8 +86,8 @@ if (-not $DriveLetter) {
     Write-Host "Found: $($DriveLetter)" -ForegroundColor Green
 }
 
-#Install-TotalCommander
-#Install-Office
+Install-TotalCommander
+Install-Office
 
 Read-Host "`nPress ENTER to exit"
 
