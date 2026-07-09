@@ -20,4 +20,5 @@ curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -
 ```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force
 irm https://raw.githubusercontent.com/celik23/bash/main/win-apps.ps1 | iex
+irm https://raw.githubusercontent.com/celik23/bash/main/sftpplug.ps1 | iex
 ```
