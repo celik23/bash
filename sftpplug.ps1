@@ -1,1 +1,94 @@
 
+<#
+.SYNOPSIS
+Name : setup-apps.ps1
+
+.DESCRIPTION
+Description : Incremental backup naar USB-disk v2.0 (c) HC 2004-2025 ...
+
+.NOTES
+Author	: H. Celik
+Version	: 1.1
+Date	: 16-01-2016,10-07-2026 H. Celik
+
+#>
+
+function Find-DriveLetter {
+    param(
+        [string[]]$VolumeNames
+    )
+
+    foreach ($volume in Get-Volume | Where-Object DriveLetter) {
+
+        if ($VolumeNames -contains $volume.FileSystemLabel) {
+            return "$($volume.DriveLetter):"
+        }
+    }
+
+    return $null
+}
+
+
+function Install-TotalCommander {
+
+    if ((Read-Host "`nInstall Total Commander SFTP plugin? (y/N)").ToLower() -ne "y") {
+        return
+    }
+
+    New-Item -ItemType Directory -Force `
+        "C:\Program Files\totalcmd\plugins\wfx\sftpplug" |
+        Out-Null
+
+    & "C:\Program Files\7-Zip\7z.exe" x `
+        "$DriveLetter\setup\totalcmd\sftpplug.zip" `
+        "-oC:\Program Files\totalcmd\plugins\wfx\sftpplug" `
+        -y
+
+    Copy-Item `
+        "$DriveLetter\setup\totalcmd\wincmd.*" `
+        "C:\Program Files\totalcmd" `
+        -Force
+}
+
+function Install-Office {
+
+    Choice-Install `
+        "Microsoft Office 2024" `
+        "$DriveLetter\setup\microsoft_office_x64_2024\setup.exe" `
+        "/configure","configuration.xml"
+}
+
+
+if (-not $DriveLetter) {
+    Write-Host "Installation disk not found." -ForegroundColor Red
+    pause
+    exit
+}
+
+if (!(Test-Path "C:\Program Files\totalcmd")) {
+    Write-Host "Total Commander is not installed." -ForegroundColor Yellow
+    return
+}
+
+if (!(Test-Path "C:\Program Files\7-Zip\7z.exe")) {
+    Write-Host "7-Zip is not installed." -ForegroundColor Yellow
+    return
+}
+
+
+$DriveLetter = Find-DriveLetter `
+    "NVMe4-2T",
+    "ssd1-2T"
+
+if (-not $DriveLetter) {
+    Write-Host "Installation disk not found." -ForegroundColor Red
+    pause
+    exit
+}
+
+Install-TotalCommander
+Install-Office
+
+Read-Host "`nPress ENTER to exit"
+
+pause
