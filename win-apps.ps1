@@ -16,24 +16,24 @@ set-executionpolicy -executionpolicy ByPass
 function Install-Winget {
     param(
         [Parameter(Mandatory)]
-        [string]$Id,
+        [string]$PackageId,
 
         [switch]$ask
     )
 
     if ($ask) {
-        $choice = Read-Host "`nInstall $Id? (y/N)"
+        $choice = Read-Host "`nInstall ${PackageId}? (y/N)"
 
         if ($choice.ToLower() -ne "y") {
-            Write-Host "User skipped installation $Id." -ForegroundColor Yellow
+            Write-Host "User skipped installation $PackageId." -ForegroundColor Yellow
             return
         }
     }
 
-    Write-Host "`nInstalling $Id..." -ForegroundColor Cyan
+    Write-Host "Installing $PackageId..." -ForegroundColor Cyan
 
-    winget install `
-        --id $Id `
+    winget install 
+        --id $PackageId `
         -e `
         --silent `
         --accept-package-agreements `
