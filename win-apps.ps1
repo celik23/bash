@@ -89,12 +89,14 @@ If ($architecture -eq 64) {
 	# Utillitie
 	# Install-Winget 9N6GL0BVKPHN #Authenticator 2FA
 
-	# Python Launcher (python.exe):
-	if (Get-Command python -ErrorAction SilentlyContinue) {
-	    python -m pip install --upgrade pip
-	    python -m pip install WMI pywin32 colorama
+	# Python Launcher (pip.exe):
+	$python = Get-Command python -ErrorAction SilentlyContinue
+
+	if ($python -and $python.Source -notlike "*WindowsApps*") {
+	    & $python.Source -m pip install --upgrade pip
+	    & $python.Source -m pip install WMI pywin32 colorama
 	} else {
-	    Write-Host "Python Launcher (python.exe) not found." -ForegroundColor Yellow
+	    Write-Host "Real Python installation not found." -ForegroundColor Yellow
 	}
 } 
 
