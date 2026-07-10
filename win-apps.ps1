@@ -76,7 +76,6 @@ If ($architecture -eq 64) {
 	# winget upgrade --all | winget show KDE.Kate
 	
 	# Utillitie
-	Install-Winget Git.Git
 	Install-Winget 9N6GL0BVKPHN -ask 	#Authenticator 2FA
 
 	# Programming languages
@@ -88,6 +87,8 @@ If ($architecture -eq 64) {
 	# Tools
 	Install-Winget Ghisler.TotalCommander
 	Install-Winget 7zip.7zip
+	Install-Winget Git.Git
+	Install-Winget GitHub.cli
 
 	# Editors
 	Install-Winget KDE.Kate
