@@ -25,7 +25,7 @@ function Install-Winget {
         $choice = Read-Host "`nInstall $Id? (y/N)"
 
         if ($choice.ToLower() -ne "y") {
-            Write-Host "Skipped $Id." -ForegroundColor Yellow
+            Write-Host "User skipped installation $Id." -ForegroundColor Yellow
             return
         }
     }
