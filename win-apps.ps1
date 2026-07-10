@@ -79,11 +79,11 @@ If ($architecture -eq 64) {
 	# Programming languages
 	Install-Winget JetBrains.PyCharm -ask
 	Install-Winget GoLang.Go -ask
+	Install-Winget alexx2000.DoubleCommander -ask
 	Install-Winget Python.Python.3.14
 	
 	# Tools
 	Install-Winget Ghisler.TotalCommander
-	Install-Winget alexx2000.DoubleCommander -ask
 	Install-Winget 7zip.7zip
 
 	# Editors
