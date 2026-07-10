@@ -13,13 +13,22 @@ Date	: 16-01-2016,10-07-2026 H. Celik
 set-executionpolicy -executionpolicy ByPass
 #>
 
-# Variables
-
 function Install-Winget {
     param(
         [Parameter(Mandatory)]
-        [string]$Id
+        [string]$Id,
+
+        [switch]$ask
     )
+
+    if ($ask) {
+        $choice = Read-Host "`nInstall $Id? (y/N)"
+
+        if ($choice.ToLower() -ne "y") {
+            Write-Host "Skipped $Id." -ForegroundColor Yellow
+            return
+        }
+    }
 
     Write-Host "`nInstalling $Id..." -ForegroundColor Cyan
 
@@ -64,9 +73,17 @@ $architecture = (Get-CimInstance Win32_Processor).AddressWidth
 If ($architecture -eq 64) {
 	# Microsoft Store install ( winget search kate | winget install --id KDE.Kate | winget upgrade --all)
 
+	# Utillitie
+	Install-Winget 9N6GL0BVKPHN -ask 	#Authenticator 2FA
+
+	# Programming languages
+	Install-Winget JetBrains.PyCharm -ask
+	Install-Winget GoLang.Go -ask
+	Install-Winget Python.Python.3.14
+	
 	# Tools
 	Install-Winget Ghisler.TotalCommander
-	Install-Winget alexx2000.DoubleCommander
+	Install-Winget alexx2000.DoubleCommander -ask
 	Install-Winget 7zip.7zip
 
 	# Editors
@@ -81,14 +98,6 @@ If ($architecture -eq 64) {
 	Install-Winget Mozilla.Firefox
 	Install-Winget Google.Chrome
 	
-	# Programming languages
-	Install-Winget Python.Python.3.14
-	#Install-Winget JetBrains.PyCharm
-	#Install-Winget GoLang.Go
-
-	# Utillitie
-	# Install-Winget 9N6GL0BVKPHN #Authenticator 2FA
-
 	# Python Launcher (pip.exe):
 	$python = Get-Command python -ErrorAction SilentlyContinue
 
