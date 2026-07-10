@@ -32,7 +32,7 @@ function Install-Winget {
 
     Write-Host "Installing $PackageId..." -ForegroundColor Cyan
 
-    winget install 
+    winget install `
         --id $PackageId `
         -e `
         --silent `
