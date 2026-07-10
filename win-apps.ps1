@@ -71,8 +71,10 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
 $architecture = (Get-CimInstance Win32_Processor).AddressWidth
 
 If ($architecture -eq 64) {
-	# Microsoft Store install ( winget search kate | winget install --id KDE.Kate | winget upgrade --all)
-
+	# Microsoft Store install 
+	# winget search kate | winget install --id KDE.Kate
+	# winget upgrade --all | winget show KDE.Kate
+	
 	# Utillitie
 	Install-Winget 9N6GL0BVKPHN -ask 	#Authenticator 2FA
 
