@@ -99,6 +99,11 @@ If ($architecture -eq 64) {
 	Install-Winget Brave.Brave
 	Install-Winget Mozilla.Firefox
 	Install-Winget Google.Chrome
+
+	# reload path
+	$env:Path =
+	    [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" +
+	    [System.Environment]::GetEnvironmentVariable("Path", "User")
 	
 	# Python Launcher (pip.exe):
 	$python = Get-Command python -ErrorAction SilentlyContinue
