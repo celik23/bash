@@ -108,23 +108,7 @@ $DriveLetter = Find-DriveLetter `
 if (-not $DriveLetter) {
     Write-Host "Installation disk not found." -ForegroundColor Red
     pause
-    exit
-}
-
-if (!(Test-Path "C:\Program Files\totalcmd")) {
-    Write-Host "Total Commander is not installed." -ForegroundColor Yellow
     return
-}
-
-if (!(Test-Path "C:\Program Files\7-Zip\7z.exe")) {
-    Write-Host "7-Zip is not installed." -ForegroundColor Yellow
-    return
-}
-
-if (-not $DriveLetter) {
-    Write-Host "Installation disk not found." -ForegroundColor Red
-    pause
-    exit
 } else {
     Write-Host "Found: $($DriveLetter)" -ForegroundColor Green
 }
