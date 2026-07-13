@@ -102,6 +102,14 @@ If ($architecture -eq 64) {
 	Install-Winget Mozilla.Firefox
 	Install-Winget Google.Chrome
 
+	# synchronize_time_dual_booting_hackintosh_and_windows
+	New-ItemProperty `
+	  -Path "HKLM:\SYSTEM\ControlSet001\Control\TimeZoneInformation" `
+	  -Name "RealTimeIsUniversal" `
+	  -PropertyType DWord `
+	  -Value 1 `
+	  -Force
+	
 	# reload path
 	$env:Path =
 	    [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" +
