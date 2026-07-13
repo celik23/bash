@@ -19,6 +19,6 @@ curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -
 ## Windows app install
 ```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force
-irm https://raw.githubusercontent.com/celik23/bash/main/win-apps.ps1 | iex
+irm https://raw.githubusercontent.com/celik23/bash/main/windows-apps.ps1 | iex
 irm https://raw.githubusercontent.com/celik23/bash/main/tc-sftpplug.ps1 | iex
 ```
