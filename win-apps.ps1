@@ -104,7 +104,7 @@ If ($architecture -eq 64) {
 
 	# synchronize_time_dual_booting_hackintosh_and_windows
 	New-ItemProperty `
-	  -Path "HKLM:\SYSTEM\ControlSet001\Control\TimeZoneInformation" `
+	  -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" `
 	  -Name "RealTimeIsUniversal" `
 	  -PropertyType DWord `
 	  -Value 1 `
