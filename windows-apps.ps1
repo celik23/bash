@@ -91,6 +91,7 @@ If ($architecture -eq 64) {
 	Install-Winget 7zip.7zip
 	Install-Winget Git.Git
 	Install-Winget GitHub.cli
+	Install-Winget RaspberryPiFoundation.RaspberryPiImager
 	
 	# Editors
 	Install-Winget KDE.Kate
