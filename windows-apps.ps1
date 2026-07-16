@@ -36,7 +36,8 @@ function Install-Winget {
         -e `
         --silent `
         --accept-package-agreements `
-        --accept-source-agreements
+        --accept-source-agreements `
+		--disable-interactivity
 }
 
 # Window Title
