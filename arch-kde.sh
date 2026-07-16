@@ -93,10 +93,10 @@ EOF
 # --------------------------------------------------
 # Printer
 # --------------------------------------------------
+msg "Install printer"
 PRINTER_IP="192.168.0.248"
 PRINTER_NAME="HP_M402dw"
 
-msg "Install printer"
 sudo pacman -S --needed --noconfirm \
     cups \
     system-config-printer \
