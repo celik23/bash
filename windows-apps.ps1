@@ -1,12 +1,12 @@
 <#
 .SYNOPSIS
-Name : setup-apps.ps1
+Name : windows-apps.ps1
 
 .DESCRIPTION
-Description : Incremental backup naar USB-disk v2.0 (c) HC 2004-2025 ...
+Description : Install windows apps (c) HC 2004-2026...
 
 .NOTES
-Author	: H. Celik
+Author	: Hanifi Celik
 Version	: 1.1
 Date	: 16-01-2016,10-07-2026 H. Celik
 
@@ -17,7 +17,6 @@ function Install-Winget {
     param(
         [Parameter(Mandatory)]
         [string]$PackageId,
-
         [switch]$ask
     )
 
