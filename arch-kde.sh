@@ -44,6 +44,8 @@ install_packages() {
 install_paru() {
     command -v paru >/dev/null && return
     msg "Installing paru ..."
+
+    sudo -v
     sudo pacman -S --needed --noconfirm git base-devel
 
     rm -rf /tmp/paru
@@ -141,5 +143,6 @@ EOF
 # --------------------------------------------------
 # Done
 # --------------------------------------------------
+kill "$SUDO_KEEPALIVE"
 msg "DONE"
 #
