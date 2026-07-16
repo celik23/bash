@@ -95,7 +95,6 @@ If ($architecture -eq 64) {
 	
 	# Editors
 	Install-Winget KDE.Kate
-	Install-Winget 9NKSQGP7F2NH #WhatsApp
 	Install-Winget SublimeHQ.SublimeText.4
 	Install-Winget Notepad++.Notepad++
 	Install-Winget Microsoft.VisualStudioCode
@@ -104,14 +103,12 @@ If ($architecture -eq 64) {
 	Install-Winget Brave.Brave
 	Install-Winget Mozilla.Firefox
 	Install-Winget Google.Chrome
+	Install-Winget 9NKSQGP7F2NH #WhatsApp
 
-	# synchronize_time_dual_booting_hackintosh_and_windows
+	# Synchronize time dual booting linux, hackintosh or windows
 	New-ItemProperty `
 	  -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" `
-	  -Name "RealTimeIsUniversal" `
-	  -PropertyType DWord `
-	  -Value 1 `
-	  -Force
+	  -Name "RealTimeIsUniversal" -PropertyType DWord -Value 1 -Force
 	
 	# reload path
 	$env:Path =
