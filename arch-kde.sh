@@ -31,7 +31,7 @@ install_packages() {
     shift
 
     for pkg in "$@"; do
-        msg "Installing $pkg"
+        msg "Installing $pkg..."
 
         if [[ "$manager" == "pacman" ]]; then
             sudo pacman -S --needed --noconfirm "$pkg"
@@ -43,7 +43,7 @@ install_packages() {
 
 install_paru() {
     command -v paru >/dev/null && return
-    msg "Installing paru ..."
+    msg "Installing paru..."
 
     sudo -v
     sudo pacman -S --needed --noconfirm git base-devel
