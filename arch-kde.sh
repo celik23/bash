@@ -99,21 +99,23 @@ PRINTER_NAME="HP_M402dw"
 
 sudo pacman -S --needed --noconfirm \
     cups \
-    system-config-printer \
-    hplip
+    hplip \
+    system-config-printer
 
-sudo systemctl enable --now cups
+sudo systemctl enable --now cups.service
 
 if ! lpstat -p "$PRINTER_NAME" >/dev/null 2>&1; then
-    sudo lpadmin \
-        -p "$PRINTER_NAME" \
-        -E \
-        -v "ipp://$PRINTER_IP/ipp/print" \
-        -m everywhere
+sudo lpadmin \
+    -p "$PRINTER_NAME" \
+    -E \
+    -v "socket://$PRINTER_IP" \
+    -m drv:///sample.drv/generic.ppd
 fi
 
+# Show printers
 sudo lpoptions -d "$PRINTER_NAME"
-lpstat -p     # Show printers
+lpinfo -m | grep -i M402
+lpstat -p 
 
 # --------------------------------------------------
 # 24h
