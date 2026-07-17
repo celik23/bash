@@ -43,6 +43,7 @@ install_packages() {
 # Update system
 # --------------------------------------------------
 msg "Updating system"
+sudo -v
 sudo apt update
 sudo apt upgrade -y
 
