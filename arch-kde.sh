@@ -68,7 +68,7 @@ while true; do
     sudo -n true
     sleep 60
     kill -0 "$$" || exit
-done 2>/dev/null &
+done 2>/dev/null &     # <-- Start op de achtergrond
 
 SUDO_KEEPALIVE=$!
 trap 'kill "$SUDO_KEEPALIVE" 2>/dev/null' EXIT
