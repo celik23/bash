@@ -122,4 +122,5 @@ sudo apt autoremove -y
 snap list 
 snap find onlyoffice
 
+kill "$SUDO_KEEPALIVE"
 msg "DONE"
