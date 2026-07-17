@@ -44,8 +44,6 @@ install_packages() {
 install_paru() {
     command -v paru >/dev/null && return
     msg "Installing paru..."
-
-    sudo -v
     sudo pacman -S --needed --noconfirm git base-devel
 
     rm -rf /tmp/paru
@@ -61,6 +59,7 @@ install_paru() {
 # System update
 # --------------------------------------------------
 msg "Update Arch Linux"
+sudo -v
 sudo pacman -Syu --noconfirm
 
 # --------------------------------------------------
