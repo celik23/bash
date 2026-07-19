@@ -58,21 +58,22 @@ install_paru() {
 # --------------------------------------------------
 # System update
 # --------------------------------------------------
-msg "Update Arch Linux"
-
 # Ask sudo password once
 sudo -v || exit 1
 
-# Keep sudo alive
-while true; do
-    sudo -n true
-    sleep 60
-    kill -0 "$$" || exit
-done 2>/dev/null &     # <-- Start op de achtergrond
+# Houd sudo actief
+(
+    while true; do
+        sudo -n true
+        sleep 50
+    done
+) 2>/dev/null &     # <-- Start op de achtergrond
 
 SUDO_KEEPALIVE=$!
+
 trap 'kill "$SUDO_KEEPALIVE" 2>/dev/null' EXIT
 
+msg "Update Arch Linux"
 sudo pacman -Syu --noconfirm
 
 # --------------------------------------------------
