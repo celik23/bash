@@ -8,11 +8,12 @@ set +e   # Continue on error
 PAC_PACKAGES=(
     dolphin kate nano kio-admin git htop flatpak wget curl ark discover
     gparted keepassxc filezilla mpv rsync ntfs-3g exfatprogs iwd spectacle
+    code
 )
 
 AUR_PACKAGES=(
     onlyoffice-bin google-chrome brave-bin whatsit-git dropbox sublime-text
-    visual-studio-code-bin
+    # visual-studio-code-bin
 )
 
 # --------------------------------------------------
