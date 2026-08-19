@@ -92,7 +92,7 @@ sudo tee $HOME/.config/autostart/start-browser-link.desktop >/dev/null <<EOF
 [Desktop Entry]
 Type=Application
 Name=Firefox
-Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.76:3001/ http://192.168.0.76:8888/"
+Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.61:3001/ http://192.168.0.61:8888/"
 EOF
 
 # --------------------------------------------------
