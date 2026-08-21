@@ -13,6 +13,6 @@ kwriteconfig6 --file konsolerc --group KonsoleWindow --key UseSingleInstance tru
 # desktop icons size 32
 kwriteconfig6 --file ~/.config/plasma-org.kde.plasma.desktop-appletsrc \
   --group Containments --group 1 --group Applets --group 2 \
-  --group Configuration --key iconSize 22
+  --group Configuration --key iconSize 32
 
 #
