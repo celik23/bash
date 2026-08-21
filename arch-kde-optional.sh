@@ -15,6 +15,6 @@ kwriteconfig6 --file plasmarc --group DesktopIcons --key IconSize 32
 pkill -x dolphin || true
 pkill -x konsole || true
 
-echo "✅ Alle instellingen zijn bijgewerkt!"
+echo "✔ Alle instellingen zijn bijgewerkt!"
 
 #
