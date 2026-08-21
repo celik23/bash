@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 #
 
-# dolphin icon size 22 pixels
+# Dolphin instellingen
 kwriteconfig6 --file dolphinrc --group DetailsMode --key PreviewSize 22
-
-# view mode details
 kwriteconfig6 --file dolphinrc --group Dolphin --key ViewMode 1
 
-# konsole ✅Run all Konsole windows in a single prosess
+# Konsole instellingen
 kwriteconfig6 --file konsolerc --group KonsoleWindow --key UseSingleInstance true
 
-# desktop icons size 32
-kwriteconfig6 --file ~/.config/plasma-org.kde.plasma.desktop-appletsrc \
-  --group Containments --group 1 --group Applets --group 2 \
-  --group Configuration --key iconSize 32
+# Desktop icons (betrouwbaarder via plasmarc)
+kwriteconfig6 --file plasmarc --group DesktopIcons --key IconSize 32
+
+# Herstart Dolphin en Konsole (als ze draaien)
+pkill -x dolphin || true
+pkill -x konsole || true
+
+echo "✅ Alle instellingen zijn bijgewerkt!"
 
 #
