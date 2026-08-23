@@ -6,7 +6,8 @@ set +e
 # Config
 # --------------------------------------------------
 APT_PACKAGES=(
-    snapd gparted krusader filezilla ark cups system-config-printer hplip gwenview
+    snapd gparted keepassxc filezilla ark cups system-config-printer hplip gwenview
+    rsync feh kio-admin
 )
 
 SNAP_PACKAGES=(
@@ -70,7 +71,7 @@ sudo tee $HOME/.config/autostart/start-browser-link.desktop >/dev/null <<EOF
 [Desktop Entry]
 Type=Application
 Name=Firefox
-Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.76:3001/ http://192.168.0.76:8888/"
+Exec=/bin/bash -c "sleep 5 && firefox http://192.168.0.61:3001/ http://192.168.0.61:8888/"
 EOF
 
 # --------------------------------------------------
@@ -122,4 +123,6 @@ snap list
 snap find onlyoffice
 
 kill "$SUDO_KEEPALIVE"
+
+bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-kde-optional.sh) arg arg
 msg "DONE"
