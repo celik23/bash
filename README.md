@@ -1,17 +1,17 @@
 ## Debian
-**Gnome Desktop**
+**Debian Gnome Desktop**
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-gnome.sh) arg arg
 ```
 
-**KDE Desktop**
+**Debian KDE Desktop**
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-kde.sh) arg arg
 ```
 
 <br><br>
 ## Arch-Linux
-**KDE Desktop**
+**Arch-Linux KDE Desktop**
 ```bash
 curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -s -- arg arg
 ```
@@ -20,5 +20,7 @@ curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -
 ```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force
 irm https://raw.githubusercontent.com/celik23/bash/main/windows-apps.ps1 | iex
+```
+```
 irm https://raw.githubusercontent.com/celik23/bash/main/tc-sftpplug.ps1 | iex
 ```
