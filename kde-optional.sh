@@ -3,7 +3,7 @@
 
 # Dolphin instellingen
 kwriteconfig6 --file dolphinrc --group DetailsMode --key PreviewSize 22
-kwriteconfig6 --file dolphinrc --group Dolphin --key ViewMode 1
+kwriteconfig6 --file dolphinrc --group General --key "View Style" Details
 
 # Konsole instellingen
 kwriteconfig6 --file konsolerc --group KonsoleWindow --key UseSingleInstance true
