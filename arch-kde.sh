@@ -156,6 +156,6 @@ EOF
 # --------------------------------------------------
 # Done
 # --------------------------------------------------
-curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde-optional.sh | bash -s -- arg arg
+curl -s https://raw.githubusercontent.com/celik23/bash/main/kde-optional.sh | bash -s -- arg arg
 msg "DONE"
 #
