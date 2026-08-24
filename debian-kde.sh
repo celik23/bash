@@ -61,6 +61,7 @@ install_packages snap "${SNAP_PACKAGES[@]}"
 msg "Set locale"
 grep -q '^LC_TIME=' /etc/default/locale ||
 echo 'LC_TIME=nl_NL.UTF-8' | sudo tee -a /etc/default/locale
+sudo update-locale LANG=nl_NL.UTF-8 LC_TIME=nl_NL.UTF-8
 
 # --------------------------------------------------
 # Autostart browser
