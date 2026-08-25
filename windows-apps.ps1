@@ -77,7 +77,6 @@ If ($architecture -eq 64) {
 	
 	# Utillitie
 	Install-Winget 9N6GL0BVKPHN -ask 	#Authenticator 2FA
-	Install-Winget alexx2000.DoubleCommander -ask
 
 	# Programming languages
 	Install-Winget JetBrains.PyCharm -ask
