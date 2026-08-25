@@ -69,7 +69,6 @@ function Install-TotalCommander {
     Copy-Item `
         "$DriveLetter\setup\totalcmd\wincmd.*" `
         "C:\Program Files\totalcmd" 
-        -Force
 }
 
 function Install-Office {
