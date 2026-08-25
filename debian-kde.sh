@@ -7,7 +7,7 @@ set +e
 # --------------------------------------------------
 APT_PACKAGES=(
     snapd gparted keepassxc filezilla ark cups system-config-printer hplip gwenview
-    rsync feh kio-admin ntfs-3g 
+    rsync feh kio-admin
 )
 
 SNAP_PACKAGES=(
