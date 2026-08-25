@@ -22,5 +22,5 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 irm https://raw.githubusercontent.com/celik23/bash/main/windows-apps.ps1 | iex
 ```
 ```
-irm https://raw.githubusercontent.com/celik23/bash/main/tc-sftpplug.ps1 | iex
+irm https://raw.githubusercontent.com/celik23/bash/main/windows-sftpplug.ps1 | iex
 ```
