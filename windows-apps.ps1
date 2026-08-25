@@ -79,12 +79,14 @@ If ($architecture -eq 64) {
 	Install-Winget 9N6GL0BVKPHN -ask 	#Authenticator 2FA
 	Install-Winget alexx2000.DoubleCommander -ask
 
-	# Optionel 
-	Install-Winget Dropbox.Dropbox -ask
-	
 	# Programming languages
 	Install-Winget JetBrains.PyCharm -ask
 	Install-Winget GoLang.Go -ask
+
+	# Optionel 
+	Install-Winget Dropbox.Dropbox -ask
+
+	# Programming languages	
 	Install-Winget Python.Python.3.14
 	
 	# Tools
