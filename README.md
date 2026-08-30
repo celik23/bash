@@ -1,17 +1,17 @@
 ## Debian
-**Debian Gnome Desktop**
+Debian Gnome Desktop
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-gnome.sh) arg arg
 ```
 
-**Debian KDE Desktop**
+Debian KDE Desktop
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-kde.sh) arg arg
 ```
 
 <br><br>
 ## Arch-Linux
-**Arch-Linux KDE Desktop**
+Arch-Linux KDE Desktop
 ```bash
 curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -s -- arg arg
 ```
@@ -23,7 +23,7 @@ Apple iMac Pro
 curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/intel.sh | bash
 ```
 
-**Apple mini**
+Apple mini
 ```bash
 curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mini.sh | bash
 ```
