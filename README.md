@@ -18,11 +18,12 @@ curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -
 
 
 ## Apple app install
-### Apple iMac Pro
+**Apple iMac Pro**
 ```bash
 curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/intel.sh | bash
 ```
-### Apple mini
+
+**Apple mini**
 ```bash
 curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mini.sh | bash
 ```
