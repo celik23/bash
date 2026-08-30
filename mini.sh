@@ -119,9 +119,8 @@ fi
 # Update Homebrew
 # --------------------------------------------------
 msg "Updating Homebrew..."
-
-brew update
-brew upgrade
+# brew update
+# brew upgrade
 
 # --------------------------------------------------
 # Terminal packages
