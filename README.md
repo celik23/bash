@@ -19,7 +19,7 @@ curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -
 
 ## Apple app install
 ```bash
-curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mini.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mini.sh | bash
 ```
 
 
