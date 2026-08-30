@@ -26,7 +26,7 @@ Apple iMac Pro
 curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/intel.sh | bash
 ```
 
-Apple mini
+Apple M6 mini
 ```bash
 curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mini.sh | bash
 ```
