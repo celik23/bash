@@ -19,6 +19,9 @@ curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -
 
 ## Apple app install
 Apple iMac Pro
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 ```bash
 curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/intel.sh | bash
 ```
