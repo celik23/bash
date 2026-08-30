@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 #
-# macOS Tahoe 26.x – macOS setup
+# macOS Tahoe 26.x – Intel x86_64 Mac setup
 #
 # Installeert software via Homebrew
-# Apple Silicon compatible
+# Intel / x86_64 compatible
+#
+# BELANGRIJK:
+# Dit script NIET uitvoeren met sudo.
+#
+# Gebruik:
+#   bash mini.sh
+#
+# of:
+#   ./mini.sh
 #
 
 set -euo pipefail
@@ -64,6 +73,21 @@ error() {
 }
 
 # --------------------------------------------------
+# Controle gebruiker
+# --------------------------------------------------
+
+if [[ "$EUID" -eq 0 ]]; then
+    error "Dit script mag NIET als root worden uitgevoerd."
+    echo
+    echo "Gebruik:"
+    echo "  bash mini.sh"
+    echo
+    echo "NIET:"
+    echo "  sudo bash mini.sh"
+    exit 1
+fi
+
+# --------------------------------------------------
 # Controle macOS
 # --------------------------------------------------
 
@@ -72,15 +96,36 @@ if [[ "$(uname)" != "Darwin" ]]; then
     exit 1
 fi
 
+# --------------------------------------------------
+# Controle CPU architectuur
+# --------------------------------------------------
+
+ARCH="$(uname -m)"
+
+if [[ "$ARCH" != "x86_64" ]]; then
+    error "Dit script is bedoeld voor Intel x86_64 Macs."
+    echo
+    echo "Gevonden architectuur: $ARCH"
+    exit 1
+fi
+
 msg "macOS installatie"
 
+echo "Gebruiker:"
+echo "  $USER"
+
+echo
+echo "Architectuur:"
+echo "  $ARCH"
+
+echo
 echo "macOS versie:"
 sw_vers
 
 echo
 echo "Hardware:"
 system_profiler SPHardwareDataType |
-    grep -E "Model Name|Chip|Memory" || true
+    grep -E "Model Name|Processor Name|Processor Speed|Memory" || true
 
 # --------------------------------------------------
 # Vraag sudo één keer
@@ -90,6 +135,7 @@ msg "Checking sudo..."
 
 sudo -v
 
+# Houd sudo-ticket actief tijdens installatie
 (
     while true; do
         sudo -n true
@@ -123,7 +169,9 @@ if ! xcode-select -p >/dev/null 2>&1; then
     fi
 
 else
+
     info "Xcode Command Line Tools already installed."
+
 fi
 
 # --------------------------------------------------
@@ -132,27 +180,64 @@ fi
 
 msg "Checking Homebrew..."
 
+# Intel Homebrew hoort normaal in /usr/local
+INTEL_BREW="/usr/local/bin/brew"
+
+if [[ -x "$INTEL_BREW" ]]; then
+
+    export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+fi
+
+# Controleer of brew beschikbaar is
 if ! command -v brew >/dev/null 2>&1; then
 
-    info "Homebrew not found. Installing..."
+    info "Homebrew not found."
+    info "Installing Intel Homebrew..."
 
     /bin/bash -c \
         "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+    export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
 fi
 
-# Apple Silicon Homebrew
-if [[ -x /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+# --------------------------------------------------
+# Definitieve Homebrew controle
+# --------------------------------------------------
 
-# Controle
 if ! command -v brew >/dev/null 2>&1; then
+
     error "Homebrew kon niet worden gevonden."
+    echo
+    echo "Verwachte locatie:"
+    echo "  /usr/local/bin/brew"
     exit 1
+
 fi
 
-info "Homebrew found: $(command -v brew)"
+BREW_PATH="$(command -v brew)"
+BREW_PREFIX="$(brew --prefix)"
+
+info "Homebrew found: $BREW_PATH"
+info "Homebrew prefix: $BREW_PREFIX"
+
+# Controleer dat we Intel Homebrew gebruiken
+if [[ "$BREW_PREFIX" != "/usr/local" ]]; then
+
+    warn "Homebrew prefix is niet /usr/local."
+    warn "Gevonden: $BREW_PREFIX"
+    echo
+
+fi
+
+# Controleer dat Homebrew NIET als root draait
+if [[ "$(id -u)" -eq 0 ]]; then
+
+    error "Homebrew mag niet als root worden uitgevoerd."
+    exit 1
+
+fi
 
 # --------------------------------------------------
 # Update Homebrew
@@ -171,10 +256,14 @@ msg "Installing command line packages..."
 for pkg in "${BREW_PACKAGES[@]}"; do
 
     if brew list --formula "$pkg" >/dev/null 2>&1; then
+
         info "$pkg already installed."
+
     else
+
         info "Installing $pkg..."
         brew install "$pkg"
+
     fi
 
 done
@@ -188,10 +277,14 @@ msg "Installing applications..."
 for pkg in "${CASK_PACKAGES[@]}"; do
 
     if brew list --cask "$pkg" >/dev/null 2>&1; then
+
         info "$pkg already installed."
+
     else
+
         info "Installing $pkg..."
         brew install --cask "$pkg"
+
     fi
 
 done
@@ -205,7 +298,7 @@ msg "Finder settings..."
 # Toon verborgen bestanden
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
-# Toon extensies
+# Toon bestandsextensies
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Herstart Finder
@@ -230,10 +323,10 @@ killall SystemUIServer 2>/dev/null || true
 
 msg "Dock settings..."
 
-# Automatisch verbergen
+# Dock automatisch verbergen
 defaults write com.apple.dock autohide -bool true
 
-# Geen vertraging bij tonen
+# Geen vertraging bij tonen/verbergen
 defaults write com.apple.dock autohide-delay -float 0
 
 killall Dock 2>/dev/null || true
@@ -247,7 +340,7 @@ msg "Setting 24 hour clock..."
 defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
 
 # --------------------------------------------------
-# SSH
+# SSH directory
 # --------------------------------------------------
 
 msg "SSH directory..."
@@ -256,7 +349,7 @@ mkdir -p "$HOME/.ssh"
 chmod 700 "$HOME/.ssh"
 
 # --------------------------------------------------
-# Git basis configuratie
+# Git configuratie
 # --------------------------------------------------
 
 msg "Git configuration..."
@@ -265,7 +358,7 @@ git config --global init.defaultBranch main
 git config --global pull.rebase false
 
 # --------------------------------------------------
-# Cleanup
+# Homebrew cleanup
 # --------------------------------------------------
 
 msg "Homebrew cleanup..."
@@ -273,7 +366,7 @@ msg "Homebrew cleanup..."
 brew cleanup
 
 # --------------------------------------------------
-# System informatie
+# Controle installatie
 # --------------------------------------------------
 
 msg "Installation complete!"
@@ -284,11 +377,18 @@ echo " macOS Setup completed"
 echo "============================================"
 echo
 
+echo "System:"
+echo "  User:         $USER"
+echo "  Architecture: $ARCH"
+
+echo
 echo "macOS:"
 sw_vers
 
 echo
 echo "Homebrew:"
+echo "  Path:   $(command -v brew)"
+echo "  Prefix: $(brew --prefix)"
 brew --version | head -n 1
 
 echo
