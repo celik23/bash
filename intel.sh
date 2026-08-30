@@ -5,14 +5,8 @@
 # Installeert software via Homebrew
 # Intel / x86_64 compatible
 #
-# BELANGRIJK:
-# Dit script NIET uitvoeren met sudo.
-#
 # Gebruik:
-#   bash mini.sh
-#
-# of:
-#   ./mini.sh
+#   curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mini.sh | bash
 #
 
 set +e
@@ -20,35 +14,18 @@ set +e
 # --------------------------------------------------
 # Config
 # --------------------------------------------------
-
 BREW_PACKAGES=(
-    git
-    htop
-    wget
-    rsync
-    tree
-    nano
-    fastfetch
+    git htop wget rsync tree nano fastfetch
 )
 
 CASK_PACKAGES=(
-    visual-studio-code
-    google-chrome
-    brave-browser
-    firefox
-    onlyoffice
-    sublime-text
-    keepassxc
-    filezilla
-    vlc
-    mpv
-    dropbox
+    visual-studio-code google-chrome brave-browser firefox
+    onlyoffice sublime-text keepassxc filezilla vlc mpv dropbox
 )
 
 # --------------------------------------------------
 # Kleuren
 # --------------------------------------------------
-
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 YELLOW='\033[0;33m'
@@ -75,7 +52,6 @@ error() {
 # --------------------------------------------------
 # Controle gebruiker
 # --------------------------------------------------
-
 if [[ "$EUID" -eq 0 ]]; then
     error "Dit script mag NIET als root worden uitgevoerd."
     echo
@@ -90,7 +66,6 @@ fi
 # --------------------------------------------------
 # Controle macOS
 # --------------------------------------------------
-
 if [[ "$(uname)" != "Darwin" ]]; then
     error "Dit script is alleen voor macOS."
     exit 1
@@ -99,7 +74,6 @@ fi
 # --------------------------------------------------
 # Controle CPU architectuur
 # --------------------------------------------------
-
 ARCH="$(uname -m)"
 
 if [[ "$ARCH" != "x86_64" ]]; then
@@ -130,7 +104,6 @@ system_profiler SPHardwareDataType |
 # --------------------------------------------------
 # Vraag sudo één keer
 # --------------------------------------------------
-
 msg "Checking sudo..."
 
 sudo -v
@@ -150,7 +123,6 @@ trap 'kill "$SUDO_KEEPALIVE" 2>/dev/null || true' EXIT
 # --------------------------------------------------
 # Xcode Command Line Tools
 # --------------------------------------------------
-
 msg "Checking Xcode Command Line Tools..."
 
 if ! xcode-select -p >/dev/null 2>&1; then
@@ -177,7 +149,6 @@ fi
 # --------------------------------------------------
 # Homebrew
 # --------------------------------------------------
-
 msg "Checking Homebrew..."
 
 # Intel Homebrew hoort normaal in /usr/local
@@ -205,7 +176,6 @@ fi
 # --------------------------------------------------
 # Definitieve Homebrew controle
 # --------------------------------------------------
-
 if ! command -v brew >/dev/null 2>&1; then
 
     error "Homebrew kon niet worden gevonden."
@@ -242,7 +212,6 @@ fi
 # --------------------------------------------------
 # Update Homebrew
 # --------------------------------------------------
-
 msg "Updating Homebrew..."
 
 brew update
@@ -250,7 +219,6 @@ brew update
 # --------------------------------------------------
 # Terminal packages
 # --------------------------------------------------
-
 msg "Installing command line packages..."
 
 for pkg in "${BREW_PACKAGES[@]}"; do
@@ -271,7 +239,6 @@ done
 # --------------------------------------------------
 # GUI Applications
 # --------------------------------------------------
-
 msg "Installing applications..."
 
 for pkg in "${CASK_PACKAGES[@]}"; do
@@ -292,7 +259,6 @@ done
 # --------------------------------------------------
 # Finder instellingen
 # --------------------------------------------------
-
 msg "Finder settings..."
 
 # Toon verborgen bestanden
@@ -307,7 +273,6 @@ killall Finder 2>/dev/null || true
 # --------------------------------------------------
 # Screenshots
 # --------------------------------------------------
-
 msg "Screenshot settings..."
 
 mkdir -p "$HOME/Pictures/Screenshots"
@@ -320,7 +285,6 @@ killall SystemUIServer 2>/dev/null || true
 # --------------------------------------------------
 # Dock
 # --------------------------------------------------
-
 msg "Dock settings..."
 
 # Dock automatisch verbergen
@@ -334,15 +298,12 @@ killall Dock 2>/dev/null || true
 # --------------------------------------------------
 # 24 uur tijd
 # --------------------------------------------------
-
 msg "Setting 24 hour clock..."
-
 defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
 
 # --------------------------------------------------
 # SSH directory
 # --------------------------------------------------
-
 msg "SSH directory..."
 
 mkdir -p "$HOME/.ssh"
@@ -351,7 +312,6 @@ chmod 700 "$HOME/.ssh"
 # --------------------------------------------------
 # Git configuratie
 # --------------------------------------------------
-
 msg "Git configuration..."
 
 git config --global init.defaultBranch main
@@ -360,7 +320,6 @@ git config --global pull.rebase false
 # --------------------------------------------------
 # Homebrew cleanup
 # --------------------------------------------------
-
 msg "Homebrew cleanup..."
 
 brew cleanup
@@ -368,7 +327,6 @@ brew cleanup
 # --------------------------------------------------
 # Controle installatie
 # --------------------------------------------------
-
 msg "Installation complete!"
 
 echo
