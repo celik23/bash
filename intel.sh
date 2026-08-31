@@ -1,25 +1,15 @@
 #!/usr/bin/env bash
-
 #
-
 # macOS Tahoe 26.x – Intel x86_64 setup
-
 #
-
 # Gebruik:
-
 # curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/intel.sh | bash
-
 #
-
 set +e
 
 # --------------------------------------------------
-
 # Config
-
 # --------------------------------------------------
-
 BREW_PACKAGES=(git htop wget rsync tree nano fastfetch)
 
 CASK_PACKAGES=(
@@ -39,11 +29,8 @@ ALREADY_INSTALLED=()
 FAILED=()
 
 # --------------------------------------------------
-
 # Kleuren / functies
-
 # --------------------------------------------------
-
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 YELLOW='\033[0;33m'
@@ -57,9 +44,7 @@ warn()    { echo -e "${YELLOW}⚠ $*${NC}"; }
 error()   { echo -e "${RED}✗ $*${NC}"; }
 
 # --------------------------------------------------
-
 # Controle systeem
-
 # --------------------------------------------------
 
 [[ "$EUID" -ne 0 ]] || {
@@ -85,9 +70,7 @@ exit 1
 # Systeem informatie
 
 # --------------------------------------------------
-
 msg "macOS installatie"
-
 echo "Gebruiker:    $USER"
 echo "Architectuur: $ARCH"
 echo
