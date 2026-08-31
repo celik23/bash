@@ -3,7 +3,6 @@ Debian Gnome Desktop
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-gnome.sh) arg arg
 ```
-
 Debian KDE Desktop
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/celik23/bash/main/debian-kde.sh) arg arg
@@ -16,8 +15,8 @@ Arch-Linux KDE Desktop
 curl -s https://raw.githubusercontent.com/celik23/bash/main/arch-kde.sh | bash -s -- arg arg
 ```
 
-
-## Apple app install
+<br><br>
+## Apple install
 Apple iMac Pro
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -31,7 +30,7 @@ Apple M6 mini
 curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mini.sh | bash
 ```
 
-
+<br><br>
 ## Windows app install
 ```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force
