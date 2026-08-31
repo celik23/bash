@@ -31,7 +31,7 @@ curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mini.sh | bash
 ```
 
 <br><br>
-## Windows app install
+## Windows install
 ```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force
 irm https://raw.githubusercontent.com/celik23/bash/main/windows-apps.ps1 | iex
