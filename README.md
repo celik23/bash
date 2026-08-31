@@ -22,12 +22,12 @@ Apple iMac Pro
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 ```bash
-curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/intel.sh | bash
+curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mac-intel.sh | bash
 ```
 
 Apple M6 mini
 ```bash
-curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mini.sh | bash
+curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/mac-mini.sh | bash
 ```
 
 <br><br>
