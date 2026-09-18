@@ -36,8 +36,8 @@ install_packages() {
         if [[ "$manager" == "pacman" ]]; then
             sudo pacman -S --needed --noconfirm "$pkg"
         else
-            # paru -S --needed --noconfirm "$pkg"
-            yay -S --needed --noconfirm "$pkg"
+            paru -S --needed --noconfirm "$pkg"
+            # yay -S --needed --noconfirm "$pkg"
         fi
     done
 }
