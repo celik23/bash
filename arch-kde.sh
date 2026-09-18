@@ -97,7 +97,8 @@ sudo pacman -Syu --noconfirm
 # --------------------------------------------------
 install_paru
 install_packages pacman "${PAC_PACKAGES[@]}"
-install_packages paru "${AUR_PACKAGES[@]}"
+# install_packages paru "${AUR_PACKAGES[@]}"
+install_packages yay "${AUR_PACKAGES[@]}"
 
 # --------------------------------------------------
 # Autostart browser
