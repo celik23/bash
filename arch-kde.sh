@@ -44,7 +44,7 @@ install_packages() {
 
 install_paru() {
     command -v paru >/dev/null && return
-    msg "Installing paru..."
+    msg "Installing paru Rust..."
     sudo pacman -S --needed --noconfirm git base-devel
 
     rm -rf /tmp/paru
@@ -59,7 +59,7 @@ install_paru() {
 install_yay() {
     command -v yay >/dev/null && return
 
-    msg "Installing yay ..."
+    msg "Installing yay Go..."
     sudo pacman -S --needed --noconfirm git base-devel
 
     rm -rf /tmp/yay
