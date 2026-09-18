@@ -36,7 +36,8 @@ install_packages() {
         if [[ "$manager" == "pacman" ]]; then
             sudo pacman -S --needed --noconfirm "$pkg"
         else
-            paru -S --needed --noconfirm "$pkg"
+            # paru -S --needed --noconfirm "$pkg"
+            yay -S --needed --noconfirm "$pkg"
         fi
     done
 }
@@ -51,6 +52,21 @@ install_paru() {
 
     (
         cd /tmp/paru
+        makepkg -si --noconfirm
+    )
+}
+
+install_yay() {
+    command -v yay >/dev/null && return
+
+    msg "Installing yay ..."
+    sudo pacman -S --needed --noconfirm git base-devel
+
+    rm -rf /tmp/yay
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+
+    (
+        cd /tmp/yay || exit 1
         makepkg -si --noconfirm
     )
 }
