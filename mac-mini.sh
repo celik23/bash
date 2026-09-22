@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# macOS Golden Gate 27.x – M6 setup
+# macOS Golden Gate 27.x – mac M6 setup
 #
 # Gebruik:
 # curl -fsSL https://raw.githubusercontent.com/celik23/bash/main/intel.sh | bash
