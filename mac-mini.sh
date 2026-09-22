@@ -62,7 +62,7 @@ ARCH="$(uname -m)"
 [[ "$ARCH" == "x86_64" ]] || {
 error "Dit script is alleen voor Intel x86_64 Macs."
 error "Gevonden: $ARCH"
-exit 1
+### exit 1
 }
 
 # --------------------------------------------------
